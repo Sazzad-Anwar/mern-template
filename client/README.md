@@ -24,17 +24,13 @@ Please follow the below instructions to run this project in your computer:
 
 1. Clone this repository
    ```sh
-   git clone https://github.com/learnwithsumit/think-in-a-react-way.git
+   git clone https://github.com/Sazzad-Anwar/Template.git
    ```
-2. Checkout to branch "lesson-7"
-   ```sh
-   git checkout lesson-7
-   ```
-3. Run
+2. Run
    ```sh
    yarn
    ```
-4. Your app should be available in http://localhost:3000
+3. Your app should be available in http://localhost:3000
 
 <!-- Editor Setup -->
 
