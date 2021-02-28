@@ -15,7 +15,6 @@
 - [Linting Setup](#linting-setup)
   - [Install Dev Dependencies](#install-dev-dependencies)
   - [Create Linting Configuration file manually](#create-linting-configuration-file-manually)
-- [Contact](#contact)
 
 <!-- HOW TO RUN -->
 
