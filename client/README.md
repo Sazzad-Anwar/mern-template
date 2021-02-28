@@ -24,7 +24,7 @@ Please follow the below instructions to run this project in your computer:
 
 1. Clone this repository
    ```sh
-   git clone https://github.com/Sazzad-Anwar/Template.git
+   git clone https://github.com/Sazzad-Anwar/Template/tree/main/client
    ```
 2. Run
    ```sh
