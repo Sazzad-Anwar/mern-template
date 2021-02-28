@@ -2,7 +2,7 @@
 <!-- PROJECT Title -->
 <br />
 <p align="center">
-  <h3 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any JAM stack project</a></h3>
+  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any JAM stack project</a></h2>
 
 <!-- TABLE OF CONTENTS -->
 
@@ -59,10 +59,8 @@ Follow the below settings for VS Code -
 
 ```json
 {
-  // Theme
   "workbench.colorTheme": "Dracula",
 
-  // config related to code formatting
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "[javascript]": {
@@ -71,7 +69,7 @@ Follow the below settings for VS Code -
   "[javascriptreact]": {
     "editor.formatOnSave": false
   },
-  "javascript.validate.enable": false, //disable all built-in syntax checking
+  "javascript.validate.enable": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.tslint": true,
@@ -79,7 +77,6 @@ Follow the below settings for VS Code -
   },
   "eslint.alwaysShowStatus": true,
   "prettier.disableLanguages": ["javascript", "javascriptreact"],
-  // emmet
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
