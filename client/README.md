@@ -2,7 +2,7 @@
 <!-- PROJECT Title -->
 <br />
 <p align="center">
-  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template" style="text-decoration:none">Template for any JAM stack project</a></h2>
+  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any JAM stack project</a></h2>
 
 <!-- TABLE OF CONTENTS -->
 
