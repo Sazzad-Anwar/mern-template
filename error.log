@@ -1,0 +1,18 @@
+{
+  level: 'error',
+  message: 'app is not defined',
+  IP: '::1',
+  stack: 'ReferenceError: app is not defined\n' +
+    '    at D:\\PROJECTS\\project-template\\controllers\\AppController.js:6:17\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\project-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\project-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\project-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\project-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\project-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\project-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\project-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\project-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\project-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sun, Feb 28, 2021, 01:17 PM',
+  timestamp: '2021-02-28T07:17:43.048Z'
+}
