@@ -6,7 +6,7 @@
 <!-- TABLE OF CONTENTS -->
 
 <!-- HOW TO RUN -->
-## How to run
+## How to install packages and run
 
 Please follow the below instructions to run this project in your computer:
 
@@ -14,15 +14,30 @@ Please follow the below instructions to run this project in your computer:
    ```sh
    git clone https://github.com/Sazzad-Anwar/Template.git
    ```
-2. Run
+2. Install NPM packages for node server and react
    ```sh
-   yarn
+   yarn install-all
    ```
-3. Your app should be available in http://localhost:8080
+3. Install only node server npm packages
+   ```sh
+   yarn server-install
+   ```
+4. Install only react client npm packages
+   ```sh
+   yarn client-install
+   ```
+5. Run node server and react client application with concurrently
+   ```sh
+   yarn dev
+   ```
+6. Run node server only
+   ```sh
+   yarn server
+   ```
+7. Run node react client only
+   ```sh
+   yarn client
+   ```
+8. Your node server should be available in http://localhost:8080
+9. Your react client app should be available in http://localhost:3000
 
-### Install Dev Dependencies
-
-```sh
-yarn server-install
-yarn dev
-```
