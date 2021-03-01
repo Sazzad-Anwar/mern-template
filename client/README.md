@@ -23,18 +23,24 @@
 Please follow the below instructions to run this project in your computer:
 
 1. Clone this repository
+
    ```sh
    git clone https://github.com/Sazzad-Anwar/Template
    ```
+
 2. Run
+
    ```sh
    yarn
    ```
+
    Then
+
    ```sh
    yarn start
    ```
-4. Your app should be available in http://localhost:3000
+
+4. Your app should be available in <http://localhost:3000>
 
 <!-- Editor Setup -->
 
