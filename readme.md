@@ -1,7 +1,7 @@
 <!-- PROJECT Title -->
 <br />
 <p align="center">
-  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for JAM (React, Nodejs, MySQL) stack project</a></h2>
+  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any JAM stack project</a></h2>
 
 ## Which npm packages and which stack has been followed in this template
 
@@ -74,23 +74,29 @@ Please follow the below instructions to run this project in your computer:
    yarn client-install
    ```
 
-5. Run node server and react client application with concurrently
+5. Before running the application you need to make a `.env` in `client` folder and set as below
+
+   ```sh
+   SKIP_PREFLIGHT_CHECK=true
+   ```
+
+6. Run node server and react client application with concurrently
 
    ```sh
    yarn dev
    ```
 
-6. Run node server only
+7. Run node server only
 
    ```sh
    yarn server
    ```
 
-7. Run node react client only
+8. Run node react client only
 
    ```sh
    yarn client
    ```
 
-8. Your node server should be available in <http://localhost:8080>
-9. Your react client app should be available in <http://localhost:3000>
+9. Your node server should be available in <http://localhost:8080>
+10. Your react client app should be available in <http://localhost:3000>
