@@ -9,7 +9,7 @@ const cors = require('cors');
 const path = require('path');
 const db = require('./config/db/db_config');
 // const db_tables = require('./config/db_tables');
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 const { errorHandler, notFound } = require('./middlewares/middlewares');
 
 app.use(cors());
