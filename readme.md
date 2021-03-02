@@ -1,7 +1,7 @@
 <!-- PROJECT Title -->
 <br />
 <p align="center">
-  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any JAM stack project</a></h2>
+  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any JAM stack PWA project</a></h2>
 
 ## Which npm packages and which stack has been followed in this template
 
@@ -44,6 +44,18 @@
    * `@material-ui/core`
    * `@date-io/moment`
    * `@date-io/date-fns`
+   * `workbox-background-sync`
+   * `workbox-broadcast-update`
+   * `workbox-cacheable-response`
+   * `workbox-core`
+   * `workbox-expiration`
+   * `workbox-google-analytics`
+   * `workbox-navigation-preload`
+   * `workbox-precaching`
+   * `workbox-range-requests`
+   * `workbox-routing`
+   * `workbox-strategies`
+   * `workbox-streams`
 
 <!-- HOW TO RUN -->
 ## How to install packages and run
