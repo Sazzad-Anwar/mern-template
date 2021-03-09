@@ -4,7 +4,7 @@ var mysql = require('mysql');
 const util = require('util');
 require('dotenv').config();
 
-if (process.env.NODE_ENV === "dev") {
+if (process.env.NODE_ENV === "development") {
         var conn = mysql.createPool({
                 connectionLimit: 100,
                 host: 'localhost',
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "dev") {
 
         // Promisify for Node.js async/await.
         exports.query = util.promisify(conn.query).bind(conn);
-        exports.con = conn;
+        exports.MySQL_connection = conn;
 } else {
 
         var conn = mysql.createPool({
@@ -28,5 +28,5 @@ if (process.env.NODE_ENV === "dev") {
 
         // Promisify for Node.js async/await.
         exports.query = util.promisify(conn.query).bind(conn);
-        exports.con = conn;
+        exports.MySQL_connection = conn;
 }
