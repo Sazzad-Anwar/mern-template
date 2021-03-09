@@ -8,6 +8,7 @@
     "start": "node app.js",
     "server": "nodemon app.js",
     "client": "cd client && yarn start",
+    "build-client":"cd client && yarn build",
     "client-install": "cd client && yarn && yarn lint && yarn install-packages",
     "install-all": "yarn server-install && yarn client-install",
     "dev": "concurrently \"yarn server\" \"cd ./client && yarn start\""
