@@ -22,6 +22,7 @@
    * `winston`
    * Database
       * `mysql`
+      * `mongoose`
 
 2. React (Frontend /client)
    * `axios`
