@@ -5,7 +5,7 @@
 
 ## Which npm packages and which stack has been followed in this template
 
-### This template includes structure for `Nodejs` server as backend service and `React` as frontend/clientend service
+### This template includes structure for `Nodejs` server as backend service and `React` as frontend/clientend service with `Redux`
 
 #### For development purpose below npm packages have been included
 
