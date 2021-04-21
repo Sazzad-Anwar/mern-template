@@ -1,7 +1,7 @@
 <!-- PROJECT Title -->
 <br />
 <p align="center">
-  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any JAM stack PWA project</a></h2>
+  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2></p>
 
 ## Which npm packages and which stack has been followed in this template
 
@@ -10,55 +10,57 @@
 #### For development purpose below npm packages have been included
 
 1. Node Server (Backend)
-   * `express`
-   * `express-async-handler`
-   * `axios`
-   * `bcryptjs`
-   * `cors`
-   * `dotenv`
-   * `concurrently`
-   * `multer`
-   * `nanoid`
-   * `winston`
-   * Database
-      * `mysql`
-      * `mongoose`
+
+   - `express`
+   - `express-async-handler`
+   - `axios`
+   - `bcryptjs`
+   - `cors`
+   - `dotenv`
+   - `concurrently`
+   - `multer`
+   - `nanoid`
+   - `winston`
+   - Database
+     - `mysql`
+     - `mongoose`
 
 2. React (Frontend /client)
-   * `axios`
-   * `bootstrap`
-   * `nanoid`
-   * `react-awesome-slider`
-   * `react-bootstrap`
-   * `react-dropzone`
-   * `react-hook-form`
-   * `react-redux`
-   * `react-router-dom`
-   * `react-toast-notifications`
-   * `redux`
-   * `redux-devtools-extension`
-   * `redux-thunk`
-   * `@tinymce/tinymce-react`
-   * `@material-ui/pickers`
-   * `@material-ui/lab`
-   * `@material-ui/icons`
-   * `@material-ui/core`
-   * `@date-io/moment`
-   * `@date-io/date-fns`
-   * `workbox-background-sync`
-   * `workbox-broadcast-update`
-   * `workbox-cacheable-response`
-   * `workbox-core`
-   * `workbox-expiration`
-   * `workbox-google-analytics`
-   * `workbox-navigation-preload`
-   * `workbox-precaching`
-   * `workbox-range-requests`
-   * `workbox-routing`
-   * `workbox-strategies`
-   * `workbox-streams`
+   - `axios`
+   - `bootstrap`
+   - `nanoid`
+   - `react-awesome-slider`
+   - `react-bootstrap`
+   - `react-dropzone`
+   - `react-hook-form`
+   - `react-redux`
+   - `react-router-dom`
+   - `react-toast-notifications`
+   - `redux`
+   - `redux-devtools-extension`
+   - `redux-thunk`
+   - `@tinymce/tinymce-react`
+   - `@material-ui/pickers`
+   - `@material-ui/lab`
+   - `@material-ui/icons`
+   - `@material-ui/core`
+   - `@date-io/moment`
+   - `@date-io/date-fns`
+   - `workbox-background-sync`
+   - `workbox-broadcast-update`
+   - `workbox-cacheable-response`
+   - `workbox-core`
+   - `workbox-expiration`
+   - `workbox-google-analytics`
+   - `workbox-navigation-preload`
+   - `workbox-precaching`
+   - `workbox-range-requests`
+   - `workbox-routing`
+   - `workbox-strategies`
+   - `workbox-streams`
 
 <!-- HOW TO RUN -->
+
 ## How to install packages and run
 
 Please follow the below instructions to run this project in your computer:
