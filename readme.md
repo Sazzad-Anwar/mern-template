@@ -25,7 +25,7 @@
         - `mysql`
         - `mongoose`
         - Driver
-        - `sequelize`
+            - `sequelize`
 
 2. React (Frontend /client)
     - `axios`

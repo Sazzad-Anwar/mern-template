@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 // Use this hook to toggle something
 
 import { useCallback, useState } from 'react';
