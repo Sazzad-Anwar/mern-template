@@ -1,20 +1,19 @@
-
 <!-- PROJECT Title -->
 <br />
 <p align="center">
-  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any JAM stack PWA project</a></h2>
+  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2>
 
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
 
-- [How to run](#how-to-run)
-- [Editor Setup](#editor-setup)
-  - [Plugins](#plugins)
-  - [Settings](#settings)
-- [Linting Setup](#linting-setup)
-  - [Install Dev Dependencies](#install-dev-dependencies)
-  - [Create Linting Configuration file manually](#create-linting-configuration-file-manually)
+-   [How to run](#how-to-run)
+-   [Editor Setup](#editor-setup)
+    -   [Plugins](#plugins)
+    -   [Settings](#settings)
+-   [Linting Setup](#linting-setup)
+    -   [Install Dev Dependencies](#install-dev-dependencies)
+    -   [Create Linting Configuration file manually](#create-linting-configuration-file-manually)
 
 <!-- HOW TO RUN -->
 
@@ -24,23 +23,23 @@ Please follow the below instructions to run this project in your computer:
 
 1. Clone this repository
 
-   ```sh
-   git clone https://github.com/Sazzad-Anwar/Template
-   ```
+    ```sh
+    git clone https://github.com/Sazzad-Anwar/Template
+    ```
 
 2. Run
 
-   ```sh
-   yarn
-   ```
+    ```sh
+    yarn
+    ```
 
-   Then
+    Then
 
-   ```sh
-   yarn start
-   ```
+    ```sh
+    yarn start
+    ```
 
-4. Your app should be available in <http://localhost:3000>
+3. Your app should be available in <http://localhost:3000>
 
 <!-- Editor Setup -->
 
@@ -52,8 +51,8 @@ My personal preference is VS code.
 
 You need to install the below plugins:
 
-- ESLint by Dirk Baeumer
-- Prettier - Code formatter by Prettier
+-   ESLint by Dirk Baeumer
+-   Prettier - Code formatter by Prettier
 
 ### Settings
 
@@ -65,28 +64,28 @@ Follow the below settings for VS Code -
 
 ```json
 {
-  "workbench.colorTheme": "Dracula",
+    "workbench.colorTheme": "Dracula",
 
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "[javascript]": {
-    "editor.formatOnSave": false
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "javascript.validate.enable": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.tslint": true,
-    "source.organizeImports": true
-  },
-  "eslint.alwaysShowStatus": true,
-  "prettier.disableLanguages": ["javascript", "javascriptreact"],
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  }
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.formatOnSave": false
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": false
+    },
+    "javascript.validate.enable": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll.tslint": true,
+        "source.organizeImports": true
+    },
+    "eslint.alwaysShowStatus": true,
+    "prettier.disableLanguages": ["javascript", "javascriptreact"],
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    }
 }
 ```
 
@@ -125,50 +124,50 @@ Create a `.eslintrc` file in the project root and enter the below contents:
 
 ```json
 {
-  "extends": [
-    "airbnb",
-    "airbnb/hooks",
-    "eslint:recommended",
-    "prettier",
-    "plugin:jsx-a11y/recommended"
-  ],
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 8
-  },
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true,
-    "jest": true
-  },
-  "rules": {
-    "react/react-in-jsx-scope": 0,
-    "react-hooks/rules-of-hooks": "error",
-    "no-console": 0,
-    "react/state-in-constructor": 0,
-    "indent": 0,
-    "linebreak-style": 0,
-    "react/prop-types": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
+    "extends": [
+        "airbnb",
+        "airbnb/hooks",
+        "eslint:recommended",
+        "prettier",
+        "plugin:jsx-a11y/recommended"
     ],
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "es5",
-        "singleQuote": true,
-        "printWidth": 100,
-        "tabWidth": 4,
-        "semi": true,
-        "endOfLine": "auto"
-      }
-    ]
-  },
-  "plugins": ["prettier", "react", "react-hooks"]
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 8
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "jest": true
+    },
+    "rules": {
+        "react/react-in-jsx-scope": 0,
+        "react-hooks/rules-of-hooks": "error",
+        "no-console": 0,
+        "react/state-in-constructor": 0,
+        "indent": 0,
+        "linebreak-style": 0,
+        "react/prop-types": 0,
+        "jsx-a11y/click-events-have-key-events": 0,
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".js", ".jsx"]
+            }
+        ],
+        "prettier/prettier": [
+            "error",
+            {
+                "trailingComma": "es5",
+                "singleQuote": true,
+                "printWidth": 100,
+                "tabWidth": 4,
+                "semi": true,
+                "endOfLine": "auto"
+            }
+        ]
+    },
+    "plugins": ["prettier", "react", "react-hooks"]
 }
 ```

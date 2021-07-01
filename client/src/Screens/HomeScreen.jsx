@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 import { Typography } from '@material-ui/core';
 
 const HomeScreen = () => (
     <>
         <Typography
+            component="h1"
             variant="h4"
             style={{
                 position: 'absolute',
@@ -10,9 +12,8 @@ const HomeScreen = () => (
                 top: '50%',
                 transform: 'translate(-50%,-50%)',
             }}
-            component="h1"
         >
-            Start Editing Right Away !
+            Start Editing Right Away ! hello
         </Typography>
     </>
 );
