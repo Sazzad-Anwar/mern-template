@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 
 
 export const db = process.env.NODE_ENV !== 'production' ?
-    new Sequelize('bluetech', 'root', '', {
+    new Sequelize(process.env.SERVER_DB_DATABASE, 'root', '', {
         host: 'localhost',
         dialect: 'mysql',
         pool: {
