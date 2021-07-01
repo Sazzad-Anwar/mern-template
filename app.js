@@ -12,7 +12,6 @@ const {
 } = require('./config/db/MySQL');
 const connect_MongoDB = require('./config/db/MongoDB');
 require('colors');
-// const db_tables = require('./config/db_tables');
 const port = process.env.PORT || 8080;
 const {
     errorHandler,
