@@ -1,7 +1,9 @@
 <!-- PROJECT Title -->
 <br />
 <p align="center">
-  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2></p>
+<img src="./public/images/MERN.jpg" height="100" />
+  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2>
+</p>
 
 ## Which npm packages and which stack has been followed in this template
 
@@ -23,9 +25,9 @@
     - `winston`
     - Database
         - `mysql`
-        - `mongoose`
         - Driver
             - `sequelize`
+        - `mongoose`
 
 2. React (Frontend /client)
     - `axios`
