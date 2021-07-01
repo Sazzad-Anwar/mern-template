@@ -1,7 +1,7 @@
 <!-- PROJECT Title -->
 <br />
 <p align="center">
-<img src="./public/images/MERN.jpg" height="100" />
+<img src="./public/images/MERN.jpg" height="150" />
   <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2>
 </p>
 
