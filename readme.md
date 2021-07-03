@@ -64,6 +64,7 @@
     - `workbox-strategies`
     - `workbox-streams`
 
+<br />
 <!-- HOW TO RUN -->
 
 ## How to install packages and run
@@ -120,3 +121,21 @@ Please follow the below instructions to run this project in your computer:
 
 9. Your node server should be available in <http://localhost:8080>
 10. Your react client app should be available in <http://localhost:3000>
+
+<br />
+<br />
+
+## Tips for JsonWebToken assigning in header
+
+### Do not assign JWT token again and again to your request header rather follow bellow two lines of code
+
+1. Open Postman open the request for login and select the `Tests` option
+
+2. Write these code:
+
+    ```sh
+    var res = pm.response.json();
+    pm.environment.set('token', res.token);
+    ```
+
+#### Now while requesting the authenticated API just click on `Authorization` select `Type` to `Bearer Token` then write `{{token}}` in the `Token` field on right-side
