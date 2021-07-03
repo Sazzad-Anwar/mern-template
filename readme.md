@@ -23,6 +23,7 @@
     - `multer`
     - `nanoid`
     - `winston`
+    - `jsonwebtoken`
     - Database
         - `mysql`
         - Driver
@@ -75,7 +76,7 @@ Please follow the below instructions to run this project in your computer:
     git clone https://github.com/Sazzad-Anwar/Template.git
     ```
 
-2. Install NPM packages for node server and react
+2. Install NPM packages for node server and react with one line command
 
     ```sh
     yarn install-all

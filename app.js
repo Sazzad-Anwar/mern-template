@@ -4,12 +4,8 @@
 
 const express = require('express');
 const app = express();
-const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
-const {
-    MySQL_connection
-} = require('./config/db/MySQL');
 const connect_MongoDB = require('./config/db/MongoDB');
 require('colors');
 const port = process.env.PORT || 8080;
@@ -18,9 +14,13 @@ const {
     notFound
 } = require('./middlewares/middlewares');
 
-app.use(cors());
-app.use(morgan('tiny'));
+//This will show the request path for every request only for development mode
+if (process.env.NODE_ENV !== 'production') {
+    const morgan = require('morgan');
+    app.use(morgan('tiny'));
+}
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
@@ -32,15 +32,6 @@ require('dotenv').config();
 //@Description: To use monogdb connection
 connect_MongoDB('project_template');
 
-// @Description: To use mysql connection and Handling the Protocol_Connection_lost error for databse
-
-MySQL_connection.getConnection((err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('db connected'.underline.blue);
-    }
-});
 
 app.use('/api/v1/', require('./routes/AppRoute'));
 

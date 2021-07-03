@@ -2,18 +2,18 @@ const multer = require('multer');
 const path = require('path');
 
 //@Description: Multer storage and file checking configurations
-const checkFileType = (file,cb)=>{
+const checkFileType = (file, cb) => {
     const filetypes = /jpg|jpeg|png|JPG|JPEG|PNG/
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = filetypes.test(file.mimetype);
 
-  if(extname && mimetype){
-      return cb(null, true)
-  }else{
-      cb(new Error(`Only ${filetypes} images can be uploaded`));
-  }
+    if (extname && mimetype) {
+        return cb(null, true)
+    } else {
+        cb(new Error(`Only ${filetypes} images can be uploaded`));
+    }
 };
-  
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './public/uploads')
@@ -24,14 +24,14 @@ const storage = multer.diskStorage({
         cb(null, fileName);
     },
 });
-  
+
 const upload = multer({
     storage: storage,
-    fileFilter: function(req,file,cb){
-      checkFileType(file,cb)
+    fileFilter: function (req, file, cb) {
+        checkFileType(file, cb)
     }
 });
 
-module.exports={
+module.exports = {
     upload
 }

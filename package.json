@@ -4,7 +4,7 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "server-install": "yarn && yarn add -D nodemon morgan axios bcryptjs concurrently cors dotenv express express-async-handler multer mysql mongoose sequelize uuid nanoid winston",
+        "server-install": "yarn && yarn add -D nodemon -D morgan axios bcryptjs -D concurrently cors dotenv express express-async-handler multer mysql mongoose sequelize uuid nanoid winston jsonwebtoken",
         "start": "node app.js",
         "server": "nodemon app.js",
         "client": "cd client && yarn start",
