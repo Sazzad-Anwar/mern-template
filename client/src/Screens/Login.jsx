@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core';
 
-const Dashboard = () => (
+const Login = () => (
     <>
         <Typography
             component="h1"
@@ -12,9 +12,9 @@ const Dashboard = () => (
                 transform: 'translate(-50%,-50%)',
             }}
         >
-            This is dashboard
+            This is login page
         </Typography>
     </>
 );
 
-export default Dashboard;
+export default Login;

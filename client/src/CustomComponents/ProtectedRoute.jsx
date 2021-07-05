@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 const ProtectedRoute = ({ children, ...rest }) => {
     // initialize your login validation
-    const auth = {};
+    const auth = { user: false };
     return (
         <Route
             {...rest}
