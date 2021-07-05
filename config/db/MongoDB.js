@@ -1,9 +1,9 @@
-const mongoose  = require('mongoose'); 
+const mongoose = require('mongoose');
 
-const connectDB = async(databaseName)=>{
+const connectDB = async (databaseName) => {
     try {
-        if(process.env.NODE_ENV === 'development'){
-            const conn = await mongoose.connect(`mongodb://localhost:27017/${databaseName}`,{
+        if (process.env.NODE_ENV === 'development') {
+            const conn = await mongoose.connect(`mongodb://localhost:27017/${databaseName}`, {
                 useUnifiedTopology: true,
                 useNewUrlParser: true,
                 useCreateIndex: true,
@@ -11,8 +11,8 @@ const connectDB = async(databaseName)=>{
             });
             console.log(`MongoDB Connected: ${conn.connection.host}`.green.underline);
 
-        }else{
-            const conn = await mongoose.connect(process.env.MONGOURI,{
+        } else {
+            const conn = await mongoose.connect(process.env.MONGOURI, {
                 useUnifiedTopology: true,
                 useNewUrlParser: true,
                 useCreateIndex: true,

@@ -4,7 +4,7 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "server-install": "yarn && yarn add -D nodemon -D morgan axios bcryptjs -D concurrently cors dotenv express express-async-handler multer mysql mongoose sequelize uuid nanoid winston jsonwebtoken",
+        "server-install": "yarn && yarn add -D nodemon morgan concurrently && yarn add axios bcryptjs cors dotenv express express-async-handler multer mysql mongoose sequelize uuid nanoid winston jsonwebtoken colors",
         "start": "node app.js",
         "server": "SET NODE_ENV=development & nodemon app.js",
         "client": "cd client && yarn start",
@@ -13,7 +13,9 @@
         "install-all": "yarn server-install && yarn client-install",
         "dev": "concurrently \"yarn server\" \"cd ./client && yarn start\""
     },
-    "keywords": [],
+    "keywords": [
+        "MERN Framework, redux, node, express, sequelize"
+    ],
     "author": "Md Sazzad Bin Anwar",
     "license": "ISC",
     "dependencies": {}

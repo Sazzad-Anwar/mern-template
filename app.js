@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const path = require('path');
-const connect_MongoDB = require('./config/db/MongoDB');
+// const connect_MongoDB = require('./config/db/MongoDB');
 require('colors');
 const port = process.env.PORT || 8080;
 const {
@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('dotenv').config();
 
 //@Description: To use monogdb connection
-connect_MongoDB('project_template');
+// connect_MongoDB('project_template');
 
 
 app.use('/api/v1/', require('./routes/AppRoute'));
@@ -43,4 +43,4 @@ app.use(errorHandler);
 // });
 app.use(notFound);
 
-app.listen(port, () => console.log(`Your care app is listening on port ${port}!`.cyan.underline));
+app.listen(port, () => console.log(`App is listening on port ${port}!`.cyan.underline));
