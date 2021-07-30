@@ -4,7 +4,13 @@ import thunk from 'redux-thunk';
 
 const reducer = combineReducers({});
 
-const initialState = {};
+const initialState = {
+    login: {
+        user: {
+            isLoggedIn: true,
+        },
+    },
+};
 
 const middleware = [thunk];
 

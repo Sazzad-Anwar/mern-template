@@ -17,7 +17,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier",
-        "install-packages": "yarn add @date-io/date-fns @date-io/moment @material-ui/core @material-ui/icons @material-ui/lab @material-ui/pickers @tinymce/tinymce-react axios bootstrap react-awesome-slider react-bootstrap react-dropzone react-hook-form react-redux react-router-dom react-toast-notifications redux redux-devtools-extension redux-thunk nanoid uuid"
+        "install-packages": "yarn add @date-io/date-fns @date-io/moment @material-ui/core @material-ui/icons @material-ui/lab @material-ui/pickers @tinymce/tinymce-react axios react-bootstrap@next bootstrap@5.0.2 react-awesome-slider react-dropzone react-hook-form react-redux react-router-dom react-toast-notifications redux redux-devtools-extension redux-thunk nanoid uuid"
     },
     "eslintConfig": {
         "extends": [
@@ -37,16 +37,5 @@
             "last 1 safari version"
         ]
     },
-    "devDependencies": {
-        "babel-eslint": "^10.1.0",
-        "eslint": "7.2.0",
-        "eslint-config-airbnb": "18.2.1",
-        "eslint-config-prettier": "^8.0.0",
-        "eslint-plugin-import": "^2.22.1",
-        "eslint-plugin-jsx-a11y": "^6.4.1",
-        "eslint-plugin-prettier": "^3.3.1",
-        "eslint-plugin-react": "^7.21.5",
-        "eslint-plugin-react-hooks": "4.0.0",
-        "prettier": "^2.2.1"
-    }
+    "devDependencies": {}
 }

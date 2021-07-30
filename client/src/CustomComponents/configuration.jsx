@@ -1,6 +1,6 @@
 export const themeColor = '';
 export const themeBackgroundColor = '';
-export const logo = '/assets/images/your-care.png';
+export const logo = '';
 export const shortLogo = '';
 export const adminAPI = '/api/v1/';
 export const vendorAPI = '/api/v1/';

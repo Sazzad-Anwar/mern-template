@@ -16,3 +16,273 @@
   error_occured: 'Sun, Feb 28, 2021, 01:17 PM',
   timestamp: '2021-02-28T07:17:43.048Z'
 }
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:08 PM',
+  timestamp: '2021-07-10T16:08:49.945Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:09 PM',
+  timestamp: '2021-07-10T16:09:16.272Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:09 PM',
+  timestamp: '2021-07-10T16:09:17.529Z'
+}
+{
+  level: 'error',
+  message: 'JsonWebTokenError: invalid signature',
+  IP: '::1',
+  stack: 'Error: JsonWebTokenError: invalid signature\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:10 PM',
+  timestamp: '2021-07-10T16:10:38.127Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:10 PM',
+  timestamp: '2021-07-10T16:10:54.599Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:14 PM',
+  timestamp: '2021-07-10T16:14:58.933Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:15 PM',
+  timestamp: '2021-07-10T16:15:43.466Z'
+}
+{
+  level: 'error',
+  message: 'Error: Authentication failed',
+  IP: '::1',
+  stack: 'Error: Error: Authentication failed\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:19 PM',
+  timestamp: '2021-07-10T16:19:21.671Z'
+}
+{
+  level: 'error',
+  message: 'Error: Authentication failed',
+  IP: '::1',
+  stack: 'Error: Error: Authentication failed\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:19 PM',
+  timestamp: '2021-07-10T16:19:28.385Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:19 PM',
+  timestamp: '2021-07-10T16:19:52.767Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:20 PM',
+  timestamp: '2021-07-10T16:20:26.376Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:20 PM',
+  timestamp: '2021-07-10T16:20:47.455Z'
+}
+{
+  level: 'error',
+  message: 'TokenExpiredError: jwt expired',
+  IP: '::1',
+  stack: 'Error: TokenExpiredError: jwt expired\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:37:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:20 PM',
+  timestamp: '2021-07-10T16:20:48.659Z'
+}
+{
+  level: 'error',
+  message: 'Error: Authentication failed',
+  IP: '::1',
+  stack: 'Error: Error: Authentication failed\n' +
+    '    at exports.tokenValidation (D:\\PROJECTS\\React-Testing\\mern-template\\middlewares\\jwt-middleware.js:36:15)\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)\n' +
+    '    at Function.handle (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:174:3)',
+  error_occured: 'Sat, Jul 10, 2021, 10:23 PM',
+  timestamp: '2021-07-10T16:23:06.034Z'
+}
+{
+  level: 'error',
+  message: 'hello is not defined',
+  IP: '::1',
+  stack: 'ReferenceError: hello is not defined\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\controllers\\AppController.js:45:17\n' +
+    '    at asyncUtilWrap (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express-async-handler\\index.js:3:20)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:137:13)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:131:14)\n' +
+    '    at Route.dispatch (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\route.js:112:3)\n' +
+    '    at Layer.handle [as handle_request] (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\layer.js:95:5)\n' +
+    '    at D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:281:22\n' +
+    '    at Function.process_params (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:335:12)\n' +
+    '    at next (D:\\PROJECTS\\React-Testing\\mern-template\\node_modules\\express\\lib\\router\\index.js:275:10)',
+  error_occured: 'Sat, Jul 10, 2021, 10:30 PM',
+  timestamp: '2021-07-10T16:30:02.522Z'
+}

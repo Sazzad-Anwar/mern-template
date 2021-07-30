@@ -5,6 +5,7 @@ import App from './App';
 import store from './Redux/store';
 import reportWebVitals from './reportWebVitals';
 import * as ServiceWorkerRegistration from './serviceWorkerRegistration';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
     <Provider store={store}>

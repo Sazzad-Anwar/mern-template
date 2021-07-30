@@ -1,12 +1,11 @@
 const jwt = require('jsonwebtoken');
-const asyncHandler = require('express-async-handler');
 
 //Description: Generate a token when login is successful
-const getToken = async (data) => {
+exports.getToken = async (data) => {
     try {
         if (process.env.SECRET_KEY && process.env.TOKEN_EXPIRES_IN) {
             let token = await jwt.sign(data, process.env.SECRET_KEY, {
-                expiresIn: process.env.TOKEN_EXPIRES_IN,
+                expiresIn: `${process.env.TOKEN_EXPIRES_IN}`,
             });
             return token;
         } else {
@@ -21,7 +20,7 @@ const getToken = async (data) => {
 
 //Description: add this to a protected route which needs the authentication
 //eg: router.route('/:id').all(tokenValidation, authenticated_route)
-const tokenValidation = asyncHandler(async (req, res, next) => {
+exports.tokenValidation = (async (req, res, next) => {
     try {
         const { authorization } = req.headers;
         if (typeof authorization !== 'undefined') {
@@ -31,16 +30,9 @@ const tokenValidation = asyncHandler(async (req, res, next) => {
             req.user = decoded;
             next()
         } else {
-            res.status(403);
-            throw new Error('Token is undefined');
+            throw new Error("Authentication failed");
         }
     } catch (err) {
-        res.status(403);
-        throw new Error('Token is undefined')
+        throw new Error(err);
     }
 });
-
-
-module.exports = {
-    getToken, tokenValidation
-}

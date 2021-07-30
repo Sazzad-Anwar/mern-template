@@ -1,32 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.App {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-h1 {
-  font-family: "Montserrat", sans-serif;
-}
-
-button {
-  padding: 0.5rem 1rem;
-}
-
-.border {
-  stroke: #000;
-}
-
-.hair {
-  fill: red;
+[contenteditable].form-control:focus,
+[type='email'].form-control:focus,
+[type='password'].form-control:focus,
+[type='tel'].form-control:focus,
+[type='text'].form-control:focus,
+[type='checkbox'].form-control:focus,
+input.form-control:focus,
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='password']:focus,
+input[type='text']:focus,
+textarea.form-control:focus,
+textarea:focus,
+.form-select:focus,
+button:active,
+button:focus,
+custom-control-input:checked,
+custom-control-input:not(checked),
+.btn:focus {
+    box-shadow: inset 0 0px 0 #ddd !important;
 }
