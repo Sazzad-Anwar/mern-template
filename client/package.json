@@ -17,7 +17,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier",
-        "install-packages": "yarn add @date-io/date-fns @date-io/moment @material-ui/core @material-ui/icons @material-ui/lab @material-ui/pickers @tinymce/tinymce-react axios react-bootstrap@next bootstrap@5.0.2 react-awesome-slider react-dropzone react-hook-form react-redux react-router-dom react-toast-notifications redux redux-devtools-extension redux-thunk nanoid uuid"
+        "install-packages": "yarn add @date-io/date-fns @date-io/moment @material-ui/core@next @emotion/react @emotion/styled @material-ui/icons@next @material-ui/lab@next @material-ui/pickers @tinymce/tinymce-react axios react-bootstrap@next bootstrap@5.0.2 react-awesome-slider react-dropzone react-hook-form react-redux react-router-dom react-toast-notifications redux redux-devtools-extension redux-thunk nanoid uuid"
     },
     "eslintConfig": {
         "extends": [
