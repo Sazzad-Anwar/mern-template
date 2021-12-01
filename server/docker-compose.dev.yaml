@@ -1,0 +1,53 @@
+version: '3'
+services:
+    nginx:
+        ports:
+            - '8080:80'
+    node-app:
+        build: .
+        depends_on:
+            - mongo
+        volumes:
+            - ./:/app
+            - /app/node_modules
+        environment:
+            - PORT=8080
+            - ACCESS_TOKEN_SECRET_KEY=41a27720f8a6f92d5fcc6376f0c98bea2938be3f7dfe9eb648af057cdd1ae171
+            - REFRESH_TOKEN_SECRET_KEY=2729c6ddbc237fcea4a435fe043e2d343fbfb189bdad6091a329f737851c73b7
+            - REFRESH_TOKEN_EXPIRES_IN=1y
+            - REFRESH_COOKIE_EXPIRES_IN=3.154e+10
+            - ACCESS_TOKEN_EXPIRES_IN=1m
+            - ACCESS_COOKIE_EXPIRES_IN=60*60*1000
+            - DOCKER_RUNNING=true
+            - NODE_ENV=development
+            - MONGO_PORT=27017
+            - MONGO_HOST=mongo
+            - REDIS_URL=redis
+            - REDIS_PORT=6379
+            - EMAIL_HOST=smtp.gmail.com
+            - EMAIL_PORT=
+            - EMAIL_USER=sazzadzihan@gmail.com
+            - EMAIL_PASS=awxmdpguccaxkkqq
+            - EMAIL_FROM=e-commerce<sazzadzihan@gmail.com>
+            - COMPANY_NAME=e-commerce-paltform
+            - APP_URL=http://localhost:8080
+            - PASSWORD_RESET_LINK_VALIDATION_TIME=300000
+        command: pm2-runtime app.js
+
+    mongo:
+        image: mongo
+        ports:
+            - '27017:27017'
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=sazzad
+            - MONGO_INITDB_ROOT_PASSWORD=testing
+            - MONGO_PORT=27017
+
+        volumes:
+            - mongo-db-development:/data/db
+
+    redis:
+        image: redis
+
+volumes:
+    mongo-db-development:

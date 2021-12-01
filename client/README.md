@@ -1,173 +1,70 @@
-<!-- PROJECT Title -->
-<br />
-<p align="center">
-  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2>
+# Getting Started with Create React App
 
-<!-- TABLE OF CONTENTS -->
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Table of Contents
+## Available Scripts
 
--   [How to run](#how-to-run)
--   [Editor Setup](#editor-setup)
-    -   [Plugins](#plugins)
-    -   [Settings](#settings)
--   [Linting Setup](#linting-setup)
-    -   [Install Dev Dependencies](#install-dev-dependencies)
-    -   [Create Linting Configuration file manually](#create-linting-configuration-file-manually)
+In the project directory, you can run:
 
-<!-- HOW TO RUN -->
+### `yarn start`
 
-## How to run
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Please follow the below instructions to run this project in your computer:
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-1. Clone this repository
+### `yarn test`
 
-    ```sh
-    git clone https://github.com/Sazzad-Anwar/Template
-    ```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-2. Run
+### `yarn build`
 
-    ```sh
-    yarn
-    ```
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-    Then
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-    ```sh
-    yarn start
-    ```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-3. Your app should be available in <http://localhost:3000>
+### `yarn eject`
 
-<!-- Editor Setup -->
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## Editor Setup
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-My personal preference is VS code.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-### Plugins
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-You need to install the below plugins:
+## Learn More
 
--   ESLint by Dirk Baeumer
--   Prettier - Code formatter by Prettier
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Settings
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-Follow the below settings for VS Code -
+### Code Splitting
 
-1. Create a new folder called ".vscode" inside the project root folder
-2. Create a new file called "settings.json" inside that folder.
-3. Paste the below json in the newly created settings.json file and save the file.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-```json
-{
-    "workbench.colorTheme": "Dracula",
+### Analyzing the Bundle Size
 
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "[javascript]": {
-        "editor.formatOnSave": false
-    },
-    "[javascriptreact]": {
-        "editor.formatOnSave": false
-    },
-    "javascript.validate.enable": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-        "source.fixAll.tslint": true,
-        "source.organizeImports": true
-    },
-    "eslint.alwaysShowStatus": true,
-    "prettier.disableLanguages": ["javascript", "javascriptreact"],
-    "emmet.triggerExpansionOnTab": true,
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact"
-    }
-}
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-If you followed all previous steps, the theme should change and your editor should be ready.
+### Making a Progressive Web App
 
-## Linting Setup
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-In order to lint and format your React project automatically according to popular airbnb style guide, I recommend you to follow the instructions below.
+### Advanced Configuration
 
-### Install Dev Dependencies
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-```sh
-yarn add -D prettier
-yarn add -D babel-eslint
-npx install-peerdeps --dev eslint-config-airbnb
-yarn add -D eslint-config-prettier eslint-plugin-prettier
-```
+### Deployment
 
-or You can also add a new script in the scripts section like below to install everything with a single command:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-```json
-scripts: {
-    "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier"
-}
-```
+### `yarn build` fails to minify
 
-and then simply run the below command in the terminal -
-
-```sh
-yarn lint #or 'npm run lint'
-```
-
-### Create Linting Configuration file manually
-
-Create a `.eslintrc` file in the project root and enter the below contents:
-
-```json
-{
-    "extends": [
-        "airbnb",
-        "airbnb/hooks",
-        "eslint:recommended",
-        "prettier",
-        "plugin:jsx-a11y/recommended"
-    ],
-    "parser": "babel-eslint",
-    "parserOptions": {
-        "ecmaVersion": 8
-    },
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true,
-        "jest": true
-    },
-    "rules": {
-        "react/react-in-jsx-scope": 0,
-        "react-hooks/rules-of-hooks": "error",
-        "no-console": 0,
-        "react/state-in-constructor": 0,
-        "indent": 0,
-        "linebreak-style": 0,
-        "react/prop-types": 0,
-        "jsx-a11y/click-events-have-key-events": 0,
-        "react/jsx-filename-extension": [
-            1,
-            {
-                "extensions": [".js", ".jsx"]
-            }
-        ],
-        "prettier/prettier": [
-            "error",
-            {
-                "trailingComma": "es5",
-                "singleQuote": true,
-                "printWidth": 100,
-                "tabWidth": 4,
-                "semi": true,
-                "endOfLine": "auto"
-            }
-        ]
-    },
-    "plugins": ["prettier", "react", "react-hooks"]
-}
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

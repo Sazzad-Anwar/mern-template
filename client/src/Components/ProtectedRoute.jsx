@@ -1,25 +1,11 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import { Redirect, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Navigate, useLocation } from 'react-router';
 
-const ProtectedRoute = ({ children, ...rest }) => {
-    // const auth = useAuth();
-    const auth = {};
-    return (
-        <Route
-            {...rest}
-            render={({ location }) =>
-                auth.user ? (
-                    children
-                ) : (
-                    <Redirect
-                        to={{
-                            pathname: '/login',
-                            state: { from: location },
-                        }}
-                    />
-                )
-            }
-        />
-    );
+const ProtectedRoute = ({ children }) => {
+    const user = useSelector((state) => state.user);
+    const location = useLocation();
+
+    return user ? children : <Navigate to="/" state={{ from: location }} />;
 };
+
 export default ProtectedRoute;

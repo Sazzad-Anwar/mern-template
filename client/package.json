@@ -1,23 +1,31 @@
 {
-    "name": "mern-pwa-project-template",
-    "version": "0.1.0",
+    "name": "new-client",
+    "version": "1.1.0",
     "private": true,
     "dependencies": {
+        "@craco/craco": "^6.4.2",
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",
         "@testing-library/user-event": "^12.1.10",
+        "antd": "^4.17.2",
+        "axios": "^0.24.0",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-hook-form": "^7.20.5",
+        "react-redux": "^7.2.6",
+        "react-router-dom": "^6.0.2",
         "react-scripts": "4.0.3",
+        "redux": "^4.1.2",
+        "redux-devtools-extension": "^2.13.9",
+        "redux-thunk": "^2.4.1",
+        "uuid": "^8.3.2",
         "web-vitals": "^1.0.1"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier",
-        "install-packages": "yarn add @date-io/date-fns @date-io/moment @material-ui/core@next @emotion/react @emotion/styled @material-ui/icons@next @material-ui/lab@next @material-ui/pickers @tinymce/tinymce-react axios react-bootstrap@next bootstrap@5.0.2 react-awesome-slider react-dropzone react-hook-form react-redux react-router-dom react-toast-notifications redux redux-devtools-extension redux-thunk nanoid uuid"
+        "start": "craco start",
+        "build": "craco build",
+        "test": "craco test",
+        "eject": "react-scripts eject"
     },
     "eslintConfig": {
         "extends": [
@@ -37,5 +45,10 @@
             "last 1 safari version"
         ]
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "autoprefixer": "^9",
+        "postcss": "^7",
+        "prettier": "^2.5.0",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    }
 }

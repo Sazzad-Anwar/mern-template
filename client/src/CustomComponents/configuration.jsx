@@ -1,9 +1,0 @@
-export const themeColor = '';
-export const themeBackgroundColor = '';
-export const logo = '';
-export const shortLogo = '';
-export const adminAPI = '/api/v1/';
-export const vendorAPI = '/api/v1/';
-export const publicAPI = '/api/v1';
-export const doctorAPI = '/api/v1/';
-export const apiKey = '';
