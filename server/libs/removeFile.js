@@ -1,14 +1,15 @@
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, unlinkSync } from 'fs';
+import { join } from 'path';
+import __dirname from '../__dirname.js';
 
 const removeFile = (fileLink) => {
-    let dir = path.join(__dirname, `./public/${fileLink}`);
+    let dir = join(__dirname, `./public/${fileLink}`);
 
     try {
-        let files = fs.readFileSync(dir);
+        let files = readFileSync(dir);
 
         if (files) {
-            fs.unlinkSync(dir);
+            unlinkSync(dir);
             return { isSuccess: true, message: 'file has been removed' }
         } else {
             return { isSuccess: false, message: 'file link is invalid' }
@@ -20,4 +21,4 @@ const removeFile = (fileLink) => {
 }
 
 
-module.exports = removeFile;
+export default removeFile;

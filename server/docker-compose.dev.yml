@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+    mongo:
+        image: mongo
+        restart: always
+        ports:
+            - 27017:27017
+        volumes:
+            - db:/data/db
+    redis:
+        image: redis:6.2.6-alpine
+
+    #API service
+    api:
+        container_name: backend-api
+        depends_on:
+            - mongo
+            - redis
+        build: .
+        volumes:
+            - .:/app
+            - /app/node_modules
+        ports:
+            - 8080:8080
+        environment:
+            - DOCKER_RUNNING=true
+            - NODE_ENV=development
+            - MONGO_URI=mongodb://mongo:27017/mern-template
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+            - PORT=8080
+        command: yarn dev
+
+    #admin panel
+    admin:
+        container_name: admin-panel
+        depends_on:
+            - api
+        build: .
+        volumes:
+            - ../admin:/app/admin
+            - /app/admin/node_modules
+        ports:
+            - 3000:3000
+        environment:
+            - NODE_ENV=development
+        command: yarn start
+
+volumes:
+    db:

@@ -1,4 +1,4 @@
-exports.hasPermission = (role) => {
+export default function hasPermission(role) {
     return (req, res, next) => {
         if (role.includes(req.user.role)) {
             next()

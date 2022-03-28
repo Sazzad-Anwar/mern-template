@@ -1,5 +1,4 @@
-const Sequelize = require('sequelize');
-require('colors');
+import Sequelize from 'sequelize';
 
 const db = process.env.NODE_ENV !== 'production' ?
     new Sequelize(process.env.SERVER_DB_DATABASE, 'root', '', {
@@ -26,10 +25,10 @@ const db = process.env.NODE_ENV !== 'production' ?
 
 db.authenticate()
     .then(() => {
-        console.log('Database is connected successfully.'.cyan.underline);
+        console.log('Database is connected successfully.');
     })
     .catch(err => {
         console.log(err)
     })
 
-module.exports = { db };
+export default { db };

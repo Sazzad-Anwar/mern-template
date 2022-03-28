@@ -1,9 +1,9 @@
-const winston = require('winston');
-const { combine, label, timestamp, prettyPrint } = winston.format;
+import { format as _format, createLogger, transports as _transports } from 'winston';
+const { combine, label, timestamp, prettyPrint } = _format;
 
-exports.logger = (error, stack, IP) => {
+export function logger(error, stack, IP) {
     //Description: Print the error on the error.log page for production
-    const logger = winston.createLogger({
+    const logger = createLogger({
         level: 'info',
         format: combine(
             // label(),
@@ -12,7 +12,7 @@ exports.logger = (error, stack, IP) => {
         ),
         // defaultMeta: { service: 'user-service' },
         transports: [
-            new winston.transports.File({ filename: 'error.log', level: 'error' }),
+            new _transports.File({ filename: 'error.log', level: 'error' }),
         ]
     });
 

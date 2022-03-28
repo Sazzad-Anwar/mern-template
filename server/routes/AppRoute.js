@@ -1,24 +1,13 @@
 //@Description: All types of application route's configuration is set in this file
-const express = require('express');
-const router = express.Router();
-const { home, login, protected } = require('../controllers/AppController');
-const { tokenValidation } = require('../middlewares/jwt-middleware');
+import { Router } from 'express';
+const router = Router();
+import { test } from '../controllers/AppController.js'
 
-//@Description:
-//ROUTE: /api/v1/home
-//Access: user
+/*
+*   @Description: Route for main application
+*/
 router
-    .route('/home')
-    .post(home);
+    .route('/')
+    .get(test)
 
-
-router
-    .route('/login')
-    .post(login)
-
-router
-    .route('/protected_route')
-    .post(tokenValidation, protected)
-    .get(tokenValidation, protected)
-
-module.exports = router;
+export default router;

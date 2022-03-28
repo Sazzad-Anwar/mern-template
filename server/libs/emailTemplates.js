@@ -1,5 +1,6 @@
-exports.activationEmail = (name, activationId) => (
-    `
+export const activationEmail = (name, activationId) => {
+    return (
+        `
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
@@ -259,11 +260,13 @@ exports.activationEmail = (name, activationId) => (
 
 </body>
 </html>`
-)
+    )
+}
 
 
-exports.passwordResetEmail = (name, resetLink) => (
-    `
+export function passwordResetEmail(name, resetLink) {
+    return (
+        `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
         <head>
@@ -523,10 +526,12 @@ exports.passwordResetEmail = (name, resetLink) => (
     
     </body>
     </html>`
-)
+    )
+}
 
 
-exports.orderInvoice = (order, user) => (`
+export function orderInvoice(order, user) {
+    return (`
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
@@ -1385,3 +1390,4 @@ exports.orderInvoice = (order, user) => (`
     </body>
 </html>
 `)
+}

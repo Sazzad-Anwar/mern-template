@@ -1,7 +1,8 @@
-FROM node:16-alpine3.11
+FROM node:alpine
 WORKDIR /app
-COPY package.json .
+COPY package*.json .
+COPY ../admin/package*.json ../admin/package*.json
 RUN yarn
-RUN npm install pm2 -g
-COPY . ./
-EXPOSE 8080
+COPY . .
+RUN cd ../admin && yarn && yarn build
+COPY ../admin/build /app/build

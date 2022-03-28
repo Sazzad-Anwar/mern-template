@@ -2,24 +2,26 @@
 // @CreatedAt:
 // @Author-name: Md. Sazzad Bin Anwar
 
-const express = require('express');
+import express, { json, urlencoded } from 'express';
 const app = express();
-const cors = require('cors');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const helmet = require('helmet');
-const compression = require('compression');
-// const connect_MongoDB = require('./config/db/MongoDB');
-require('colors');
-const port = process.env.PORT || 8080;
-const {
-    errorHandler,
-    notFound
-} = require('./middlewares/middlewares');
+import cors from 'cors';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import { join } from 'path';
+import compression from 'compression';
+import favicon from 'serve-favicon';
+import connectMongoDB from './config/db/MongoDB.js';
+import __dirname from './__dirname.js';
+import appRoute from './routes/AppRoute.js';
+import { errorHandler, notFound } from './middlewares/errorHandler.js';
+import client from './config/db/redis.js';
+dotenv.config();
+
 
 //This will show the request path for every request only for development mode
 if (process.env.NODE_ENV !== 'production') {
-    const morgan = require('morgan');
     app.use(morgan('tiny'));
 }
 
@@ -27,18 +29,18 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(compression());
 app.use(helmet());
 app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({
+app.use(json());
+app.use(urlencoded({
     extended: true
 }));
-app.use(express.static(path.join(__dirname, 'public')));
-require('dotenv').config();
+app.use(express.static(join(__dirname, 'public')));
+app.use(favicon(join(__dirname, 'public/images', 'favicon.ico')));
 
 //@Description: To use monogdb connection
-// connect_MongoDB('project_template');
+connectMongoDB();
+client.connect();
 
-
-app.use('/api/v1/', require('./routes/AppRoute'));
+app.use('/api/v1', appRoute);
 app.get('/api/v1/checkStatus', (req, res) => res.json({ status: 'Ok', host: req.hostname }));
 
 app.use(errorHandler);
@@ -49,11 +51,4 @@ app.use(errorHandler);
 // });
 app.use(notFound);
 
-app.listen(port, () => console.log(`App is listening on port ${port}!`.cyan.underline));
-
-process.on('SIGTERM', () => {
-    debug('SIGTERM signal received: closing HTTP server')
-    server.close(() => {
-        debug('HTTP server closed')
-    })
-})
+export default app;

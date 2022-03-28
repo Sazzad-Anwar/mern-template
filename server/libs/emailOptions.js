@@ -1,6 +1,6 @@
-const { activationEmail, passwordResetEmail, orderInvoice } = require("./emailTemplates");
+import { activationEmail, passwordResetEmail, orderInvoice } from "./emailTemplates";
 
-module.exports = (data) => {
+export default (data) => {
 
     if (data.type === 'Account activation') {
         return {

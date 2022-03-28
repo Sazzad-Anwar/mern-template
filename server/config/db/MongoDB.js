@@ -1,38 +1,20 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const connectDB = async (databaseName) => {
+const connectMongoDB = async () => {
     try {
-        if (process.env.NODE_ENV === 'development') {
-            if (process.env.DOCKER_RUNNING === 'true') {
-                const conn = await mongoose.connect(`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/?authSource=admin`, {
-                    useUnifiedTopology: true,
-                    useNewUrlParser: true,
-                });
-                console.log(`MongoDB Connected: ${conn.connection.host}`.green.underline);
-
-            } else {
-
-                const conn = await mongoose.connect(`mongodb://localhost:27017/${databaseName}`, {
-                    useUnifiedTopology: true,
-                    useNewUrlParser: true,
-                });
-
-                console.log(`MongoDB Connected: ${conn.connection.host}`.green.underline);
-            }
-
-
-        } else {
-            const conn = await mongoose.connect(`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/?authSource=admin`, {
+        if (process.env.NODE_ENV !== 'test') {
+            const conn = await mongoose.connect(process.env.MONGO_URI, {
                 useUnifiedTopology: true,
                 useNewUrlParser: true,
             });
-            console.log(`MongoDB Connected: ${conn.connection.host}`.green.underline);
+
+            console.log(`MongoDB Connected to ${conn.connection.host}`);
         }
 
     } catch (error) {
-        console.error(`Error: ${error.message}`.red.underline.bold);
+        console.error(`Error: ${error.message}`);
         process.exit(1);
     }
 }
 
-module.exports = connectDB;
+export default connectMongoDB;

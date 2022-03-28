@@ -1,13 +1,13 @@
-const Errors = require('../models/errorLogs');
-const { logger } = require('./loggerMiddleware');
+import Errors from '../models/errorLogs.js';
+import { logger } from './loggerMiddleware.js';
 
 //Description: Handle the error and throw the error in API response instead crashing the applicaiton
-exports.errorHandler = async (err, req, res, next) => {
-    const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+export async function errorHandler(err, req, res, next) {
+    const statusCode = err.isJoi ? 422 : res.statusCode === 200 ? 500 : res.statusCode;
 
     res.status(statusCode);
 
-    console.log(`${err.stack}`.red);
+    // console.log(`${err.stack}`.red);
 
     if (err) {
 
@@ -25,22 +25,20 @@ exports.errorHandler = async (err, req, res, next) => {
         res.json({
             message: err.message,
             isSuccess: false,
-            status: 'failed',
-            code: statusCode,
-            // stack: process.env.NODE_ENV === 'production' ? null : err.stack
+            stack: process.env.NODE_ENV === 'production' ? null : err.stack
         });
 
     } else {
         next();
     }
-};
+}
 
 
 
 
 //Description: Show an error message on API response if the route is not defined
-exports.notFound = (req, res, next) => {
-    const error = new Error(`${req.originalUrl} Not Found`.red.underline);
+export function notFound(req, res, next) {
+    const error = new Error(`${req.method}:${req.originalUrl} is Not Found`);
     res.status(404);
     next(error);
-};
+}

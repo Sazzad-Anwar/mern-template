@@ -1,8 +1,8 @@
-let nodeMailer = require('nodemailer');
-const emailOptions = require('./emailOptions');
+import { createTransport, getTestMessageUrl } from 'nodemailer';
+import emailOptions from './emailOptions';
 
 const emailSender = (data) => {
-    const transport = nodeMailer.createTransport({
+    const transport = createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
         secure: true,
@@ -21,12 +21,12 @@ const emailSender = (data) => {
             console.log(error);
         } else {
             console.log('Message sent: %s', info.envelope.to);
-            console.log('Preview URL: %s', nodeMailer.getTestMessageUrl(info));
+            console.log('Preview URL: %s', getTestMessageUrl(info));
         }
     });
 }
 
 
-module.exports = {
+export default {
     emailSender,
 }

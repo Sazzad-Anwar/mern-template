@@ -1,5 +1,8 @@
-const { imageCompress, isImage } = require('../Middleware/MulterMiddleware')
+import { imageCompress, isImage } from '../Middleware/MulterMiddleware';
 
+/*
+*  Description: Upload file controller
+*/
 const uploadFile = asyncHandler(async (req, res) => {
     try {
         const files = req.files;
@@ -24,7 +27,7 @@ const uploadFile = asyncHandler(async (req, res) => {
         })
 
         uploadPromise.then(values => {
-            res.json({ uploadedFiles: values })
+            res.status(201).json({ uploadedFiles: values })
         })
 
 
@@ -34,6 +37,6 @@ const uploadFile = asyncHandler(async (req, res) => {
 
 })
 
-module.exports = {
+export default {
     uploadFile
 }
