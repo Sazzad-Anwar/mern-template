@@ -1,6 +1,7 @@
 version: '3.9'
 
 services:
+    # Mongo db service
     mongo:
         image: mongo
         restart: always
@@ -8,12 +9,27 @@ services:
             - 27017:27017
         volumes:
             - db:/data/db
+
+    # Redis service
     redis:
         image: redis:6.2.6-alpine
+        restart: always
+        ports:
+            - 6379:6379
+
+    # Nginx service
+    nginx:
+        image: nginx:stable-alpine
+        depends_on:
+            - api
+        volumes:
+            - ./server/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+        ports:
+            - 8080:80
 
     #API service
     api:
-        container_name: medi-career-api
+        container_name: backend-api
         depends_on:
             - mongo
             - redis
@@ -22,14 +38,14 @@ services:
             - .:/app
             - /app/node_modules
         ports:
-            - 8080:8080
+            - 5000:5000
         environment:
             - DOCKER_RUNNING=true
             - NODE_ENV=development
             - MONGO_URI=mongodb://mongo:27017/mern-template
             - REDIS_HOST=redis
             - REDIS_PORT=6379
-            - PORT=8080
+            - PORT=5000
         command: yarn start
 
 volumes:

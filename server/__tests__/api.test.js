@@ -11,7 +11,6 @@ let accessToken = '';
 let refreshToken = '';
 
 // Test case for checking api
-
 describe('Check API', () => {
     it('should return 200', async () => {
         const response = await testApp.get('/api/v1/checkStatus');

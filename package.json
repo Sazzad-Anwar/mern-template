@@ -5,12 +5,13 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node index.js",
-        "dev-server": "set NODE_ENV=development && nodemon index.js",
-        "dev-admin": "cd ../admin && set NODE_ENV=development && yarn start",
+        "start": "node ./server/index.js",
+        "build-admin": "cd ./admin && yarn build && cp -r dist ../server",
+        "dev-server": "set NODE_ENV=development && nodemon -L ./server/index.js",
+        "dev-admin": "cd ./admin && set NODE_ENV=development && yarn start",
         "test": "set NODE_ENV=test && node --experimental-vm-modules node_modules/jest/bin/jest.js",
         "request-handle-check": "autocannon -c 10 http://localhost:8080/api/v1/checkStatus",
-        "install-packages": "yarn add -D @shelf/jest-mongodb concurrently jest morgan nodemon supertest && yarn add auth-middleware-jwt axios bcryptjs compression cookie-parser cors dotenv express express-async-handler helmet jsonwebtoken mongoose multer mysql nanoid sequelize winston uuid serve-favicon socket.io joi redis"
+        "install-packages": "yarn add -D @shelf/jest-mongodb concurrently jest morgan nodemon supertest && yarn add auth-middleware-jwt axios bcryptjs compression cookie-parser cors dotenv express express-async-handler helmet jsonwebtoken mongoose multer mysql nanoid sequelize winston uuid serve-favicon socket.io joi redis@3.1.2"
     },
     "keywords": [
         "MERN Framework, redux, node, express, sequelize"
@@ -42,7 +43,7 @@
         "multer": "^1.4.4",
         "mysql": "^2.18.1",
         "nanoid": "^3.3.2",
-        "redis": "^4.0.4",
+        "redis": "^3.1.2",
         "sequelize": "^6.17.0",
         "serve-favicon": "^2.5.0",
         "socket.io": "^4.4.1",

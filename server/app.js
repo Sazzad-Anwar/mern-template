@@ -34,21 +34,21 @@ app.use(urlencoded({
     extended: true
 }));
 app.use(express.static(join(__dirname, 'public')));
+app.use(express.static(join(__dirname, 'dist')));
 app.use(favicon(join(__dirname, 'public/images', 'favicon.ico')));
 
 //@Description: To use monogdb connection
 connectMongoDB();
-client.connect();
 
 app.use('/api/v1', appRoute);
 app.get('/api/v1/checkStatus', (req, res) => res.json({ status: 'Ok', host: req.hostname }));
 
 app.use(errorHandler);
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-//     console.log('Build file connected');
-// });
+app.get('*', (req, res) => {
+    res.sendFile(join(__dirname, 'dist', 'index.html'));
+    console.log('Build file connected');
+});
 app.use(notFound);
 
 export default app;
