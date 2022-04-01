@@ -38,7 +38,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
             - run: npm i -g yarn
-            - name: Create .env file
+            # - name: Create .env file
             # - run: |
             #       touch .env
             #       echo ACCESS_TOKEN_SECRET_KEY=${{ secrets.ACCESS_TOKEN_SECRET_KEY }} >> .env
