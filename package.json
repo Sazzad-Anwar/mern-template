@@ -8,7 +8,7 @@
         "start": "node ./server/index.js",
         "build-admin": "cd ./admin && yarn build && cp -r dist ../server",
         "dev-server": "set NODE_ENV=development && nodemon -L ./server/index.js",
-        "dev-admin": "cd ./admin && set NODE_ENV=development && yarn start",
+        "dev-admin": "cd ./admin && set NODE_ENV=development && yarn dev",
         "test": "set NODE_ENV=test && node --experimental-vm-modules node_modules/jest/bin/jest.js",
         "request-handle-check": "autocannon -c 10 http://localhost:8080/api/v1/checkStatus",
         "install-packages": "yarn add -D @shelf/jest-mongodb concurrently jest morgan nodemon supertest && yarn add auth-middleware-jwt axios bcryptjs compression cookie-parser cors dotenv express express-async-handler helmet jsonwebtoken mongoose multer mysql nanoid sequelize winston uuid serve-favicon socket.io joi redis@3.1.2"

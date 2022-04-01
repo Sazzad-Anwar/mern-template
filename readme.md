@@ -1,141 +1,102 @@
 <!-- PROJECT Title -->
 <br />
-<p align="center">
-<img src="./public/images/MERN.jpg" height="150" />
-  <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2>
-</p>
+<h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2>
 
-## Which npm packages and which stack has been followed in this template
+A PWA `MERN` stack boilerplate with docker for any project. It has the `mongodb`, `mysql`, `redis` database initialization with `socket` and `express` server. `JWT` has been used for the authentication process. `NGINX` configuration has been used for load balancing of backend that can only be used in the production mode with docker On the frontend react has been initialized with `vite` for small bundling and fast loading for development and build time. On frontend for authentication a custom hook has been used with `Context API` and `SWR` data fetching. Some essential components has been initialized with the package along with `tailwindCSS`. Some more features will be added gradually.
 
-### This template includes structure for `Nodejs` server as backend service and `React` as frontend/clientend service with `Redux`
+## Installation Manual
 
-#### For development purpose below npm packages have been included
+First clone the repository and then run the following command to install the dependencies.
 
-1. Node Server (Backend)
+```bash
+yarn install-packages
+```
 
-    - `express`
-    - `express-async-handler`
-    - `axios`
-    - `bcryptjs`
-    - `cors`
-    - `dotenv`
-    - `concurrently`
-    - `multer`
-    - `nanoid`
-    - `winston`
-    - `jsonwebtoken`
-    - Database
-        - `mysql`
-        - Driver
-            - `sequelize`
-        - `mongoose`
+with npm
 
-2. React (Frontend /client)
-    - `axios`
-    - `bootstrap`
-    - `nanoid`
-    - `react-awesome-slider`
-    - `react-bootstrap`
-    - `react-dropzone`
-    - `react-hook-form`
-    - `react-redux`
-    - `react-router-dom`
-    - `react-toast-notifications`
-    - `redux`
-    - `redux-devtools-extension`
-    - `redux-thunk`
-    - `@tinymce/tinymce-react`
-    - `@material-ui/pickers`
-    - `@material-ui/lab`
-    - `@material-ui/icons`
-    - `@material-ui/core`
-    - `@date-io/moment`
-    - `@date-io/date-fns`
-    - `workbox-background-sync`
-    - `workbox-broadcast-update`
-    - `workbox-cacheable-response`
-    - `workbox-core`
-    - `workbox-expiration`
-    - `workbox-google-analytics`
-    - `workbox-navigation-preload`
-    - `workbox-precaching`
-    - `workbox-range-requests`
-    - `workbox-routing`
-    - `workbox-strategies`
-    - `workbox-streams`
+```bash
+npm run install-packages
+```
 
-<br />
-<!-- HOW TO RUN -->
+Initialize the `.env` file for the development and production mode.
 
-## How to install packages and run
+```bash
+MONGO_URI=mongodb://localhost:27017/mern-template
+PORT=8080
+REDIS_PORT=6379
+ACCESS_TOKEN_SECRET_KEY=
+REFRESH_TOKEN_SECRET_KEY=
+REFRESH_TOKEN_EXPIRES_IN=1y
+ACCESS_TOKEN_EXPIRES_IN=1d
+ACCESS_COOKIE_EXPIRES_IN=31536000000
+```
 
-Please follow the below instructions to run this project in your computer:
+To start the server as development use the following command.
 
-1. Clone this repository
+```bash
+yarn dev-server
+```
 
-    ```sh
-    git clone https://github.com/Sazzad-Anwar/Template.git
-    ```
+with npm
 
-2. Install NPM packages for node server and react with one line command
+```bash
+npm run dev-server
+```
 
-    ```sh
-    yarn install-all
-    ```
+Navigate to admin folder and run the following command to install the dependencies.
 
-3. Install only node server npm packages
+```bash
+yarn
+```
 
-    ```sh
-    yarn server-install
-    ```
+with npm
 
-4. Install only react client npm packages
+```bash
+npm install
+```
 
-    ```sh
-    yarn client-install
-    ```
+Then run the following command from the admin folder to start the server.
 
-5. Before running the application you need to make a `.env` in `client` folder and set as below
+```bash
+yarn dev
+```
 
-    ```sh
-    SKIP_PREFLIGHT_CHECK=true
-    ```
+with npm
 
-6. Run node server and react client application with concurrently
+```bash
+npm run dev
+```
 
-    ```sh
-    yarn dev
-    ```
+Or run the following command from the root folder to start the frontend server.
 
-7. Run node server only
+```bash
+yarn dev
+```
 
-    ```sh
-    yarn server
-    ```
+with npm
 
-8. Run node react client only
+```bash
+npm run dev
+```
 
-    ```sh
-    yarn client
-    ```
+Before shipping the project to the production mode run the following command to build the frontend from the root folder.
 
-9. Your node server should be available in <http://localhost:8080>
-10. Your react client app should be available in <http://localhost:3000>
+```bash
+yarn build-admin
+```
 
-<br />
-<br />
+with npm
 
-## Tips for JsonWebToken assigning in header
+```bash
+npm run build-admin
+```
 
-### Do not assign JWT token again and again to your request header rather follow bellow two lines of code
+To run the whole project on production use the following command using docker.
 
-1. Open Postman open the request for login and select the `Tests` option
+```bash
+docker-compose up -d
+```
 
-2. Write these code:
+For the production the whole app will be running on the port 80 as the nginx will be used for load balancing.
 
-    ```sh
-    var res = pm.response.json();
-    pm.environment.set('token', res.token);
-    ```
-
-#### Now while requesting the authenticated API just click on `Authorization` select `Type` to `Bearer Token` then write `{{token}}` in the `Token` field on right-side
+Admin panel will be loaded on `http://localhost:8080` and the api routes will be `http://localhost:8080/api/v1`
