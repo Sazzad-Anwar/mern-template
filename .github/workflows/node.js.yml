@@ -50,5 +50,5 @@ jobs:
             #       echo REDIS_PORT=${{ secrets.REDIS_PORT }} >> .env
             #       echo REDIS_HOST=${{ secrets.REDIS_HOST }} >> .env
 
-            - run: cd server && yarn
-            - run: cd server && yarn test
+            - run: yarn
+            - run: yarn test
