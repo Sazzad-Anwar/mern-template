@@ -16,7 +16,6 @@ import connectMongoDB from './config/db/MongoDB.js';
 import __dirname from './__dirname.js';
 import appRoute from './routes/AppRoute.js';
 import { errorHandler, notFound } from './middlewares/errorHandler.js';
-import client from './config/db/redis.js';
 dotenv.config();
 
 
