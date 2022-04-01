@@ -2,6 +2,7 @@
 
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
+import client from './redis.js';
 
 let mongoServer;
 
