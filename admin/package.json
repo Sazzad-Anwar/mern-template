@@ -1,19 +1,22 @@
 {
-  "name": "admin1",
-  "private": true,
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^1.0.7",
-    "vite": "^2.9.0",
-    "vite-plugin-pwa": "^0.11.13"
-  }
+    "name": "admin1",
+    "private": true,
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "format": "npx prettier --write src"
+    },
+    "dependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^1.0.7",
+        "vite": "^2.9.0",
+        "vite-plugin-pwa": "^0.11.13",
+        "prettier": "^2.6.2",
+        "prettier-plugin-tailwindcss": "^0.1.8"
+    }
 }
