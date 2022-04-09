@@ -6,7 +6,8 @@ services:
         image: mongo
         restart: always
         ports:
-            - 27017:27017
+            # 2717 is the port for accessing mongodb compass
+            - 2717:27017
         volumes:
             - db:/data/db
 
