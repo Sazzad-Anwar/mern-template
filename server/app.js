@@ -2,52 +2,69 @@
 // @CreatedAt:
 // @Author-name: Md. Sazzad Bin Anwar
 
-import express, { json, urlencoded } from 'express';
+const express = require("express");
 const app = express();
-import cors from 'cors';
-import dotenv from 'dotenv';
-import cookieParser from 'cookie-parser';
-import helmet from 'helmet';
-import morgan from 'morgan';
-import { join } from 'path';
-import compression from 'compression';
-import favicon from 'serve-favicon';
-import connectMongoDB from './config/db/MongoDB.js';
-import __dirname from './__dirname.js';
-import appRoute from './routes/AppRoute.js';
-import { errorHandler, notFound } from './middlewares/errorHandler.js';
+const cors = require("cors");
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
+const morgan = require("morgan");
+const { join } = require("path");
+const compression = require("compression");
+const favicon = require("serve-favicon");
+const connectMongoDB = require("./config/db/MongoDB.js");
+const { errorHandler, notFound } = require("./middlewares/errorHandler.js");
+const authRoute = require("./routes/authRoute");
+const usersRoute = require("./routes/usersRoute");
+const { default: axios } = require("axios");
 dotenv.config();
 
-
 //This will show the request path for every request only for development mode
-if (process.env.NODE_ENV !== 'production') {
-    app.use(morgan('tiny'));
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("tiny"));
 }
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(compression());
 app.use(helmet());
 app.use(cookieParser());
-app.use(json());
-app.use(urlencoded({
-    extended: true
-}));
-app.use(express.static(join(__dirname, 'public')));
-app.use(express.static(join(__dirname, 'dist')));
-app.use(favicon(join(__dirname, 'public/images', 'favicon.ico')));
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(express.static(join(__dirname, "public")));
+app.use(express.static(join(__dirname, "build")));
+app.use(favicon(join(__dirname, "public/images", "favicon.ico")));
 
 //@Description: To use monogdb connection
 connectMongoDB();
 
-app.use('/api/v1', appRoute);
-app.get('/api/v1/checkStatus', (req, res) => res.json({ status: 'Ok', host: req.hostname }));
+//while starting the application automatic insert a super admin user
+axios
+  .post(`${process.env.API_URL}/api/v1/auth/registration`, {
+    name: "Super Admin",
+    email: "superAdmin@mail.com",
+    phoneNumber: "01834123456",
+    password: "admin123456",
+    role: ["superAdmin"],
+  })
+  .then((res) => console.log(res.data))
+  .catch((err) => console.log(err.message));
+
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/users", usersRoute);
+app.get("/api/v1/checkStatus", (req, res) =>
+  res.json({ status: "Ok", host: req.hostname })
+);
 
 app.use(errorHandler);
 
-app.get('*', (req, res) => {
-    res.sendFile(join(__dirname, 'dist', 'index.html'));
-    console.log('Build file connected');
+app.get("*", (req, res) => {
+  res.sendFile(join(__dirname, "build", "index.html"));
+  console.log("Build file connected");
 });
 app.use(notFound);
 
-export default app;
+module.exports = app;

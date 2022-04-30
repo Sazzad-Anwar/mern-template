@@ -1,13 +1,13 @@
 export default {
-    mongodbMemoryServerOptions: {
-        instance: {
-            dbName: 'jest'
-        },
-        binary: {
-            version: '4.0.2', // Version of MongoDB
-            skipMD5: true
-        },
-        autoStart: false
+  mongodbMemoryServerOptions: {
+    instance: {
+      dbName: "jest",
     },
-    mongoURLEnvName: 'MONGODB_URI',
+    binary: {
+      version: "4.0.2", // Version of MongoDB
+      skipMD5: true,
+    },
+    autoStart: false,
+  },
+  mongoURLEnvName: "MONGODB_URI",
 };

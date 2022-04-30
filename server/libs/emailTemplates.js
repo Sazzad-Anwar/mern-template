@@ -1,6 +1,5 @@
-export const activationEmail = (name, activationId) => {
-    return (
-        `
+const activationEmail = (name, activationId) => {
+  return `
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
@@ -259,14 +258,11 @@ export const activationEmail = (name, activationId) => {
     </center>
 
 </body>
-</html>`
-    )
-}
-
+</html>`;
+};
 
 export function passwordResetEmail(name, resetLink) {
-    return (
-        `
+  return `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
         <head>
@@ -525,13 +521,11 @@ export function passwordResetEmail(name, resetLink) {
         </center>
     
     </body>
-    </html>`
-    )
+    </html>`;
 }
 
-
 export function orderInvoice(order, user) {
-    return (`
+  return `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
@@ -784,7 +778,9 @@ export function orderInvoice(order, user) {
                                         "
                                     >
                                         <span style="font-weight: bolder">Payment Method:</span>
-                                        <span>${order.paymentResult.paymentMethod}</span>
+                                        <span>${
+                                          order.paymentResult.paymentMethod
+                                        }</span>
                                     </td>
                                 </tr>
                                 <tr style="padding: 2rem 0">
@@ -832,7 +828,9 @@ export function orderInvoice(order, user) {
                                         "
                                     >
                                         <span style="font-weight: bolder">Payment Status:</span>
-                                        <span>${order.paymentResult.status}</span>
+                                        <span>${
+                                          order.paymentResult.status
+                                        }</span>
                                     </td>
                                 </tr>
                                 <tr style="padding: 2rem 0">
@@ -904,7 +902,9 @@ export function orderInvoice(order, user) {
                                             border-right: 1px solid #c9c8c8;
                                         "
                                     >
-                                        <span>${order.shippingAddress.address}</span>
+                                        <span>${
+                                          order.shippingAddress.address
+                                        }</span>
                                     </td>
                                 </tr>
                                 <tr style="padding: 2rem 0">
@@ -925,7 +925,9 @@ export function orderInvoice(order, user) {
                                             border-right: 1px solid #c9c8c8;
                                         "
                                     >
-                                        <span>${order.shippingAddress.city}</span>
+                                        <span>${
+                                          order.shippingAddress.city
+                                        }</span>
                                     </td>
                                 </tr>
                                 <tr style="padding: 2rem 0">
@@ -946,7 +948,9 @@ export function orderInvoice(order, user) {
                                             border-right: 1px solid #c9c8c8;
                                         "
                                     >
-                                        <span>${order.shippingAddress.district}</span>
+                                        <span>${
+                                          order.shippingAddress.district
+                                        }</span>
                                     </td>
                                 </tr>
                                 <tr style="padding: 2rem 0">
@@ -967,7 +971,9 @@ export function orderInvoice(order, user) {
                                             border-right: 1px solid #c9c8c8;
                                         "
                                     >
-                                        <span>${order.shippingAddress.division}</span>
+                                        <span>${
+                                          order.shippingAddress.division
+                                        }</span>
                                     </td>
                                 </tr>
                             </table>
@@ -1078,7 +1084,9 @@ export function orderInvoice(order, user) {
                                                 border-bottom: 1px solid #c9c8c8;
                                             "
                                         >
-                                            ${order.orderItem.product.name} <br />
+                                            ${
+                                              order.orderItem.product.name
+                                            } <br />
                                             ${order.orderItem.color} <br />
                                             ${order.orderItem.size}
                                         </td>
@@ -1129,7 +1137,10 @@ export function orderInvoice(order, user) {
                                                 border-bottom: 1px solid #c9c8c8;
                                             "
                                         >
-                                            ${order.orderItem.price * order.orderItem.qty}
+                                            ${
+                                              order.orderItem.price *
+                                              order.orderItem.qty
+                                            }
                                         </td>
                                     </tr>
                                     <tr>
@@ -1389,5 +1400,7 @@ export function orderInvoice(order, user) {
         </center>
     </body>
 </html>
-`)
+`;
 }
+
+module.exports = activationEmail;

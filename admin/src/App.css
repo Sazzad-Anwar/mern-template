@@ -1,42 +1,198 @@
-.App {
-  text-align: center;
+/* sidebar style of ant design for dark mode and light mode  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+    scroll-behavior: smooth !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+html:not(.dark) ::-webkit-scrollbar-track {
+    background-color: #e5e7eb;
+    transition: all 0.4s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+html:not(.dark) ::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html.dark ::-webkit-scrollbar-track {
+    background-color: #0f172a;
 }
 
-button {
-  font-size: calc(10px + 2vmin);
+html.dark ::-webkit-scrollbar-thumb {
+    background-color: #243763;
+    border-radius: 4px;
+}
+
+html:not(.dark) ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light,
+html:not(.dark) .ant-menu-item,
+.ant-menu-root.ant-menu-vertical {
+    background-color: #fff !important;
+}
+
+html.dark ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light,
+html.dark .ant-menu-item,
+html.dark .ant-menu-root.ant-menu-vertical {
+    background-color: #1f2937 !important;
+    color: #fff !important;
+}
+
+html.dark .ant-menu-submenu-expand-icon,
+html.dark .ant-menu-submenu-arrow {
+    color: #fff !important;
+}
+
+html.dark .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+html.dark .ant-menu-light .ant-menu-item:hover,
+html.dark .ant-menu-submenu.ant-menu-submenu-inline:hover {
+    background-color: #00000054 !important;
+}
+
+html:not(.dark) .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #e6f7ff !important;
+}
+
+html:not(.dark) .ant-menu-item:hover {
+    background-color: #e6f7ff !important;
+}
+
+html.dark .ant-menu-inline,
+html.dark .ant-menu-vertical,
+html.dark .ant-menu-vertical-left {
+    border-right: 1px solid transparent !important;
+}
+
+.ant-menu-item,
+.ant-menu-submenu-title {
+    height: 45px !important;
+}
+
+html.dark .ant-menu-inline,
+html.dark .ant-menu-vertical,
+html.dark .ant-menu-vertical-left {
+    background: #1f2937 !important;
+}
+
+.ant-menu-inline .ant-menu-item:not(:last-child) {
+    margin-bottom: 4px !important;
+}
+
+.ant-menu-submenu .ant-menu-submenu .ant-menu-submenu-title {
+    display: flex;
+    align-items: center;
+}
+
+.ant-menu-item-only-child {
+    display: flex !important;
+    align-items: center !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    margin-bottom: 0em !important;
+}
+
+/* ant Design setup with tailwindcss */
+svg {
+    vertical-align: initial;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    display: initial;
+}
+
+html.dark .ant-table-thead > tr > th,
+html.dark .ant-table-tbody > tr > td {
+    border-bottom: 1px solid #243763 !important;
+}
+
+html.dark .ant-table-cell,
+html.dark .ant-pagination-item-active {
+    background-color: #0f172a;
+    color: #fff;
+}
+
+html.dark .ant-pagination-prev .ant-pagination-item-link,
+html.dark .ant-pagination-next .ant-pagination-item-link {
+    background-color: #0f172a;
+    color: #fff;
+}
+
+html.dark .ant-table-cell.ant-table-cell-row-hover {
+    background-color: #1f2937 !important;
+}
+
+html.dark .ant-checkbox-disabled + span {
+    color: #838383;
+}
+
+html.dark .search-input .ant-input-wrapper.ant-input-group,
+html.dark .search-input .ant-input-affix-wrapper.ant-input-affix-wrapper-lg,
+html.dark .search-input .ant-input.ant-input-lg,
+html.dark .search-input .ant-input-group-addon {
+    background-color: #0f172a !important;
+}
+
+html.dark .ant-btn-primary {
+    color: #40a9ff;
+}
+
+html.dark .ant-btn-primary:hover {
+    color: #fff;
+}
+
+html.dark
+    .search-input
+    .ant-input-group-addon
+    .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button:hover,
+html.dark
+    .search-input
+    .ant-input-group-addon
+    .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button:active {
+    background-color: #1f2937 !important;
+}
+
+html.dark .search-input .anticon.anticon-search {
+    color: #fff !important;
+}
+
+html.dark .search-input .ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
+    border-color: #0f172a !important;
+}
+
+html.dark
+    .search-input
+    .ant-input-group-addon
+    .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button {
+    border: none !important;
+    background-color: #0f172a !important;
+}
+
+html.dark .search-input .ant-input.ant-input-lg {
+    color: #fff !important;
+}
+
+html.dark .search-input .anticon.anticon-close-circle {
+    color: #fff !important;
 }

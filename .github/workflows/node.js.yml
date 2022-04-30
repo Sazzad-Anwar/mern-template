@@ -4,51 +4,37 @@
 name: Node.js CI
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [16.x]
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
 
-        services:
-            # Label used to access the service container
-            redis:
-                # Docker Hub image
-                image: redis
-                # Set health checks to wait until redis has started
-                options: >-
-                    --health-cmd "redis-cli ping"
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
-                ports:
-                    # Maps port 6379 on service container to the host
-                    - 6379:6379
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-            - run: npm i -g yarn
-            # - name: Create .env file
-            # - run: |
-            #       touch .env
-            #       echo ACCESS_TOKEN_SECRET_KEY=${{ secrets.ACCESS_TOKEN_SECRET_KEY }} >> .env
-            #       echo REFRESH_TOKEN_SECRET_KEY=${{ secrets.REFRESH_TOKEN_SECRET_KEY }} >> .env
-            #       echo REFRESH_TOKEN_EXPIRES_IN=${{ secrets.REFRESH_TOKEN_EXPIRES_IN }} >> .env
-            #       echo ACCESS_TOKEN_EXPIRES_IN=${{ secrets.ACCESS_TOKEN_EXPIRES_IN }} >> .env
-            #       echo ACCESS_COOKIE_EXPIRES_IN=${{ secrets.ACCESS_COOKIE_EXPIRES_IN }} >> .env
-            #       echo MONGO_URI=${{ secrets.MONGO_URI }} >> .env
-            #       echo REDIS_PORT=${{ secrets.REDIS_PORT }} >> .env
-            #       echo REDIS_HOST=${{ secrets.REDIS_HOST }} >> .env
-
-            - run: yarn
-            - run: yarn test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: install yarn globally
+        run: npm i -g yarn
+      - name: Create .env file
+        run: |
+          touch .env
+          echo ACCESS_TOKEN_SECRET_KEY=${{ secrets.ACCESS_TOKEN_SECRET_KEY }} >> .env
+          echo REFRESH_TOKEN_SECRET_KEY=${{ secrets.REFRESH_TOKEN_SECRET_KEY }} >> .env
+          echo REFRESH_TOKEN_EXPIRES_IN=${{ secrets.REFRESH_TOKEN_EXPIRES_IN }} >> .env
+          echo ACCESS_TOKEN_EXPIRES_IN=${{ secrets.ACCESS_TOKEN_EXPIRES_IN }} >> .env
+          echo ACCESS_COOKIE_EXPIRES_IN=${{ secrets.ACCESS_COOKIE_EXPIRES_IN }} >> .env
+          echo MONGO_URI=${{ secrets.MONGO_URI }} >> .env
+      - name: Install node dependencies
+        run: yarn
+      - name: Run the test cases
+        run: yarn test

@@ -1,9 +1,8 @@
-export default (reqQuery) => {
+module.export = (reqQuery) => {
+  let query = [];
+  for (const [key, value] of Object.entries(reqQuery)) {
+    query.push({ [key]: value });
+  }
 
-    let query = []
-    for (const [key, value] of Object.entries(reqQuery)) {
-        query.push({ [key]: value })
-    }
-
-    return query;
-}
+  return query;
+};

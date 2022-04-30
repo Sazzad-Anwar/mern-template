@@ -1,0 +1,195 @@
+"use strict";
+(self.webpackChunkadmin_pwa = self.webpackChunkadmin_pwa || []).push([
+  [134],
+  {
+    134: function (e, n, a) {
+      a.r(n);
+      var t = a(1697),
+        s = a(4651),
+        i = a(6871),
+        l = a(3504),
+        c = a(7154),
+        r = a(5675),
+        d = a(184),
+        u = t.Z.SubMenu;
+      n.default = function (e) {
+        var n = e.collapsed,
+          a = e.menulist,
+          m = e.admin,
+          x = (0, c.b)().authDispatch,
+          h = (0, i.s0)("/"),
+          o = (0, i.TH)();
+        return (0, d.jsx)("div", {
+          className: "".concat(
+            n ? "w-auto" : "w-72",
+            " normal-transition h-screen shadow-2xl"
+          ),
+          children: (0, d.jsxs)(t.Z, {
+            defaultSelectedKeys: ["/" + o.pathname.split("/")[1]],
+            defaultOpenKeys: [o.pathname.split("/")[1]],
+            mode: "inline",
+            inlineCollapsed: n,
+            className: "h-full relative border-r",
+            children: [
+              a.map(function (e) {
+                return e.hasSubMenu
+                  ? (0, d.jsx)(
+                      u,
+                      {
+                        icon: e.icon,
+                        title: (0, d.jsx)("p", {
+                          className: "text-base",
+                          children: e.name,
+                        }),
+                        children: e.subMenu.map(function (e) {
+                          return e.hasSubMenu
+                            ? (0, d.jsx)(
+                                u,
+                                {
+                                  className: "dark:text-white",
+                                  title: (0, d.jsx)("p", {
+                                    className: "text-base",
+                                    children: e.name,
+                                  }),
+                                  children: e.subMenu.map(function (e) {
+                                    return e.hasSubMenu
+                                      ? (0, d.jsx)(
+                                          u,
+                                          {
+                                            className: "dark:text-white",
+                                            title: (0, d.jsx)("p", {
+                                              className: "text-base",
+                                              children: e.name,
+                                            }),
+                                            children: e.subMenu.map(function (
+                                              e
+                                            ) {
+                                              return (0, d.jsx)(
+                                                t.Z.Item,
+                                                {
+                                                  className: "text-base",
+                                                  onClick: function () {
+                                                    return h(e.link);
+                                                  },
+                                                  children: e.name,
+                                                },
+                                                e.id
+                                              );
+                                            }),
+                                          },
+                                          e.id
+                                        )
+                                      : (0, d.jsx)(
+                                          t.Z.Item,
+                                          {
+                                            className: "text-base",
+                                            onClick: function () {
+                                              return h(e.link);
+                                            },
+                                            children: e.name,
+                                          },
+                                          e.id
+                                        );
+                                  }),
+                                },
+                                e.id
+                              )
+                            : (0, d.jsx)(
+                                t.Z.Item,
+                                {
+                                  onClick: function () {
+                                    return h(e.link);
+                                  },
+                                  className: "text-base",
+                                  children: e.name,
+                                },
+                                e.id
+                              );
+                        }),
+                      },
+                      e.id
+                    )
+                  : (0, d.jsx)(
+                      t.Z.Item,
+                      {
+                        icon: e.icon,
+                        className: "border-r border-transparent",
+                        children: (0, d.jsx)(l.rU, {
+                          to: e.link,
+                          children: (0, d.jsx)("span", {
+                            className: "text-lg dark:text-white",
+                            children: e.name,
+                          }),
+                        }),
+                      },
+                      e.id
+                    );
+              }),
+              (0, d.jsx)(
+                u,
+                {
+                  className: "absolute bottom-[55px] w-full ".concat(
+                    n ? "py-0" : "pt-2 pb-4"
+                  ),
+                  icon: (0, d.jsx)(s.Nhi, { size: 28 }),
+                  title: (0, d.jsxs)("div", {
+                    className: "flex flex-col dark:text-white pb-2",
+                    children: [
+                      (0, d.jsx)("span", {
+                        className: "text-base",
+                        children: m.name,
+                      }),
+                      (0, d.jsx)("span", {
+                        className: "text-sm",
+                        children: m.email,
+                      }),
+                    ],
+                  }),
+                  children:
+                    m.hasSubMenu &&
+                    m.subMenu.map(function (e) {
+                      return "" === e.link
+                        ? (0, d.jsx)(
+                            t.Z.Item,
+                            {
+                              onClick: function () {
+                                return x({ type: r.Nv }, h("/login"));
+                              },
+                              className: "text-base ".concat(
+                                n ? "pl-auto" : "pl-16",
+                                " dark:text-white"
+                              ),
+                              children: (0, d.jsx)("span", {
+                                className: "dark:text-white",
+                                children: e.name,
+                              }),
+                            },
+                            e.id
+                          )
+                        : (0, d.jsx)(
+                            t.Z.Item,
+                            {
+                              className: "text-base ".concat(
+                                n ? "pl-auto" : "pl-16",
+                                " dark:text-white"
+                              ),
+                              children: (0, d.jsx)(l.rU, {
+                                to: e.link,
+                                className: "dark:text-white",
+                                children: e.name,
+                              }),
+                            },
+                            e.id
+                          );
+                    }),
+                },
+                m.id
+              ),
+            ],
+          }),
+        });
+      };
+    },
+  },
+]);
+//# sourceMappingURL=134.e8adeb4b.chunk.js.map

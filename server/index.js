@@ -1,24 +1,25 @@
-import { createServer } from 'http';
-import app from './app.js';
+const { createServer } = require("http");
+const app = require("./app.js");
 const server = createServer(app);
-import { Server } from "socket.io";
-import socketHandler from "./socket/index.js";
+const { Server } = require("socket.io");
+const socketHandler = require("./socket/index.js");
 const io = new Server(server);
 let port = process.env.PORT;
 
 //Making a socket instance
-const socketIoInstance = socket => {
-    socketHandler(io, socket)
-}
+const socketIoInstance = (socket) => {
+  socketHandler(io, socket);
+};
 
+io.on("connection", socketIoInstance);
 
-io.on('connection', socketIoInstance);
-
+// Use the below code for not to expose the node application to the outside world
+// server.listen(port, 'localhost', () => console.log(`App is listening on port ${port}!`));
 server.listen(port, () => console.log(`App is listening on port ${port}!`));
 
-process.on('SIGTERM', () => {
-    debug('SIGTERM signal received: closing HTTP server')
-    server.close(() => {
-        debug('HTTP server closed')
-    })
-})
+process.on("SIGTERM", () => {
+  debug("SIGTERM signal received: closing HTTP server");
+  server.close(() => {
+    debug("HTTP server closed");
+  });
+});
