@@ -2,7 +2,11 @@
 <br />
 <h2 align="center"><a href="https://github.com/Sazzad-Anwar/Template">Template for any MERN stack PWA project</a></h2>
 
-A PWA `MERN` stack boilerplate with docker for any project. It has the `mongodb`, `mysql`, `redis` database initialization with `socket` and `express` server. `JWT` has been used for the authentication process. `NGINX` configuration has been used for load balancing of backend that can only be used in the production mode with docker On the frontend react has been initialized with `vite` for small bundling and fast loading for development and build time. On frontend for authentication a custom hook has been used with `Context API` and `SWR` data fetching. Some essential components has been initialized with the package along with `tailwindCSS`. Some more features will be added gradually.
+A PWA `MERN` stack boilerplate with docker for any project. It has the `mongodb`, `mysql`, `redis` database initialization with `socket` and `express` server. `JWT` has been used for the authentication process. `NGINX` configuration has been used for load balancing of backend that can only be used in the production mode with docker On the frontend react has been initialized with `vite` for small bundling and fast loading for development and build time. On frontend for authentication a custom hook has been used with `Context API` and `SWR` data fetching. Some essential components has been initialized with the package along with `tailwindCSS`. Some more features will be added gradually. `Docker` and `Docker Compose` has been used for the deployment to any server seamlessly.
+
+<!-- PROJECT Description -->
+
+The project initially contains the role based access control and authentication for the admin panel and the user panel. The admin panel has the CRUD operations for the `users` and `roles`.
 
 ## Installation Manual
 
@@ -67,7 +71,13 @@ with npm
 npm run dev
 ```
 
-Or run the following command from the root folder to start the frontend server.
+Or you can run the admin frontend server from the root of the project by running the following command.
+
+```bash
+yarn admin-server
+```
+
+Or your can run the frontend and backend server together by running the following command.
 
 ```bash
 yarn dev
