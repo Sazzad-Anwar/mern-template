@@ -1,6 +1,6 @@
 {
     "name": "app-api",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -30,7 +30,6 @@
         "supertest": "^6.2.2"
     },
     "dependencies": {
-        "animate.css": "^4.1.1",
         "auth-middleware-jwt": "^1.0.17",
         "axios": "^0.26.1",
         "bcryptjs": "^2.4.3",
@@ -49,7 +48,6 @@
         "multer": "^1.4.4",
         "mysql": "^2.18.1",
         "nanoid": "^3.3.2",
-        "react-toastify": "^8.2.0",
         "redis": "^4.0.6",
         "sequelize": "^6.17.0",
         "serve-favicon": "^2.5.0",

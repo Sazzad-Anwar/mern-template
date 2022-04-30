@@ -25,14 +25,24 @@ npm run install-packages
 Initialize the `.env` file for the development and production mode.
 
 ```bash
-MONGO_URI=mongodb://localhost:27017/mern-template
+MONGO_URI=mongodb://0.0.0.0:27017/mern-template
 PORT=8080
-REDIS_PORT=6379
 ACCESS_TOKEN_SECRET_KEY=
 REFRESH_TOKEN_SECRET_KEY=
 REFRESH_TOKEN_EXPIRES_IN=1y
 ACCESS_TOKEN_EXPIRES_IN=1d
 ACCESS_COOKIE_EXPIRES_IN=31536000000
+API_URL=http://localhost:8080
+NODE_ENV=development
+
+# configuration for mysql database
+SERVER_DB_DATABASE=localhost
+SERVER_DB_USER=root
+SERVER_DB_PASSWORD=root
+
+# configuration for redis database
+REDIS_HOST=redis
+REDIS_PORT=6379
 ```
 
 To start the server as development use the following command.
