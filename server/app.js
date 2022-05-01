@@ -23,7 +23,7 @@ dotenv.config();
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("tiny"));
 }
-
+app.enable('trust proxy');
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(compression());
 app.use(helmet());
