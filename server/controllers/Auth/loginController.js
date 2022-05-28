@@ -2,7 +2,7 @@
  * * @Description: Login route for all user
  * * @Route: /api/v1/auth/login
  * * @Method: POST
- * * @Access: Public
+ ! * @Access: Public
  */
 const expressAsyncHandler = require("express-async-handler");
 const { getAccessToken, getRefreshToken } = require("auth-middleware-jwt");

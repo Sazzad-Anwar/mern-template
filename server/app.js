@@ -16,7 +16,9 @@ const connectMongoDB = require("./config/db/MongoDB.js");
 const { errorHandler, notFound } = require("./middlewares/errorHandler.js");
 const authRoute = require("./routes/authRoute");
 const usersRoute = require("./routes/usersRoute");
-const { default: axios } = require("axios");
+const roleRoute = require('./routes/roleRoute');
+const api = require('./routes/apiRoutes');
+const saveApiRoute = require("./middlewares/saveApiRoute");
 dotenv.config();
 
 //This will show the request path for every request only for development mode
@@ -41,20 +43,10 @@ app.use(favicon(join(__dirname, "public/images", "favicon.ico")));
 //@Description: To use monogdb connection
 connectMongoDB();
 
-//while starting the application automatic insert a super admin user
-axios
-  .post(`${process.env.API_URL}/api/v1/auth/registration`, {
-    name: "Super Admin",
-    email: "superAdmin@mail.com",
-    phoneNumber: "01834123456",
-    password: "admin123456",
-    role: ["superAdmin"],
-  })
-  .then((res) => console.log(res.data))
-  .catch((err) => console.log(err.message));
-
 app.use("/api/v1/auth", authRoute);
-app.use("/api/v1/users", usersRoute);
+app.use("/api/v1/users", saveApiRoute, usersRoute);
+app.use('/api/v1/roles', roleRoute);
+app.use('/api/v1/getAPI', api)
 app.get("/api/v1/checkStatus", (req, res) =>
   res.json({ status: "Ok", host: req.hostname })
 );

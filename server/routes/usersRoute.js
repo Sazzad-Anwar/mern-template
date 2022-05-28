@@ -6,6 +6,7 @@ const { Router } = require("express");
 const deleteUser = require("../controllers/users/deleteUser");
 const getUserDetails = require("../controllers/users/getUserDetails");
 const getAllUsersController = require("../controllers/users/getUsersController");
+const hasSuperAdmin = require("../controllers/users/hasSuperAdmin");
 const getUserDetailsUpdate = require("../controllers/users/updateUserDetails");
 const checkUser = require("../middlewares/checkUser");
 const router = Router();
@@ -20,9 +21,21 @@ router
   .route("/")
   .get(
     AccessTokenValidation,
-    checkUser(["superAdmin", "admin"]),
+    checkUser(),
     getAllUsersController
   );
+
+
+/*
+* * @Description: Get a user's details
+* * @Route: /api/v1/users/hasSuperAdmin
+* * @Method: GET
+! * @Access: Public
+*/
+
+router
+  .route('/hasSuperAdmin')
+  .get(hasSuperAdmin);
 
 /*
 * * @Description: Get a user's details
@@ -34,17 +47,17 @@ router
   .route("/:id")
   .get(
     AccessTokenValidation,
-    checkUser(["superAdmin", "admin", "user"]),
+    checkUser(),
     getUserDetails
   )
   .put(
     AccessTokenValidation,
-    checkUser(["superAdmin", "admin", "user"]),
+    checkUser(),
     getUserDetailsUpdate
   )
   .delete(
     AccessTokenValidation,
-    checkUser(["superAdmin", "admin"]),
+    checkUser(),
     deleteUser
   );
 

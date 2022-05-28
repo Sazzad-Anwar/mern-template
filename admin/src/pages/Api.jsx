@@ -15,7 +15,7 @@ export default function Api() {
   return (
     <Documentation
       src={apiJSON}
-      title="REST API documentation for Medi Career"
+      title="REST API documentation for Mern Template"
     />
   );
 }

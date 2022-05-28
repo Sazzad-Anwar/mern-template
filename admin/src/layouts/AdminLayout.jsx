@@ -7,6 +7,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContextProvider";
 import Loader from "../components/Loader";
 import { APP_NAME } from "../app.config";
+import CheckTokenValidation from "../components/CheckTokenValidation";
 const SideBar = lazy(() => import("../components/Sidebar"));
 const Header = lazy(() => import("../components/Header"));
 
@@ -69,17 +70,23 @@ export default function AdminLayout({ children, breadcrumbs }) {
   ];
 
   const adminRoute = {
-    name: "Admin",
+    name: auth?.user?.name,
     link: "",
-    id: "admin",
-    image: "https://i.pravatar.cc/300",
-    email: "admin@mail.com",
+    id: auth?.user?._id,
+    image: auth?.user?.avatar,
+    email: auth?.user?.email,
     hasSubMenu: true,
     subMenu: [
       {
         name: "Logout",
         link: "",
         id: "/logout",
+      },
+      {
+        name: "Role Management",
+        link: "/role-management",
+        id: "/role-management",
+        superAdmin: true,
       },
       {
         name: "Settings",
@@ -127,6 +134,7 @@ export default function AdminLayout({ children, breadcrumbs }) {
           breadcrumbs={breadcrumbs}
         />
         <main className="normal-transition ml-auto overflow-auto">
+          <CheckTokenValidation />
           {children}
         </main>
       </div>

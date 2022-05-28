@@ -4,14 +4,17 @@ import { MdEmail } from "react-icons/md";
 import Typical from "react-typical";
 import { FiKey } from "react-icons/fi";
 import { AiFillLock } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContextProvider";
 import { toast } from "react-toastify";
 import axiosInstance from "../components/AxiosInstance";
+import useSWR from 'swr'
+import Fetcher from "../components/Fetcher";
 
 const Login = () => {
   const navigate = useNavigate();
   const { auth, authDispatch } = useGlobalContext();
+  const { data } = useSWR('/users/hasSuperAdmin', Fetcher)
 
   const onFinish = async ({ email, password, remember }) => {
     try {
@@ -45,20 +48,22 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (
-      (auth.user && auth.user.role.includes("admin")) ||
-      (auth.user && auth.user.role.includes("superAdmin"))
+    if ((data?.hasSuperAdmin) &&
+      ((auth.user && auth.user.role.includes("admin")) ||
+        (auth.user && auth.user.role.includes("superAdmin")))
     ) {
       navigate("/");
     } else if (
-      auth.user &&
+      (auth.user && data?.hasSuperAdmin) &&
       (!auth.user.role.includes("admin") ||
         !auth.user.role.includes("superAdmin"))
     ) {
       navigate("/login");
       toast.error("Only admins and super admins can have access!");
+    } else if (!data?.hasSuperAdmin) {
+      navigate('/registration')
     }
-  }, [auth.user, navigate]);
+  }, [auth.user, data, navigate]);
 
   return (
     <div className="relative grid h-screen w-screen grid-cols-1 overflow-hidden lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
@@ -89,8 +94,8 @@ const Login = () => {
       <div className="flex h-full w-full items-center bg-dark px-5 pt-10 backdrop-blur-lg lg:bg-dark">
         <div className="w-full">
           <h1 className="flex items-center justify-center text-2xl font-semibold text-white">
-            <div className="rounded-full bg-gray-600 p-3">
-              <AiFillLock size={30} />
+            <div className="rounded-full bg-gray-600 flex justify-center items-center p-2">
+              <AiFillLock size={30} className="m-0 p-0" />
             </div>
           </h1>
           <Form

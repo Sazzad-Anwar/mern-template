@@ -1,18 +1,30 @@
-const findRole = (arr1, arr2) => {
-  return arr1.filter((item) => arr2.includes(item));
-};
+const Role = require('../models/role');
 
-module.exports = function hasPermission(role) {
+module.exports = function hasPermission() {
   return (req, res, next) => {
-    // console.log(req.method, req.baseUrl)
-    if (findRole(req.user.role, role).length > 0) {
-      next();
-    } else {
-      // res.status(403)
-      // throw new Error(`You don't have permission to access this resource`);
-      res
-        .status(403)
-        .json({ message: `You don't have permission to access this resource` });
+
+    let roles = req.user.role;
+    let api = req.method + req.baseUrl;
+
+    for (let i in roles) {
+      console.log(roles)
+      Role.findOne({ role: roles[i] }).lean().then(({ role, accessRoutes }) => {
+        if (role === 'superAdmin' && accessRoutes.includes('*')) {
+          next()
+        }
+        else if (role !== 'superAdmin' && accessRoutes.includes(api)) {
+          next()
+        } else {
+          res
+            .status(403)
+            .json({ message: `You don't have permission to access this resource` });
+        }
+
+      }).catch((err) => {
+        res
+          .status(403)
+          .json({ message: `You don't have permission to access this resource` });
+      })
     }
   };
 };

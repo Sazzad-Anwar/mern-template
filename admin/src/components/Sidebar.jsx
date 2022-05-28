@@ -7,15 +7,14 @@ import { LOGOUT } from "../context/constants/AuthConstants";
 const { SubMenu } = Menu;
 
 const SideBar = ({ collapsed, menulist, admin }) => {
-  const { authDispatch } = useGlobalContext();
+  const { authDispatch, auth } = useGlobalContext();
   const navigate = useNavigate("/");
   const location = useLocation();
 
   return (
     <div
-      className={`${
-        collapsed ? "w-auto" : "w-72"
-      } normal-transition h-screen shadow-2xl`}
+      className={`${collapsed ? "w-auto" : "w-72"
+        } normal-transition h-screen shadow-2xl`}
     >
       <Menu
         defaultSelectedKeys={["/" + location.pathname.split("/")[1]]}
@@ -104,14 +103,13 @@ const SideBar = ({ collapsed, menulist, admin }) => {
           }
         })}
         <SubMenu
-          className={`absolute bottom-[55px] w-full ${
-            collapsed ? "py-0" : "pt-2 pb-4"
-          }`}
-          icon={<VscAccount size={28} />}
+          className={`absolute bottom-[55px] w-full ${collapsed ? "py-0" : "pt-2 pb-4"
+            }`}
+          icon={<VscAccount size={28} className="mb-2 p-0" />}
           key={admin.id}
           title={
             <div className="flex flex-col dark:text-white pb-2">
-              <span className="text-base">{admin.name}</span>
+              <span className="text-base truncate">{admin.name}</span>
               <span className="text-sm">{admin.email}</span>
             </div>
           }
@@ -125,20 +123,22 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                     onClick={() =>
                       authDispatch({ type: LOGOUT }, navigate("/login"))
                     }
-                    className={`text-base ${
-                      collapsed ? "pl-auto" : "pl-16"
-                    } dark:text-white`}
+                    className={`text-base ${collapsed ? "pl-auto" : "pl-16"
+                      } dark:text-white`}
                   >
                     <span className="dark:text-white">{subMenu.name}</span>
                   </Menu.Item>
                 );
-              } else {
+              }
+              else if (subMenu.superAdmin && !auth.user.role.includes("superAdmin")) {
+                return null;
+              }
+              else {
                 return (
                   <Menu.Item
                     key={subMenu.id}
-                    className={`text-base ${
-                      collapsed ? "pl-auto" : "pl-16"
-                    } dark:text-white`}
+                    className={`text-base ${collapsed ? "pl-auto" : "pl-16"
+                      } dark:text-white`}
                   >
                     <Link to={subMenu.link} className="dark:text-white">
                       {subMenu.name}
