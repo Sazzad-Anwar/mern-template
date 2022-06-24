@@ -11,7 +11,8 @@ let testApp = request(app);
 let accessToken = "";
 let superAdmin = {};
 let user = {};
-let role = {};
+// let userRole = {};
+// let superAdminRole = {};
 let userAccessToken = "";
 let refreshToken = "";
 
@@ -37,10 +38,8 @@ describe("Auth Route", () => {
         email: "admin@mail.com",
         phoneNumber: "01834123456",
         password: "admin123456",
-        role: ["superAdmin"],
+        role: "superAdmin",
       });
-
-      console.log(res)
 
       expect(res.status).toBe(201);
       expect(res.body.data).toBeDefined();
@@ -57,7 +56,7 @@ describe("Auth Route", () => {
         email: "johnDoe@mail.com",
         phoneNumber: "01712123456",
         password: "user123456",
-        role: ["user"],
+        role: "user",
       });
 
       await testApp.post('/roles').send({ role: 'superAdmin', accessRoutes: '*' })
@@ -98,6 +97,101 @@ describe("Auth Route", () => {
   })
 });
 
+
+/*
+* @Description: Test for Role 
+*/
+describe("Role route", () => {
+
+  describe('Create a role:/api/v1/roles', () => {
+
+    it("Should return 201 status code and set the access routes for admin", async () => {
+      const res = await testApp
+        .post('/api/v1/roles')
+        .set('Authorization', `Bearer ${accessToken}`)
+        .expect("Content-Type", /json/)
+        .send({
+          role: "Admin",
+          accessRoutes: ["GET/api/v1/users", "POST/api/v1/users", "PUT/api/v1/users", "DEL/api/v1/users"]
+        })
+      expect(res.status).toBe(201);
+      superAdminRole = res.body.data;
+    });
+
+    it("Should return 201 status code and set the access routes for users", async () => {
+      const res = await testApp
+        .post('/api/v1/roles')
+        .set('Authorization', `Bearer ${accessToken}`)
+        .expect("Content-Type", /json/)
+        .send({
+          role: 'user',
+          accessRoutes: ["GET/api/v1/users", "PUT/api/v1/users",]
+        })
+      expect(res.status).toBe(201);
+      userRole = res.body.data;
+    })
+
+    it("Should return 403 status code if the user is not super admin", async () => {
+      const res = await testApp
+        .post('/api/v1/roles')
+        .expect("Content-Type", /json/)
+        .send({
+          role: 'user',
+          accessRoutes: ["GET/api/v1/users", "PUT/api/v1/users",]
+        });
+      expect(res.status).toBe(401);
+    })
+  })
+
+  describe('Get role list:/api/v1/roles', () => {
+    it('Should return 200', async () => {
+      const res = await testApp.get('/api/v1/roles').set('Authorization', `Bearer ${accessToken}`);
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe('success');
+      expect(res.body.data).toBeDefined();
+    })
+
+    it('Should return 403 if the user is not superAdmin', async () => {
+      const res = await testApp.get('/api/v1/roles').set('Authorization', `Bearer ${userAccessToken}`);
+      expect(res.status).toBe(403);
+    })
+  })
+
+  describe('Update a role:/api/v1/roles/:id', () => {
+    it('Should return 200', async () => {
+      const res = await testApp
+        .put(`/api/v1/roles/${userRole._id}`)
+        .set('Authorization', `Bearer ${accessToken}`)
+        .send({ role: 'admin', accessRoutes: ["GET/api/v1/users", "PUT/api/v1/users"] });
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe('success');
+      expect(res.body.data).toBeDefined();
+    })
+
+    it('Should return 403 if the user is not superAdmin', async () => {
+      const res = await testApp
+        .put(`/api/v1/roles/${userRole._id}`)
+        .set('Authorization', `Bearer ${userAccessToken}`)
+        .send({ role: 'admin', accessRoutes: ["GET/api/v1/users", "PUT/api/v1/users"] });
+      expect(res.status).toBe(403);
+    })
+  })
+
+  describe('Delete role list:/api/v1/roles/:id', () => {
+    it('Should return 200', async () => {
+      const res = await testApp.delete(`/api/v1/roles/${userRole._id}`).set('Authorization', `Bearer ${accessToken}`)
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe('success');
+    })
+
+    it('Should return 403 if the user is not superAdmin', async () => {
+      const res = await testApp.delete(`/api/v1/roles/${userRole._id}`).set('Authorization', `Bearer ${userAccessToken}`)
+      expect(res.status).toBe(403);
+    })
+  })
+
+})
+
 /*
  * @Description: Get all users list as Super admin
  */
@@ -119,7 +213,7 @@ describe("Users route", () => {
     describe("If the login user is not 'Super Admin'", () => {
       it("Should return 403", async () => {
         const res = await testApp
-          .get("/api/v1/users")
+          .get(`/api/v1/roles`)
           .set("Authorization", `Bearer ${userAccessToken}`);
         expect(res.status).toBe(403);
       });
@@ -141,7 +235,7 @@ describe("Users route", () => {
             email: "johnDoe1@mail.com",
             phoneNumber: "01712123457",
             password: "user123456",
-            role: ["user"],
+            role: "user",
           });
         expect(res.status).toBe(200);
         expect(res.body.status).toBe("success");
@@ -159,55 +253,14 @@ describe("Users route", () => {
             email: "johnDoe1@mail.com",
             phoneNumber: "01712123457",
             password: "user123456",
-            role: ["user"],
+            role: "user",
           });
-        expect(res.status).toBe(200);
-        expect(res.body.status).toBe("success");
+        expect(res.status).toBe(403);
       });
     });
   });
 });
 
-/*
-* @Description: Test for Role 
-*/
-describe("Role route", () => {
-  describe('Create a role:/api/v1/roles', () => {
-    it('Should return 201', async () => {
-      const res = await testApp.post('/api/v1/roles').set('Authorization', `Bearer ${accessToken}`).send({ role: 'admin' });
-      expect(res.status).toBe(201);
-      expect(res.body.status).toBe('success');
-      role = res.body.data;
-    })
-  })
-
-  describe('Get role list:/api/v1/roles', () => {
-    it('Should return 200', async () => {
-      const res = await testApp.get('/api/v1/roles').set('Authorization', `Bearer ${accessToken}`);
-      expect(res.status).toBe(200);
-      expect(res.body.status).toBe('success');
-      expect(res.body.data).toBeDefined();
-    })
-  })
-
-  describe('Update role list:/api/v1/roles/:id', () => {
-    it('Should return 200', async () => {
-      const res = await testApp.put(`/api/v1/roles/${role._id}`).set('Authorization', `Bearer ${accessToken}`).send({ role: 'admin' });
-      expect(res.status).toBe(200);
-      expect(res.body.status).toBe('success');
-      expect(res.body.data).toBeDefined();
-    })
-  })
-
-  describe('Delete role list:/api/v1/roles/:id', () => {
-    it('Should return 200', async () => {
-      const res = await testApp.delete(`/api/v1/roles/${role._id}`).set('Authorization', `Bearer ${accessToken}`)
-      expect(res.status).toBe(200);
-      expect(res.body.status).toBe('success');
-    })
-  })
-
-})
 
 /*
 * @Description: Test the api route for role management

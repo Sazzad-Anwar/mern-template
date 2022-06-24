@@ -25,7 +25,7 @@ export default function Registration() {
                     phoneNumber,
                     email,
                     password,
-                    role: ['superAdmin']
+                    role: 'superAdmin'
                 });
                 await axiosInstance.post('/roles', { role: 'superAdmin', accessRoutes: ['*'] })
                 authDispatch({
@@ -45,7 +45,7 @@ export default function Registration() {
         console.log("Failed:", errorInfo);
     };
 
-    if (auth.user && (auth.user.role.includes('admin') || auth.user.role.includes('superAdmin'))) {
+    if (auth.user && (auth.user.role === ('admin') || auth.user.role === ('superAdmin'))) {
         return <Navigate to="/" />
     }
 

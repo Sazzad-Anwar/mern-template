@@ -6,5 +6,4 @@ const roleSchema = new Schema({
     accessRoutes: [{ type: String, index: true }]
 }, { timestamps: true });
 
-
 module.exports = mongoose.model('Role', roleSchema);

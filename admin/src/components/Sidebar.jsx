@@ -109,8 +109,8 @@ const SideBar = ({ collapsed, menulist, admin }) => {
           key={admin.id}
           title={
             <div className="flex flex-col dark:text-white pb-2">
-              <span className="text-base truncate">{admin.name}</span>
-              <span className="text-sm">{admin.email}</span>
+              <span className="text-sm truncate">{admin.name}</span>
+              <span className="text-xs text-blue-500 font-bold">{auth.user.role.toUpperCase()}</span>
             </div>
           }
         >
@@ -130,7 +130,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                   </Menu.Item>
                 );
               }
-              else if (subMenu.superAdmin && !auth.user.role.includes("superAdmin")) {
+              else if (subMenu.superAdmin && !auth.user.role === ("superAdmin")) {
                 return null;
               }
               else {

@@ -11,19 +11,11 @@ import AdminLayout from "../layouts/AdminLayout";
 
 export default function UserDetails() {
   const { id } = useParams();
-  const { data, error } = useSWR(`/users/${id}`, Fetcher);
-  const { authDispatch } = useGlobalContext();
+  const { auth } = useGlobalContext();
+  const { data } = useSWR(`/users/${id}`, Fetcher);
+  const { data: roles } = useSWR('/roles', Fetcher);
 
   let user = data && data.data;
-
-  useEffect(() => {
-    if (error && error?.message.split(" ").includes("401")) {
-      authDispatch({
-        type: "LOGOUT",
-      });
-      toast.error("Your session is expired! please login again!");
-    }
-  }, [error, authDispatch]);
 
   let breadcrumbs = [
     {
@@ -133,6 +125,7 @@ export default function UserDetails() {
                 </Radio.Group>
               </Form.Item>
 
+
               <Form.Item
                 label={<span className="text-lg dark:text-white">Role</span>}
                 name="role"
@@ -143,22 +136,16 @@ export default function UserDetails() {
                   },
                 ]}
               >
-                <Checkbox.Group>
-                  <Checkbox value="admin" className="dark:text-white">
-                    Admin
-                  </Checkbox>
-                  {user.role.includes("superAdmin") && (
-                    <Checkbox
-                      disabled={user.role.includes("superAdmin") ? true : false}
-                      value="superAdmin"
-                    >
-                      Super Admin
-                    </Checkbox>
-                  )}
-                  <Checkbox value="user" className="dark:text-white">
-                    User
-                  </Checkbox>
-                </Checkbox.Group>
+                <Radio.Group>
+                  {roles && roles?.data.map(role => {
+                    // if (role.role === 'superAdmin') {
+                    //   return null;
+                    // }
+                    return (
+                      <Radio key={role._id} className="dark:text-white" disabled={auth && auth.user.role === ('superAdmin')} value={role.role}>{role.role.toUpperCase()}</Radio>
+                    )
+                  })}
+                </Radio.Group>
               </Form.Item>
 
               <Form.Item>

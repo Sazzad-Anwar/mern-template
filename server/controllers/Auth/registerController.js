@@ -34,7 +34,7 @@ const registrationController = expressAsyncHandler(async (req, res) => {
       email,
       password,
       phoneNumber,
-      role: role ?? ["user"],
+      role: role ?? "user",
     });
 
     let user = {

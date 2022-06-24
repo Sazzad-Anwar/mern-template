@@ -16,7 +16,8 @@ const updateRole = expressAsyncHandler(async (req, res) => {
     const roleExist = await Role.findByIdAndUpdate(id);
 
     if (!roleExist) {
-        return res.status(404).json({
+        console.log(404)
+        res.status(404).json({
             status: 'failed',
             message: 'Role does not exist',
         });

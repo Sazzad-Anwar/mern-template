@@ -51,12 +51,13 @@ app.get("/api/v1/checkStatus", (req, res) =>
   res.json({ status: "Ok", host: req.hostname })
 );
 
+app.use(notFound);
 app.use(errorHandler);
 
 app.get("*", (req, res) => {
   res.sendFile(join(__dirname, "build", "index.html"));
   console.log("Build file connected");
 });
-app.use(notFound);
+
 
 module.exports = app;

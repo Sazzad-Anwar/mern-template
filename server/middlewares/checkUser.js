@@ -6,15 +6,15 @@ module.exports = function hasPermission() {
     let roles = req.user.role;
     let api = req.method + req.baseUrl;
 
-    for (let i in roles) {
-      console.log(roles)
-      Role.findOne({ role: roles[i] }).lean().then(({ role, accessRoutes }) => {
-        if (role === 'superAdmin' && accessRoutes.includes('*')) {
+    if (roles.includes('superAdmin')) {
+      next();
+    } else {
+
+      Role.findOne({ role: roles[0] }).lean().then(({ role, accessRoutes }) => {
+        if (accessRoutes.includes(api)) {
           next()
         }
-        else if (role !== 'superAdmin' && accessRoutes.includes(api)) {
-          next()
-        } else {
+        else {
           res
             .status(403)
             .json({ message: `You don't have permission to access this resource` });

@@ -9,6 +9,7 @@
         "dev-server": "set NODE_ENV=development && nodemon -L ./server/index.js",
         "dev-admin": "cd ./admin && yarn start",
         "test": "set NODE_ENV=test && jest --runInBand --detectOpenHandles",
+        "test:watch": "set NODE_ENV=test && jest --runInBand --detectOpenHandles --watch",
         "format": "prettier --write server && prettier --write admin/src",
         "dev": "concurrently \"yarn dev-server\" \"yarn dev-admin\"",
         "request-handle-check": "autocannon -c 10 http://localhost:8080/api/v1/checkStatus",

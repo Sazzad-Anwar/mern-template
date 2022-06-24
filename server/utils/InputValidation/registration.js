@@ -9,7 +9,7 @@ const registrationRequestVariables = joi.object({
   email: joi.string().email().required(),
   password: joi.string().required(),
   phoneNumber: joi.string().required(),
-  role: joi.array(),
+  role: joi.string(),
 });
 
 module.exports = registrationRequestVariables;

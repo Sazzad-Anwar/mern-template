@@ -19,13 +19,12 @@ const userSchema = new Schema(
       index: true,
     },
     password: { type: String, required: [true, "Password is required"] },
-    role: [
-      {
-        type: String,
-        required: [true, "Role is required"],
-        default: "user",
-      },
-    ],
+    role: {
+      type: String,
+      required: [true, "Role is required"],
+      default: "user",
+    },
+
     isActive: { type: Boolean, default: false },
     refreshToken: { type: String, default: "" },
     avatarUrl: { type: String, default: "" },

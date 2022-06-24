@@ -13,7 +13,7 @@ const Header = ({ setShowSidebar, showSidebar, breadcrumbs }) => {
             onClick={() => {
               setShowSidebar(!showSidebar);
             }}
-            className="absolute top-1/2 left-3 -translate-y-1/2 scale-100 cursor-pointer rounded-md p-2 active:scale-90 bg-transparent hover:bg-gray-300 dark:bg-transparent hover:dark:bg-gray-600 normal-transition"
+            className="absolute flex justify-center items-center rounded-full top-1/2 left-3 -translate-y-1/2 scale-100 cursor-pointer p-2 active:scale-90 bg-transparent hover:bg-gray-300 dark:bg-transparent hover:dark:bg-black normal-transition"
           >
             {showSidebar ? (
               <RiMenuUnfoldLine className="normal-transition text-2xl text-black active:rotate-[360deg] dark:text-white" />

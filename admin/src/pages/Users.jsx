@@ -93,16 +93,12 @@ export default function Users() {
       render: (role) => {
         return (
           <div>
-            {role.map((item) => {
-              return (
-                <Tag
-                  color={item === "superAdmin" ? "blue" : "green"}
-                  key={item}
-                >
-                  {item}
-                </Tag>
-              );
-            })}
+            <Tag
+              color={role === "superAdmin" ? "blue" : "green"}
+              key={role}
+            >
+              {role}
+            </Tag>
           </div>
         );
       },

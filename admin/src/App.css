@@ -196,3 +196,7 @@ html.dark .search-input .ant-input.ant-input-lg {
 html.dark .search-input .anticon.anticon-close-circle {
     color: #fff !important;
 }
+
+html.dark .ant-radio-wrapper-disabled .ant-radio.ant-radio-disabled + span {
+    color: #9c9c9c !important;
+}
