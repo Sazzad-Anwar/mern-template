@@ -17,7 +17,7 @@ let userAccessToken = "";
 let refreshToken = "";
 
 /*
- * Test case for checking api
+ * ********************* Test case for checking api **********************************
  */
 describe("Check API", () => {
   it("should return 200", async () => {
@@ -27,7 +27,7 @@ describe("Check API", () => {
 });
 
 /*
- * @Description: Registration route test
+ * *********************** @Description: Registration route test ***********************
  */
 describe("Auth Route", () => {
   // Register
@@ -99,7 +99,7 @@ describe("Auth Route", () => {
 
 
 /*
-* @Description: Test for Role 
+* **************************** @Description: Test for Role ******************************
 */
 describe("Role route", () => {
 
@@ -193,7 +193,7 @@ describe("Role route", () => {
 })
 
 /*
- * @Description: Get all users list as Super admin
+ * **************************** @Description: Get all users list as Super admin ***********************
  */
 describe("Users route", () => {
   /*
@@ -221,7 +221,7 @@ describe("Users route", () => {
   });
 
   /*
-   * @Description: Update a user details
+   * ********************************* @Description: Update a user details ***************************
    */
   describe(`Get all users:/api/v1/users/${user._id}`, () => {
     describe("If the login user is 'Super Admin'", () => {
@@ -263,7 +263,7 @@ describe("Users route", () => {
 
 
 /*
-* @Description: Test the api route for role management
+* ************************* @Description: Test the api route for role management ****************************
 */
 describe('Get all api routes:/api/v1/', () => {
   it('Should return 200', async () => {
