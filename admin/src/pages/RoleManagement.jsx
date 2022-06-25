@@ -90,7 +90,7 @@ function RoleManagement() {
         <Suspense fallback={<Loader />}>
             <AdminLayout breadcrumbs={breadcrumbs}>
                 <div className="container mx-auto mt-5 flex flex-col lg:flex-row items-start">
-                    <div className="w-full h-full lg:w-64 pr-5 border-r dark:border-gray-600">
+                    <div className="w-full h-full lg:w-64 pr-5 border-b lg:border-b-0 lg:border-r dark:border-gray-600 pb-5">
                         {roleArray && roleArray?.data.map(role => {
                             if (role.role === 'superAdmin') {
                                 return null;
@@ -111,10 +111,10 @@ function RoleManagement() {
 
                         <Button type="primary" className="mt-5 dark:text-white text-blue-600 hover:text-white" onClick={() => setShowModal(true)}>Add new</Button>
                     </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-5 px-5">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 mt-4 lg:ml-5">
                         {apis?.data.map(({ api, _id }) => (
-                            <Checkbox key={_id} disabled={!selectedRole?._id} className="dark:text-white" checked={selectedRoleAccessRoutes.includes(api)} onChange={(e) => addRoute(api, e)}>
-                                <Tag key={api} color="green" className="text-base">{api}</Tag>
+                            <Checkbox key={_id} disabled={!selectedRole?._id} className="dark:text-white mx-0" checked={selectedRoleAccessRoutes.includes(api)} onChange={(e) => addRoute(api, e)}>
+                                <Tag key={api} color={api.startsWith('GET') ? "green" : api.startsWith('POST') ? "purple" : api.startsWith('PUT') ? "blue" : "red"} className="text-base">{api}</Tag>
                             </Checkbox>
                         ))}
                     </div>

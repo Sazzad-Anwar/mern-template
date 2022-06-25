@@ -22,7 +22,7 @@ const Header = ({ setShowSidebar, showSidebar, breadcrumbs }) => {
             )}
           </button>
         </div>
-        <div className="mr-auto ml-5 md:ml-0">
+        <div className="mr-auto ml-5 md:ml-0 lg:ml-5 2xl:ml-0">
           <div className="flex items-center dark:text-white">
             {breadcrumbs.map((crumb, index) => {
               if (crumb.isLink && index !== breadcrumbs.length) {

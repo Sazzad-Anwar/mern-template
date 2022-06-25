@@ -104,13 +104,13 @@ export default function AdminLayout({ children, breadcrumbs }) {
     <div className="flex w-full items-start bg-gray-100 dark:bg-gray-800">
       <Affix>
         <div>
-          <div className="flex items-center justify-center pb-2">
+          <div className="flex items-center justify-center py-4 bg-gray-100 border-b border-r dark:border-gray-800 dark:bg-gray-900">
             <img
               src="/logo192.png"
               className={
                 collapsed
-                  ? "normal-transition rounded-full h-14 w-14 animate-spin"
-                  : "normal-transition h-auto w-14 animate-spin"
+                  ? "normal-transition rounded-full h-8 w-8 animate-spin"
+                  : "normal-transition h-auto w-8 animate-spin"
               }
               alt="logo"
             />

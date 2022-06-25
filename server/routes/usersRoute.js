@@ -10,6 +10,7 @@ const hasSuperAdmin = require("../controllers/users/hasSuperAdmin");
 const getUserDetailsUpdate = require("../controllers/users/updateUserDetails");
 const checkUser = require("../middlewares/checkUser");
 const router = Router();
+const axios = require('axios');
 
 /*
 * * @Description: Get all users
@@ -24,7 +25,6 @@ router
     checkUser(),
     getAllUsersController
   );
-
 
 /*
 * * @Description: Get a user's details
@@ -60,5 +60,12 @@ router
     checkUser(),
     deleteUser
   );
+
+/*
+* * @Description: Call the routes to save the api end point in db;
+*/
+axios.get(`http://localhost:8080/api/v1/users`).catch(error => console.log(error.message))
+axios.put(`http://localhost:8080/api/v1/users/someUser`).catch(error => console.log(error.message))
+axios.delete(`http://localhost:8080/api/v1/users/someUser`).catch(error => console.log(error.message))
 
 module.exports = router;

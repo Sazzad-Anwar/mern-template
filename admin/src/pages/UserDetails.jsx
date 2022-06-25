@@ -154,6 +154,7 @@ export default function UserDetails() {
                   size="large"
                   className="w-full dark:text-white text-blue-600 hover:text-white"
                   type="primary"
+                  disabled={user && user.role === "superAdmin" && auth && auth.user.role !== "superAdmin"}
                 >
                   Save
                 </Button>

@@ -110,7 +110,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
           title={
             <div className="flex flex-col dark:text-white pb-2">
               <span className="text-sm truncate">{admin.name}</span>
-              <span className="text-xs text-blue-500 font-bold">{auth.user.role.toUpperCase()}</span>
+              <span className="text-xs text-purple-500 font-bold">{auth.user.role.toUpperCase()}</span>
             </div>
           }
         >

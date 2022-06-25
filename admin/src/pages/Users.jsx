@@ -165,7 +165,7 @@ export default function Users() {
                 <AiFillDelete />
               </div>
             }
-            disabled={record.role[0] === "superAdmin"}
+            disabled={record.role === "superAdmin"}
             danger
             onClick={() => deleteUser(record._id)}
           />
