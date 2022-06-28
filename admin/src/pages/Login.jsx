@@ -4,7 +4,7 @@ import { MdEmail } from "react-icons/md";
 import Typical from "react-typical";
 import { FiKey } from "react-icons/fi";
 import { AiFillLock } from "react-icons/ai";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContextProvider";
 import { toast } from "react-toastify";
 import axiosInstance from "../components/AxiosInstance";

@@ -1,5 +1,5 @@
-import { Avatar, Button, Checkbox, Form, Input, Radio } from "antd";
-import React, { useEffect } from "react";
+import { Avatar, Button, Form, Input, Radio } from "antd";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useSWR, { mutate } from "swr";
