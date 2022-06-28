@@ -32,19 +32,20 @@ export default function ForgotPassword() {
             alt="login"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-md">
-            <h1 className="text-white xl:text-5xl">Medi Career</h1>
-            <p className="text-2xl text-white">
+            <img className="h-20 w-20" src="/logo192.png" alt="logo" />
+            <h1 className="text-white xl:text-5xl">Admin Panel</h1>
+            <div className="text-2xl text-white">
               <Typical
                 steps={[
-                  "Join us for preparation to serve the nation and",
-                  3000,
-                  "Take your career to the next level",
+                  "Take your app access without any hassle",
+                  2000,
+                  "Get a fast & smooth user experience.",
                   3000,
                 ]}
                 loop={Infinity}
                 wrapper="p"
               />
-            </p>
+            </div>
           </div>
         </div>
 

@@ -62,7 +62,7 @@ export default function Registration() {
                     alt="login"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-md">
-                    <img className="h-20 w-20 animate-spin" src="/logo192.png" alt="logo" />
+                    <img className="h-20 w-20" src="/logo192.png" alt="logo" />
                     <h1 className="text-white xl:text-5xl">Admin Panel</h1>
                     <div className="text-2xl text-white">
                         <Typical

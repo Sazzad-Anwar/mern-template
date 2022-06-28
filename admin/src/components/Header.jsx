@@ -7,7 +7,7 @@ import { nanoid } from "nanoid";
 const Header = ({ setShowSidebar, showSidebar, breadcrumbs }) => {
   return (
     <header className="normal-transition sticky top-0 z-20 h-16 min-w-full border-b border-b-gray-300 bg-gray-100 py-2.5 dark:border-b-gray-900 dark:bg-gray-900">
-      <div className="container mx-auto flex h-full items-center justify-between">
+      <div className="mx-5 flex h-full items-center justify-between">
         <div className="normal-transition font-nunito purple-text flex w-auto items-center py-0 text-2xl font-extrabold">
           <button
             onClick={() => {
@@ -22,7 +22,7 @@ const Header = ({ setShowSidebar, showSidebar, breadcrumbs }) => {
             )}
           </button>
         </div>
-        <div className="mr-auto ml-5 md:ml-0 lg:ml-5 2xl:ml-0">
+        <div className="mr-auto ml-10">
           <div className="flex items-center dark:text-white">
             {breadcrumbs.map((crumb, index) => {
               if (crumb.isLink && index !== breadcrumbs.length) {

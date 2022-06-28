@@ -109,8 +109,8 @@ export default function AdminLayout({ children, breadcrumbs }) {
               src="/logo192.png"
               className={
                 collapsed
-                  ? "normal-transition rounded-full h-8 w-8 animate-spin"
-                  : "normal-transition h-auto w-8 animate-spin"
+                  ? "normal-transition rounded-full h-8 w-8"
+                  : "normal-transition h-auto w-8"
               }
               alt="logo"
             />
@@ -133,7 +133,7 @@ export default function AdminLayout({ children, breadcrumbs }) {
           showSidebar={collapsed}
           breadcrumbs={breadcrumbs}
         />
-        <main className="normal-transition ml-auto overflow-auto">
+        <main className="normal-transition ml-auto overflow-auto px-5">
           <CheckTokenValidation />
           {children}
         </main>

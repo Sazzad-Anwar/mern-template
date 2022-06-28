@@ -14,14 +14,14 @@ const SideBar = ({ collapsed, menulist, admin }) => {
   return (
     <div
       className={`${collapsed ? "w-auto" : "w-72"
-        } normal-transition h-screen shadow-2xl`}
+        } normal-transition h-screen border-r dark:border-gray-700`}
     >
       <Menu
         defaultSelectedKeys={["/" + location.pathname.split("/")[1]]}
         defaultOpenKeys={[location.pathname.split("/")[1]]}
         mode="inline"
         inlineCollapsed={collapsed}
-        className="h-full relative border-r"
+        className="h-full relative"
       >
         {menulist.map((menu) => {
           if (menu.hasSubMenu) {

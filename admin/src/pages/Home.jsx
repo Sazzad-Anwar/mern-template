@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <Suspense fallback={<Loader />}>
       <Layout breadcrumbs={breadcrumbs}>
-        <div className="container mx-auto py-6">
+        <div className="py-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             <PontDetailsCard
               icon={<BsPeopleFill className="dark:text-white" size={30} />}

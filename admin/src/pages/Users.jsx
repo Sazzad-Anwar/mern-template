@@ -198,7 +198,7 @@ export default function Users() {
 
   return (
     <AdminLayout breadcrumbs={breadcrumbs}>
-      <div className="container mx-auto py-10">
+      <div className="py-10">
         <div className="flex justify-end">
           <div className="mb-4">
             <Search

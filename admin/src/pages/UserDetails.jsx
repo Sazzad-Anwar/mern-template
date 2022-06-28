@@ -47,7 +47,7 @@ export default function UserDetails() {
 
   return (
     <AdminLayout breadcrumbs={breadcrumbs}>
-      <div className="my-10 container mx-auto rounded p-5">
+      <div className="my-10 rounded p-5">
         {user && user !== "undefined" ? (
           <div className="w-96 mx-auto">
             <div className="text-center mb-5">
