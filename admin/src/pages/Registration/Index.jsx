@@ -5,13 +5,13 @@ import Typical from "react-typical";
 import { FiKey } from "react-icons/fi";
 import { AiFillLock } from "react-icons/ai";
 import { Link, Navigate } from "react-router-dom";
-import { useGlobalContext } from "../context/GlobalContextProvider";
+import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { toast } from "react-toastify";
-import axiosInstance from "../components/AxiosInstance";
+import axiosInstance from "../../utils/AxiosInstance";
 import useSWR from 'swr'
-import Fetcher from "../components/Fetcher";
+import Fetcher from "../../utils/Fetcher";
 import { BsPersonCircle, BsTelephoneFill } from "react-icons/bs";
-import { REGISTRATION } from "../context/constants/AuthConstants";
+import { REGISTRATION } from "../../context/constants/AuthConstants";
 
 export default function Registration() {
     const { auth, authDispatch } = useGlobalContext();

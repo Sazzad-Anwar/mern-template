@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AdminLayout from "../layouts/AdminLayout";
+import AdminLayout from "../../layouts/AdminLayout/Index";
 import { FiEdit3 } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import { Avatar, Button, Table, Tag, Input } from "antd";
-import Fetcher from "../components/Fetcher";
+import Fetcher from "../../utils/Fetcher";
 import useSWR, { mutate } from "swr";
-import { useGlobalContext } from "../context/GlobalContextProvider";
+import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { toast } from "react-toastify";
-import axiosInstance from "../components/AxiosInstance";
+import axiosInstance from "../../utils/AxiosInstance";
 
 const { Search } = Input;
 

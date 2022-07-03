@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import React, { Fragment, lazy, Suspense } from "react";
-import DarkModeToggler from "./DarkmodeToggler";
-const SingleApi = lazy(() => import("./SingleApi"));
+import DarkModeToggler from "../DarkModeToggler/Index";
+const SingleApi = lazy(() => import("../SingleApi/Index"));
 
 //main component
 const Documentation = ({ src, title, className }) => {

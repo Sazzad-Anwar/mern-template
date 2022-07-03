@@ -4,12 +4,12 @@ import { RiDashboardLine } from "react-icons/ri";
 import { ImUsers } from "react-icons/im";
 import { AiFillCode } from "react-icons/ai";
 import { Navigate, useLocation } from "react-router-dom";
-import { useGlobalContext } from "../context/GlobalContextProvider";
-import Loader from "../components/Loader";
-import { APP_NAME } from "../app.config";
-import CheckTokenValidation from "../components/CheckTokenValidation";
-const SideBar = lazy(() => import("../components/Sidebar"));
-const Header = lazy(() => import("../components/Header"));
+import { useGlobalContext } from "../../context/GlobalContextProvider";
+import Loader from "../../components/Loader/Index";
+import { APP_NAME } from "../../app.config";
+import CheckTokenValidation from "../../utils/CheckTokenValidation";
+const SideBar = lazy(() => import("../../components/Sidebar/Index"));
+const Header = lazy(() => import("../../components/Header/Index"));
 
 export default function AdminLayout({ children, breadcrumbs }) {
   const [collapsed, setCollapsed] = useState(false);

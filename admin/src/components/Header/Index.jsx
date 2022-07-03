@@ -1,7 +1,7 @@
 import { FiChevronsRight } from "react-icons/fi";
 import { RiMenuFoldLine, RiMenuUnfoldLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import DarkModeToggler from "./DarkmodeToggler";
+import DarkModeToggler from "../DarkModeToggler/Index";
 import { nanoid } from "nanoid";
 
 const Header = ({ setShowSidebar, showSidebar, breadcrumbs }) => {

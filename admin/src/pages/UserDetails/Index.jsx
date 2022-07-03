@@ -3,11 +3,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useSWR, { mutate } from "swr";
-import axiosInstance from "../components/AxiosInstance";
-import Fetcher from "../components/Fetcher";
-import Loader from "../components/Loader";
-import { useGlobalContext } from "../context/GlobalContextProvider";
-import AdminLayout from "../layouts/AdminLayout";
+import axiosInstance from "../../utils/AxiosInstance";
+import Fetcher from "../../utils/Fetcher";
+import Loader from "../../components/Loader/Index";
+import { useGlobalContext } from "../../context/GlobalContextProvider";
+import AdminLayout from "../../layouts/AdminLayout/Index";
 
 export default function UserDetails() {
   const { id } = useParams();

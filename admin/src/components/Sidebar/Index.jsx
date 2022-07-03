@@ -1,8 +1,8 @@
 import { Menu } from "antd";
 import { VscAccount } from "react-icons/vsc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../context/GlobalContextProvider";
-import { LOGOUT } from "../context/constants/AuthConstants";
+import { useGlobalContext } from "../../context/GlobalContextProvider";
+import { LOGOUT } from "../../context/constants/AuthConstants";
 
 const { SubMenu } = Menu;
 

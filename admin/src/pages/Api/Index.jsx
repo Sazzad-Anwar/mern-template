@@ -1,7 +1,7 @@
 import React from "react";
-import Documentation from "../components/Documentation";
-import apiJSON from "../APi.json";
-import { useGlobalContext } from "../context/GlobalContextProvider";
+import Documentation from "../../components/Documentation/Index";
+import apiJSON from "../../APi.json";
+import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { Navigate, useLocation } from "react-router-dom";
 
 export default function Api() {

@@ -2,10 +2,10 @@ import React, { Suspense, lazy } from "react";
 import { BsPeopleFill } from "react-icons/bs";
 import { GoPackage } from "react-icons/go";
 import { FaBook } from "react-icons/fa";
-import Loader from "../components/Loader";
-import PontDetailsCard from "../components/PontDetailsCard";
+import Loader from "../../components/Loader/Index";
+import PontDetailsCard from "../../components/PointDetailsCard/Index";
 import { RiUserSearchLine } from "react-icons/ri";
-const Layout = lazy(() => import("../layouts/AdminLayout"));
+const Layout = lazy(() => import("../../layouts/AdminLayout/Index"));
 
 export default function Home() {
   let breadcrumbs = [

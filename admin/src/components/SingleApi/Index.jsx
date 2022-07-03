@@ -12,9 +12,9 @@ import {
   BsCaretRightFill,
   BsCaretDownFill,
 } from "react-icons/bs";
-import Loader from "./Loader";
-import { API_URL } from "../app.config";
-import axiosInstance from "./AxiosInstance";
+import Loader from "../Loader/Index";
+import { API_URL } from "../../app.config";
+import axiosInstance from "../../utils/AxiosInstance";
 const ReactJson = lazy(() => import("react-json-view"));
 
 const SingleApi = ({ api, index }) => {
@@ -184,16 +184,14 @@ const SingleApi = ({ api, index }) => {
             setAPIresponse({});
           }
         }}
-        className={`w-full cursor-pointer ${
-          open ? "rounded-b-none rounded-tl-2xl rounded-tr-2xl" : "rounded-full"
-        } flex items-center border-transparent bg-white px-1 py-1 dark:border dark:border-gray-600 dark:bg-gray-800 `}
+        className={`w-full cursor-pointer ${open ? "rounded-b-none rounded-tl-2xl rounded-tr-2xl" : "rounded-full"
+          } flex items-center border-transparent bg-white px-1 py-1 dark:border dark:border-gray-600 dark:bg-gray-800 `}
       >
         <span
-          className={`flex items-center justify-center px-2.5 py-1 ${
-            open
-              ? "bg-green-700 text-white dark:bg-green-600"
-              : "bg-gray-300 dark:bg-gray-600"
-          } mr-1 rounded-full font-medium  dark:text-white`}
+          className={`flex items-center justify-center px-2.5 py-1 ${open
+            ? "bg-green-700 text-white dark:bg-green-600"
+            : "bg-gray-300 dark:bg-gray-600"
+            } mr-1 rounded-full font-medium  dark:text-white`}
         >
           {index + 1}
         </span>
@@ -210,15 +208,14 @@ const SingleApi = ({ api, index }) => {
         <div className="border-t-none animate__animated animate__fadeIn rounded-t-none rounded-bl-2xl rounded-br-2xl border-0 border-gray-400 bg-white py-3 px-5 dark:border dark:border-gray-600 dark:bg-gray-900">
           <h1 className="font-ubuntu my-3 text-lg dark:text-white flex">
             <span
-              className={` ${
-                api.method === "GET"
-                  ? "text-green-700 dark:text-green-500"
-                  : api.method === "POST"
+              className={` ${api.method === "GET"
+                ? "text-green-700 dark:text-green-500"
+                : api.method === "POST"
                   ? "text-[#FF6C37]"
                   : api.method === "PUT"
-                  ? "text-blue-700 dark:text-blue-500"
-                  : "text-red-700 dark:text-red-500"
-              }  font-semibold`}
+                    ? "text-blue-700 dark:text-blue-500"
+                    : "text-red-700 dark:text-red-500"
+                }  font-semibold`}
             >
               {api.method}
             </span>
@@ -252,11 +249,10 @@ const SingleApi = ({ api, index }) => {
               <div
                 onClick={() => setCurrentOption(option.name)}
                 key={option.name}
-                className={`${
-                  currentOption === option.name
-                    ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
-                    : "border-b-2 border-transparent"
-                } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
+                className={`${currentOption === option.name
+                  ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
+                  : "border-b-2 border-transparent"
+                  } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
               >
                 {option.label}
               </div>
@@ -322,7 +318,7 @@ const SingleApi = ({ api, index }) => {
 
           <div className="my-4">
             {Object.keys(api.url.variables).length !== 0 &&
-            currentOption === "pathVariables" ? (
+              currentOption === "pathVariables" ? (
               <Suspense fallback={<Loader />}>
                 <ReactJson
                   src={pathVariablesObject}

@@ -1,15 +1,15 @@
 import React, { Suspense, lazy, useState } from "react";
 import useSWR, { mutate } from "swr";
-import Fetcher from "../components/Fetcher";
-import Loader from "../components/Loader";
+import Fetcher from "../../utils/Fetcher";
+import Loader from "../../components/Loader/Index";
 import { toast } from "react-toastify";
-import axiosInstance from "../components/AxiosInstance";
+import axiosInstance from "../../utils/AxiosInstance";
 import { Button, Checkbox, Form, Input, Tag } from "antd";
-import Modal from '../components/Modal';
+import Modal from '../../components/Modal/Index';
 import { ImBin } from "react-icons/im";
-import { useGlobalContext } from "../context/GlobalContextProvider";
+import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { Navigate } from "react-router-dom";
-const AdminLayout = lazy(() => import("../layouts/AdminLayout"));
+const AdminLayout = lazy(() => import("../../layouts/AdminLayout/Index"));
 
 function RoleManagement() {
     const { auth } = useGlobalContext();
