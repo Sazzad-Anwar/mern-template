@@ -12,6 +12,7 @@ import useSWR from 'swr'
 import Fetcher from "../../utils/Fetcher";
 import { BsPersonCircle, BsTelephoneFill } from "react-icons/bs";
 import { REGISTRATION } from "../../context/constants/AuthConstants";
+import { APP_MOTTO_1, APP_MOTTO_2, APP_NAME } from "../app.config";
 
 export default function Registration() {
     const { auth, authDispatch } = useGlobalContext();
@@ -63,13 +64,13 @@ export default function Registration() {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-md">
                     <img className="h-20 w-20" src="/logo192.png" alt="logo" />
-                    <h1 className="text-white xl:text-5xl">Admin Panel</h1>
+                    <h1 className="text-white xl:text-5xl">{APP_NAME}</h1>
                     <div className="text-2xl text-white">
                         <Typical
                             steps={[
-                                "Take your app access without any hassle",
+                                APP_MOTTO_1,
                                 2000,
-                                "Get a fast & smooth user experience.",
+                                APP_MOTTO_2,
                                 3000,
                             ]}
                             loop={Infinity}

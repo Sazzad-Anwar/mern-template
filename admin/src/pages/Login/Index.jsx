@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import axiosInstance from "../../utils/AxiosInstance";
 import useSWR from 'swr'
 import Fetcher from "../../utils/Fetcher";
+import { APP_MOTTO_1, APP_MOTTO_2, APP_NAME } from "../app.config";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -75,13 +76,13 @@ const Login = () => {
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-md">
           <img className="h-20 w-20" src="/logo192.png" alt="logo" />
-          <h1 className="text-white xl:text-5xl">Admin Panel</h1>
+          <h1 className="text-white xl:text-5xl">{APP_NAME}</h1>
           <div className="text-2xl text-white">
             <Typical
               steps={[
-                "Take your app access without any hassle",
+                APP_MOTTO_1,
                 2000,
-                "Get a fast & smooth user experience.",
+                APP_MOTTO_2,
                 3000,
               ]}
               loop={Infinity}
