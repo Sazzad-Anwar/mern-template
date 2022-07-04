@@ -2,13 +2,13 @@ Arguments:
   /usr/bin/node /usr/bin/yarn
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/sazzad/.dotnet/tools:/home/sazzad/.dotnet/tools
 
 Yarn version: 
   1.22.18
 
 Node version: 
-  16.15.0
+  16.15.1
 
 Platform: 
   linux x64
@@ -28,10 +28,11 @@ npm manifest:
           "dev-server": "set NODE_ENV=development && nodemon -L ./server/index.js",
           "dev-admin": "cd ./admin && yarn start",
           "test": "set NODE_ENV=test && jest --runInBand --detectOpenHandles",
+          "test:watch": "set NODE_ENV=test && jest --runInBand --detectOpenHandles --watch",
           "format": "prettier --write server && prettier --write admin/src",
           "dev": "concurrently \"yarn dev-server\" \"yarn dev-admin\"",
           "request-handle-check": "autocannon -c 10 http://localhost:8080/api/v1/checkStatus",
-          "install-packages": "yarn add -D @shelf/jest-mongodb concurrently jest morgan nodemon supertest prettier && yarn add auth-middleware-jwt axios bcryptjs compression cookie-parser cors dotenv express express-async-handler helmet jsonwebtoken mongoose multer mysql nanoid sequelize winston uuid serve-favicon socket.io joi uuid nanoid redis@3.1.2"
+          "install-packages": "yarn add -D @shelf/jest-mongodb concurrently jest morgan nodemon supertest prettier && yarn add auth-middleware-jwt axios bcryptjs compression cookie-parser cors dotenv express express-async-handler helmet jsonwebtoken mongoose multer mysql nanoid sequelize winston uuid serve-favicon socket.io joi uuid nanoid redis@3.1.2 nodemailer"
       },
       "keywords": [
           "MERN Framework, redux, node, express, sequelize"
@@ -66,6 +67,7 @@ npm manifest:
           "mongoose": "^6.2.9",
           "multer": "^1.4.4",
           "mysql": "^2.18.1",
+          "nodemailer": "^6.7.6",
           "nanoid": "^3.3.2",
           "redis": "^4.0.6",
           "sequelize": "^6.17.0",

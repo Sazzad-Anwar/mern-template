@@ -5,6 +5,7 @@
 const { AccessTokenValidation } = require("auth-middleware-jwt");
 const { Router } = require("express");
 const loginController = require("../controllers/Auth/loginController");
+const getPasswordResetLink = require("../controllers/Auth/getPasswordResetLink");
 const registrationController = require("../controllers/Auth/registerController");
 const checkSessionController = require("../controllers/Auth/sessionCheckController");
 const checkUser = require("../middlewares/checkUser");
