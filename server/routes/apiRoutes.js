@@ -3,7 +3,7 @@
  */
 const { AccessTokenValidation } = require("auth-middleware-jwt");
 const { Router } = require("express");
-const getAPI = require("../controllers/apiController/getAllAPI");
+const getAPI = require("../controllers/api/getAllAPI");
 const router = Router();
 
 /*

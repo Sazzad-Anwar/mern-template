@@ -15,6 +15,7 @@ import {
 import Loader from "../Loader/Index";
 import { API_URL } from "../../app.config";
 import axiosInstance from "../../utils/AxiosInstance";
+import { Tag } from "antd";
 const ReactJson = lazy(() => import("react-json-view"));
 
 const SingleApi = ({ api, index }) => {
@@ -201,29 +202,11 @@ const SingleApi = ({ api, index }) => {
           <BsCaretRightFill className="normal-transition font-ubuntu text-base font-medium dark:text-white lg:text-lg" />
         )}
         <h1 className="font-ubuntu ml-3 text-base font-medium dark:text-white lg:text-lg">
-          {api.name}
+          {api.name} <Tag color={api.method === 'GET' ? "green" : api.method === 'POST' ? "geekblue" : api.method === "PUT" ? "purple" : "red"}>{api.method}</Tag>
         </h1>
       </button>
       {open && (
         <div className="border-t-none animate__animated animate__fadeIn rounded-t-none rounded-bl-2xl rounded-br-2xl border-0 border-gray-400 bg-white py-3 px-5 dark:border dark:border-gray-600 dark:bg-gray-900">
-          <h1 className="font-ubuntu my-3 text-lg dark:text-white flex">
-            <span
-              className={` ${api.method === "GET"
-                ? "text-green-700 dark:text-green-500"
-                : api.method === "POST"
-                  ? "text-[#FF6C37]"
-                  : api.method === "PUT"
-                    ? "text-blue-700 dark:text-blue-500"
-                    : "text-red-700 dark:text-red-500"
-                }  font-semibold`}
-            >
-              {api.method}
-            </span>
-            :
-            <span className="ml-2 font-medium dark:text-gray-300">
-              {URL.url}
-            </span>
-          </h1>
           <Suspense fallback={<Loader />}>
             <ReactJson
               src={URL}

@@ -34,4 +34,12 @@ router.route("/login").post(loginController);
 */
 router.route("/checkSession").get(AccessTokenValidation, checkSessionController);
 
+/*
+* * @Description: Send email with reset password link
+* * @Route: /api/v1/auth/resetPassword
+* * @Method: GET
+! * @Access: Admin, SuperAdmin, User
+*/
+router.route("/resetPassword/:id").get(getPasswordResetLink);
+
 module.exports = router;

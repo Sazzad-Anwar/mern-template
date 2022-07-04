@@ -1,155 +1,177 @@
 [
-  {
-    "name": "Registration",
-    "description": "<p>User registration with registration details <b><i>name</i></b>,<b><i>email</i></b>, <b><i>phoneNumber</i></b>. <b><i>password</i></b>. </p>",
-    "url": {
-      "path": "/auth/registration",
-      "variables": {}
+    {
+        "name": "Registration",
+        "description": "<p>User registration with registration details <b><i>name</i></b>,<b><i>email</i></b>, <b><i>phoneNumber</i></b>. <b><i>password</i></b>. </p>",
+        "url": {
+            "path": "/auth/registration",
+            "variables": {}
+        },
+        "method": "POST",
+        "body": {
+            "isRequired": true,
+            "params": {
+                "name": "user1234",
+                "email": "user1234@mail.com",
+                "phoneNumber": "12345678901",
+                "password": "admin123456"
+            }
+        },
+        "headers": {
+            "isRequired": false
+        },
+        "query": {
+            "isRequired": false
+        }
     },
-    "method": "POST",
-    "body": {
-      "isRequired": true,
-      "params": {
-        "name": "user1234",
-        "email": "user1234@mail.com",
-        "phoneNumber": "12345678901",
-        "password": "admin123456"
-      }
+    {
+        "name": "Login",
+        "description": "<p>User login with login details <b><i>email</i></b> or <b><i>phoneNumber</i></b> and <b><i>password</i></b> </p>",
+        "url": {
+            "path": "/auth/login",
+            "variables": {}
+        },
+        "method": "POST",
+        "body": {
+            "isRequired": true,
+            "params": {
+                "email": "admin@mail.com",
+                "password": "admin123456"
+            }
+        },
+        "headers": {
+            "isRequired": false
+        },
+        "query": {
+            "isRequired": false
+        }
     },
-    "headers": {
-      "isRequired": false
+    {
+        "name": "Reset Password",
+        "description": "<p>This api needs a <i>user Id</i> to get a password reset link</p>",
+        "url": {
+            "path": "/auth/resetPassword",
+            "variables": {
+                "id": "6261c86af46f1c9a47cdd31b"
+            }
+        },
+        "method": "GET",
+        "body": {
+            "isRequired": false,
+            "params": {}
+        },
+        "headers": {
+            "isRequired": false,
+            "params": {}
+        },
+        "query": {
+            "isRequired": false
+        }
     },
-    "query": {
-      "isRequired": false
+    {
+        "name": "Get all users",
+        "description": "<p>This api will respond with the data of all users.</p>",
+        "url": {
+            "path": "/users",
+            "variables": {}
+        },
+        "method": "GET",
+        "body": {
+            "isRequired": false,
+            "params": {}
+        },
+        "headers": {
+            "isRequired": true,
+            "params": {
+                "authorization": "bearer (paste the token here)"
+            }
+        },
+        "query": {
+            "isRequired": false,
+            "params": {
+                "page": 1,
+                "limit": 20,
+                "name": "",
+                "email": "",
+                "phoneNumber": ""
+            }
+        }
+    },
+    {
+        "name": "Get a user's details.",
+        "description": "<p>This api needs an access token to request and only accessible to the <i>Admin</i>,<i>Super admin</i> and <i>User</i>.</p>",
+        "url": {
+            "path": "/users",
+            "variables": {
+                "id": "6261c86af46f1c9a47cdd31b"
+            }
+        },
+        "method": "GET",
+        "body": {
+            "isRequired": false,
+            "params": {}
+        },
+        "headers": {
+            "isRequired": true,
+            "params": {
+                "authorization": "bearer (paste the token here)"
+            }
+        },
+        "query": {
+            "isRequired": false
+        }
+    },
+    {
+        "name": "Update a user's details.",
+        "description": "<p>This api needs an access token to request and only accessible to the <i>Admin</i>,<i>Super admin</i> and <i>User</i>.</p>",
+        "url": {
+            "path": "/users",
+            "variables": {
+                "id": "6261c86af46f1c9a47cdd31b"
+            }
+        },
+        "method": "PUT",
+        "body": {
+            "isRequired": true,
+            "params": {
+                "name": "Medi Career",
+                "email": "admin@mail.com",
+                "phoneNumber": "1234567890",
+                "isActive": false,
+                "role": ["superAdmin"]
+            }
+        },
+        "headers": {
+            "isRequired": true,
+            "params": {
+                "authorization": "bearer (paste the token here)"
+            }
+        },
+        "query": {
+            "isRequired": false
+        }
+    },
+    {
+        "name": "Delete a user",
+        "description": "<p>This api needs an access token to request and only accessible to the <i>Admin</i>,<i>Super admin</i> and <i>User</i>.</p>",
+        "url": {
+            "path": "/users",
+            "variables": {
+                "id": "62654d6b0526bf59320fca7d"
+            }
+        },
+        "method": "DELETE",
+        "body": {
+            "isRequired": true,
+            "params": {}
+        },
+        "headers": {
+            "isRequired": true,
+            "params": {
+                "authorization": "bearer (paste the token here)"
+            }
+        },
+        "query": {
+            "isRequired": false
+        }
     }
-  },
-  {
-    "name": "Login",
-    "description": "<p>User login with login details <b><i>email</i></b> or <b><i>phoneNumber</i></b> and <b><i>password</i></b> </p>",
-    "url": {
-      "path": "/auth/login",
-      "variables": {}
-    },
-    "method": "POST",
-    "body": {
-      "isRequired": true,
-      "params": {
-        "email": "admin@mail.com",
-        "password": "admin123456"
-      }
-    },
-    "headers": {
-      "isRequired": false
-    },
-    "query": {
-      "isRequired": false
-    }
-  },
-  {
-    "name": "Get all users",
-    "description": "<p>This api will respond with the data of all users.</p>",
-    "url": {
-      "path": "/users",
-      "variables": {}
-    },
-    "method": "GET",
-    "body": {
-      "isRequired": false,
-      "params": {}
-    },
-    "headers": {
-      "isRequired": true,
-      "params": {
-        "authorization": "bearer (paste the token here)"
-      }
-    },
-    "query": {
-      "isRequired": false,
-      "params": {
-        "page": 1,
-        "limit": 20,
-        "name": "",
-        "email": "",
-        "phoneNumber": ""
-      }
-    }
-  },
-  {
-    "name": "Get a user's details.",
-    "description": "<p>This api needs an access token to request and only accessible to the <i>Admin</i>,<i>Super admin</i> and <i>User</i>.</p>",
-    "url": {
-      "path": "/users",
-      "variables": {
-        "id": "6261c86af46f1c9a47cdd31b"
-      }
-    },
-    "method": "GET",
-    "body": {
-      "isRequired": false,
-      "params": {}
-    },
-    "headers": {
-      "isRequired": true,
-      "params": {
-        "authorization": "bearer (paste the token here)"
-      }
-    },
-    "query": {
-      "isRequired": false
-    }
-  },
-  {
-    "name": "Update a user's details.",
-    "description": "<p>This api needs an access token to request and only accessible to the <i>Admin</i>,<i>Super admin</i> and <i>User</i>.</p>",
-    "url": {
-      "path": "/users",
-      "variables": {
-        "id": "6261c86af46f1c9a47cdd31b"
-      }
-    },
-    "method": "PUT",
-    "body": {
-      "isRequired": true,
-      "params": {
-        "name": "Medi Career",
-        "email": "admin@mail.com",
-        "phoneNumber": "1234567890",
-        "isActive": false,
-        "role": ["superAdmin"]
-      }
-    },
-    "headers": {
-      "isRequired": true,
-      "params": {
-        "authorization": "bearer (paste the token here)"
-      }
-    },
-    "query": {
-      "isRequired": false
-    }
-  },
-  {
-    "name": "Delete a user",
-    "description": "<p>This api needs an access token to request and only accessible to the <i>Admin</i>,<i>Super admin</i> and <i>User</i>.</p>",
-    "url": {
-      "path": "/users",
-      "variables": {
-        "id": "62654d6b0526bf59320fca7d"
-      }
-    },
-    "method": "DELETE",
-    "body": {
-      "isRequired": true,
-      "params": {}
-    },
-    "headers": {
-      "isRequired": true,
-      "params": {
-        "authorization": "bearer (paste the token here)"
-      }
-    },
-    "query": {
-      "isRequired": false
-    }
-  }
 ]

@@ -43,6 +43,17 @@ SERVER_DB_PASSWORD=root
 # configuration for redis database
 REDIS_HOST=redis
 REDIS_PORT=6379
+
+# email configuration
+EMAIL_SERVICE=gmail # use "custom" for custom email service or "gmail" for gmail service
+EMAIL_HOST=
+EMAIL_PORT=
+EMAIL_USER=
+EMAIL_PASS=
+EMAIL_FROM=Mern Template<mern-template@gmail.com>
+
+# Company details
+COMPANY_NAME=Mern Template
 ```
 
 To start the server as development use the following command.

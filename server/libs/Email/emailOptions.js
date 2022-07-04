@@ -5,29 +5,29 @@ const {
 } = require("./emailTemplates");
 
 module.exports = (data) => {
-  if (data.type === "Account activation") {
+  if (data.type === "accountActivation") {
     return {
       from: process.env.EMAIL_FROM,
       to: data.email,
-      subject: data.type,
+      subject: "Account activation",
       html: activationEmail(data.name, data.activationId),
     };
   }
 
-  if (data.type === "Password reset") {
+  if (data.type === "passwordReset") {
     return {
       from: process.env.EMAIL_FROM,
       to: data.email,
-      subject: data.type,
+      subject: "Password reset",
       html: passwordResetEmail(data.name, data.resetLink),
     };
   }
 
-  if (data.type === "Order Invoice") {
+  if (data.type === "orderInvoice") {
     return {
       from: process.env.EMAIL_FROM,
       to: data.email,
-      subject: data.type,
+      subject: "Order invoice",
       html: orderInvoice(data.order, data.user),
     };
   }
