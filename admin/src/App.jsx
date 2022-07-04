@@ -9,6 +9,7 @@ import Users from './pages/Users/Index';
 import UserDetails from './pages/UserDetails/Index';
 import Home from './pages/Home/Index';
 import NotFound from './pages/NotFound/Index';
+import ResetPassword from './pages/ResetPassword/Index';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Route path="forgot-Password" element={<ForgotPassword />} />
       <Route path="api" element={<Api />} />
       <Route path="role-management" element={<RoleManagement />} />
+      <Route path="passwordReset/:token" element={<ResetPassword />} />
       <Route path="/users" element={<Users />} />
       <Route index path="/users/:id" element={<UserDetails />} />
       <Route index path="/" element={<Home />} />

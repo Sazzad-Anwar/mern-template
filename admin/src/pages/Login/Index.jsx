@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import axiosInstance from "../../utils/AxiosInstance";
 import useSWR from 'swr'
 import Fetcher from "../../utils/Fetcher";
-import { APP_MOTTO_1, APP_MOTTO_2, APP_NAME } from "../app.config";
+import { APP_MOTTO_1, APP_MOTTO_2, APP_NAME } from "../../app.config";
 
 const Login = () => {
   const navigate = useNavigate();

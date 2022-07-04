@@ -12,7 +12,7 @@ import useSWR from 'swr'
 import Fetcher from "../../utils/Fetcher";
 import { BsPersonCircle, BsTelephoneFill } from "react-icons/bs";
 import { REGISTRATION } from "../../context/constants/AuthConstants";
-import { APP_MOTTO_1, APP_MOTTO_2, APP_NAME } from "../app.config";
+import { APP_MOTTO_1, APP_MOTTO_2, APP_NAME } from "../../app.config";
 
 export default function Registration() {
     const { auth, authDispatch } = useGlobalContext();

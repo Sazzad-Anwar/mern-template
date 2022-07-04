@@ -13,17 +13,18 @@ const jwt = require("jsonwebtoken");
 
 const getPasswordResetLink = expressAsyncHandler(async (req, res) => {
 
-    let { id } = req.params;
+    let { email } = req.params;
 
-    const user = await User.findById(id).select("-password -refreshToken");
+    const user = await User.findOne({ email }).select("-password -refreshToken");
 
     if (user) {
 
-        let activationToken = await jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET_KEY, { expiresIn: '5m' });
+        let activationToken = await jwt.sign({ id: user._id, email }, process.env.ACCESS_TOKEN_SECRET_KEY, { expiresIn: process.env.RESET_PASSWORD_LINK_EXPIRES_IN });
+        console.log(activationToken);
 
         let emailData = {
             name: user.name,
-            activationId: `${process.env.APP_URL}/passwordReset/${user._id}/${activationToken}`,
+            resetLink: `${process.env.APP_URL}/passwordReset/${activationToken}`,
             email: user.email,
             type: 'passwordReset'
         }

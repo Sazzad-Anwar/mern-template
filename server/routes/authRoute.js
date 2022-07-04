@@ -4,9 +4,10 @@
 
 const { AccessTokenValidation } = require("auth-middleware-jwt");
 const { Router } = require("express");
-const loginController = require("../controllers/Auth/loginController");
 const getPasswordResetLink = require("../controllers/Auth/getPasswordResetLink");
+const loginController = require("../controllers/Auth/loginController");
 const registrationController = require("../controllers/Auth/registerController");
+const resetPassword = require("../controllers/Auth/resetPassword");
 const checkSessionController = require("../controllers/Auth/sessionCheckController");
 const checkUser = require("../middlewares/checkUser");
 const router = Router();
@@ -41,6 +42,7 @@ router.route("/checkSession").get(AccessTokenValidation, checkSessionController)
 * * @Method: GET
 ! * @Access: Admin, SuperAdmin, User
 */
-router.route("/resetPassword/:id").get(getPasswordResetLink);
+router.route("/resetPassword/:email").get(getPasswordResetLink).post(resetPassword);
+
 
 module.exports = router;
