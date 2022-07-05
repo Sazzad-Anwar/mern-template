@@ -92,11 +92,6 @@ export default function Registration() {
                         onFinish={onFinish}
                         onFinishFailed={onFinishFailed}
                         name="basic"
-                        initialValues={{
-                            remember: localStorage.getItem("remember") ? true : false,
-                            email: localStorage.getItem("email") || "",
-                            password: localStorage.getItem("password") || "",
-                        }}
                     >
                         <Form.Item
                             label={
@@ -150,16 +145,26 @@ export default function Registration() {
                                 <h1 className="text-lg font-semibold text-white">Password</h1>
                             }
                             name="password"
+                            dependencies={['confirmPassword']}
+                            hasFeedback
                             className="mt-10 w-full"
                             rules={[
                                 { required: true, message: "Please input your password!" },
+                                ({ getFieldValue }) => ({
+                                    validator(_, value) {
+                                        if (!value || getFieldValue('confirmPassword') === value) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                    },
+                                }),
                             ]}
                         >
                             <Input.Password
                                 type="password"
                                 size="large"
                                 prefix={<FiKey size={25} />}
-                                placeholder="password"
+                                placeholder="Password"
                             />
                         </Form.Item>
 
@@ -167,17 +172,27 @@ export default function Registration() {
                             label={
                                 <h1 className="text-lg font-semibold text-white">Confirm Password</h1>
                             }
+                            dependencies={['password']}
+                            hasFeedback
                             name="confirmPassword"
                             className="mt-10 w-full"
                             rules={[
-                                { required: true, message: "Please input your confirm password!" },
+                                { required: true, message: "Please input your password!" },
+                                ({ getFieldValue }) => ({
+                                    validator(_, value) {
+                                        if (!value || getFieldValue('password') === value) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                    },
+                                }),
                             ]}
                         >
                             <Input.Password
                                 type="password"
                                 size="large"
                                 prefix={<FiKey size={25} />}
-                                placeholder="password"
+                                placeholder="Password"
                             />
                         </Form.Item>
 

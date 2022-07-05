@@ -1,8 +1,8 @@
 import { Menu } from "antd";
-import { VscAccount } from "react-icons/vsc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { LOGOUT } from "../../context/constants/AuthConstants";
+import { AiOutlineUser } from 'react-icons/ai'
 
 const { SubMenu } = Menu;
 
@@ -10,6 +10,8 @@ const SideBar = ({ collapsed, menulist, admin }) => {
   const { authDispatch, auth } = useGlobalContext();
   const navigate = useNavigate("/");
   const location = useLocation();
+
+  console.log(collapsed)
 
   return (
     <div
@@ -103,12 +105,14 @@ const SideBar = ({ collapsed, menulist, admin }) => {
           }
         })}
         <SubMenu
-          className={`absolute bottom-[55px] w-full ${collapsed ? "py-0" : "pt-2 pb-4"
+          className={`absolute bottom-[65px] w-full ${collapsed ? "py-0" : "pt-2 pb-4"
             }`}
-          icon={<VscAccount size={28} className="mb-2 p-0" />}
+          icon={
+            <AiOutlineUser size={28} />
+          }
           key={admin.id}
           title={
-            <div className="flex flex-col dark:text-white pb-2">
+            <div className="flex flex-col dark:text-white">
               <span className="text-sm truncate">{admin.name}</span>
               <span className="text-xs text-purple-500 font-bold">{auth.user.role.toUpperCase()}</span>
             </div>

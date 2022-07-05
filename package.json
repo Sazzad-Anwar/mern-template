@@ -5,13 +5,13 @@
     "main": "index.js",
     "scripts": {
         "start": "node ./server/index.js",
-        "build": "cd ./admin && yarn build && cp -r build ../server",
-        "dev-server": "set NODE_ENV=development && nodemon -L ./server/index.js",
-        "dev-admin": "cd ./admin && yarn start",
+        "build:admin": "cd ./admin && yarn build && cp -r build ../server",
+        "dev": "concurrently \"yarn dev:server\" \"yarn dev:admin\"",
+        "dev:server": "set NODE_ENV=development && nodemon -L ./server/index.js",
+        "dev:admin": "cd ./admin && yarn start",
         "test": "set NODE_ENV=test && jest --runInBand --detectOpenHandles",
         "test:watch": "set NODE_ENV=test && jest --runInBand --detectOpenHandles --watch",
         "format": "prettier --write server && prettier --write admin/src",
-        "dev": "concurrently \"yarn dev-server\" \"yarn dev-admin\"",
         "request-handle-check": "autocannon -c 10 http://localhost:8080/api/v1/checkStatus",
         "install-packages": "yarn add -D @shelf/jest-mongodb concurrently jest morgan nodemon supertest prettier && yarn add auth-middleware-jwt axios bcryptjs compression cookie-parser cors dotenv express express-async-handler helmet jsonwebtoken mongoose multer mysql nanoid sequelize winston uuid serve-favicon socket.io joi uuid nanoid redis@3.1.2 nodemailer"
     },

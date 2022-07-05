@@ -8,7 +8,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
-const morgan = require("morgan");
 const { join } = require("path");
 const compression = require("compression");
 const favicon = require("serve-favicon");
@@ -23,6 +22,7 @@ dotenv.config();
 
 //This will show the request path for every request only for development mode
 if (process.env.NODE_ENV !== "production") {
+  const morgan = require("morgan");
   app.use(morgan("tiny"));
 }
 app.enable('trust proxy');
