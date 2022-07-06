@@ -204,3 +204,7 @@ html.dark .search-input .anticon.anticon-close-circle {
 html.dark .ant-radio-wrapper-disabled .ant-radio.ant-radio-disabled + span {
     color: #9c9c9c !important;
 }
+
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-item {
+    padding: 0 calc(50% - 25px / 2) !important;
+}

@@ -43,14 +43,14 @@ export default function AdminLayout({ children, breadcrumbs }) {
       name: "Home",
       link: "/",
       id: "/",
-      icon: <RiDashboardLine size={20} />,
+      icon: <RiDashboardLine size={25} />,
       hasSubMenu: false,
     },
     {
       name: "Users Configuration",
       id: "users",
       hasSubMenu: true,
-      icon: <ImUsers size={20} />,
+      icon: <ImUsers size={25} />,
       subMenu: [
         {
           name: "Users",
@@ -65,7 +65,7 @@ export default function AdminLayout({ children, breadcrumbs }) {
       link: "/api",
       hasSubMenu: false,
       id: "/api",
-      icon: <AiFillCode size={20} />,
+      icon: <AiFillCode size={25} />,
     },
   ];
 

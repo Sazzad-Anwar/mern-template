@@ -108,7 +108,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
           className={`absolute bottom-[65px] w-full ${collapsed ? "py-0" : "pt-2 pb-4"
             }`}
           icon={
-            <AiOutlineUser size={28} />
+            <AiOutlineUser size={25} />
           }
           key={admin.id}
           title={
