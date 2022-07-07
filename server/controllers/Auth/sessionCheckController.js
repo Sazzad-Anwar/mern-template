@@ -8,10 +8,10 @@
 const expressAsyncHandler = require("express-async-handler");
 
 const checkSessionController = expressAsyncHandler(async (req, res) => {
-    res.status(200).json({
-        status: "success",
-        message: "Session is valid",
-    })
+  res.status(200).json({
+    status: "success",
+    message: "Session is valid",
+  });
 });
 
 module.exports = checkSessionController;

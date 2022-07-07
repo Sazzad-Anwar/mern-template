@@ -9,12 +9,11 @@ const API = require("../../models/apiRoutes");
 const expressAsyncHandler = require("express-async-handler");
 
 const getAPI = expressAsyncHandler(async (req, res) => {
-    let api = await API.find().select("-__v");
-    res.json({
-        status: 'success',
-        data: api
-    });
+  let api = await API.find().select("-__v");
+  res.json({
+    status: "success",
+    data: api,
+  });
 });
-
 
 module.exports = getAPI;

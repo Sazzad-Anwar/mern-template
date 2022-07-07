@@ -30,7 +30,6 @@ const emailSender = (data) => {
     });
   }
 
-
   transport.sendMail(emailOptions(data), (error, info) => {
     if (error) {
       console.log(error);

@@ -10,13 +10,11 @@ import { APP_MOTTO_1, APP_MOTTO_2, APP_NAME } from "../../app.config";
 import axiosInstance from "../../utils/AxiosInstance";
 
 export default function ForgotPassword() {
-
   const onFinish = async ({ email }) => {
     try {
       await axiosInstance.get(`/auth/resetPassword/${email}`);
       toast.success("Password reset link has been sent to your email");
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
       toast.error(error.response.data.message);
     }
@@ -28,7 +26,6 @@ export default function ForgotPassword() {
   };
 
   return (
-
     <div className="relative grid h-screen w-screen grid-cols-1 overflow-hidden lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
       <div className="relative hidden lg:col-span-2 lg:block xl:col-span-3 2xl:col-span-4">
         <img
@@ -41,12 +38,7 @@ export default function ForgotPassword() {
           <h1 className="text-white xl:text-5xl">{APP_NAME}</h1>
           <div className="text-2xl text-white">
             <Typical
-              steps={[
-                APP_MOTTO_1,
-                2000,
-                APP_MOTTO_2,
-                3000,
-              ]}
+              steps={[APP_MOTTO_1, 2000, APP_MOTTO_2, 3000]}
               loop={Infinity}
               wrapper="p"
             />
@@ -78,9 +70,7 @@ export default function ForgotPassword() {
               }
               name="email"
               className="mt-5 w-full"
-              rules={[
-                { required: true, message: "Please input your email!" },
-              ]}
+              rules={[{ required: true, message: "Please input your email!" }]}
             >
               <Input
                 type="email"

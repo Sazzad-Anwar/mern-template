@@ -3,6 +3,7 @@ import { Affix } from "antd";
 import { RiDashboardLine } from "react-icons/ri";
 import { ImUsers } from "react-icons/im";
 import { AiFillCode } from "react-icons/ai";
+import { MdCategory } from 'react-icons/md';
 import { Navigate, useLocation } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import Loader from "../../components/Loader/Index";
@@ -43,17 +44,17 @@ export default function AdminLayout({ children, breadcrumbs }) {
       name: "Home",
       link: "/",
       id: "/",
-      icon: <RiDashboardLine size={25} />,
+      icon: <RiDashboardLine size={20} />,
       hasSubMenu: false,
     },
     {
-      name: "Users Configuration",
+      name: "Users",
       id: "users",
       hasSubMenu: true,
-      icon: <ImUsers size={25} />,
+      icon: <ImUsers size={20} />,
       subMenu: [
         {
-          name: "Users",
+          name: "List",
           link: "/users",
           id: "/users",
           hasSubMenu: false,
@@ -65,7 +66,14 @@ export default function AdminLayout({ children, breadcrumbs }) {
       link: "/api",
       hasSubMenu: false,
       id: "/api",
-      icon: <AiFillCode size={25} />,
+      icon: <AiFillCode size={20} />,
+    },
+    {
+      name: "Category",
+      link: "/category",
+      id: "/category",
+      icon: <MdCategory size={20} />,
+      hasSubMenu: false,
     },
   ];
 
@@ -104,7 +112,7 @@ export default function AdminLayout({ children, breadcrumbs }) {
     <div className="flex w-full items-start bg-gray-100 dark:bg-gray-800">
       <Affix>
         <div>
-          <div className="flex items-center justify-center py-4 bg-gray-100 border-b border-r dark:border-gray-800 dark:bg-gray-900">
+          <div className="flex items-center justify-center py-4 bg-white border-b border-r dark:border-gray-800 dark:bg-gray-900">
             <img
               src="/logo192.png"
               className={
@@ -115,7 +123,7 @@ export default function AdminLayout({ children, breadcrumbs }) {
               alt="logo"
             />
             {!collapsed && (
-              <p className="dark:text-white text-2xl ml-3">{APP_NAME}</p>
+              <p className="dark:text-white text-xl ml-3">{APP_NAME}</p>
             )}
           </div>
           <Suspense fallback={<Loader />}>

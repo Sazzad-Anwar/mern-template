@@ -3,6 +3,7 @@ import Documentation from "../../components/Documentation/Index";
 import apiJSON from "../../APi.json";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import { APP_NAME } from "../../app.config";
 
 export default function Api() {
   const { auth } = useGlobalContext();
@@ -15,7 +16,7 @@ export default function Api() {
   return (
     <Documentation
       src={apiJSON}
-      title="REST API documentation for Mern Template"
+      title={`REST API documentation for ${APP_NAME}`}
     />
   );
 }

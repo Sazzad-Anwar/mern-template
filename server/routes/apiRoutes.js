@@ -14,5 +14,4 @@ const router = Router();
 */
 router.route("/").get(AccessTokenValidation, getAPI);
 
-
 module.exports = router;

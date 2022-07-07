@@ -185,14 +185,16 @@ const SingleApi = ({ api, index }) => {
             setAPIresponse({});
           }
         }}
-        className={`w-full cursor-pointer ${open ? "rounded-b-none rounded-tl-2xl rounded-tr-2xl" : "rounded-full"
-          } flex items-center border-transparent bg-white px-1 py-1 dark:border dark:border-gray-600 dark:bg-gray-800 `}
+        className={`w-full cursor-pointer ${
+          open ? "rounded-b-none rounded-tl-2xl rounded-tr-2xl" : "rounded-full"
+        } flex items-center border-transparent bg-white px-1 py-1 dark:border dark:border-gray-600 dark:bg-gray-800 `}
       >
         <span
-          className={`flex items-center justify-center px-2.5 py-1 ${open
-            ? "bg-green-700 text-white dark:bg-green-600"
-            : "bg-gray-300 dark:bg-gray-600"
-            } mr-1 rounded-full font-medium  dark:text-white`}
+          className={`flex items-center justify-center px-2.5 py-1 ${
+            open
+              ? "bg-green-700 text-white dark:bg-green-600"
+              : "bg-gray-300 dark:bg-gray-600"
+          } mr-1 rounded-full font-medium  dark:text-white`}
         >
           {index + 1}
         </span>
@@ -202,7 +204,20 @@ const SingleApi = ({ api, index }) => {
           <BsCaretRightFill className="normal-transition font-ubuntu text-base font-medium dark:text-white lg:text-lg" />
         )}
         <h1 className="font-ubuntu ml-3 text-base font-medium dark:text-white lg:text-lg">
-          {api.name} <Tag color={api.method === 'GET' ? "green" : api.method === 'POST' ? "geekblue" : api.method === "PUT" ? "purple" : "red"}>{api.method}</Tag>
+          {api.name}{" "}
+          <Tag
+            color={
+              api.method === "GET"
+                ? "green"
+                : api.method === "POST"
+                ? "geekblue"
+                : api.method === "PUT"
+                ? "purple"
+                : "red"
+            }
+          >
+            {api.method}
+          </Tag>
         </h1>
       </button>
       {open && (
@@ -223,7 +238,7 @@ const SingleApi = ({ api, index }) => {
             Description:
           </h1>
           <div
-            className="font-ubuntu mb-5 rounded-md bg-gray-100 p-5 text-lg font-normal dark:bg-gray-800 dark:text-white"
+            className="font-ubuntu mb-5 rounded-md bg-gray-100 p-5 text-sm font-normal dark:bg-gray-800 dark:text-white"
             dangerouslySetInnerHTML={description()}
           ></div>
 
@@ -232,10 +247,11 @@ const SingleApi = ({ api, index }) => {
               <div
                 onClick={() => setCurrentOption(option.name)}
                 key={option.name}
-                className={`${currentOption === option.name
-                  ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
-                  : "border-b-2 border-transparent"
-                  } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
+                className={`${
+                  currentOption === option.name
+                    ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
+                    : "border-b-2 border-transparent"
+                } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
               >
                 {option.label}
               </div>
@@ -301,7 +317,7 @@ const SingleApi = ({ api, index }) => {
 
           <div className="my-4">
             {Object.keys(api.url.variables).length !== 0 &&
-              currentOption === "pathVariables" ? (
+            currentOption === "pathVariables" ? (
               <Suspense fallback={<Loader />}>
                 <ReactJson
                   src={pathVariablesObject}

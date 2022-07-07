@@ -1,54 +1,54 @@
-version: '3.9'
+version: "3.9"
 
 services:
-    # Mongo db service
-    mongo:
-        image: mongo
-        restart: always
-        ports:
-            # 2717 is the port for accessing mongodb compass
-            - 2717:27017
-        volumes:
-            - db:/data/db
+  # Mongo db service
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      # 2717 is the port for accessing mongodb compass
+      - 2717:27017
+    volumes:
+      - db:/data/db
 
-    # Redis service
-    redis:
-        image: redis:6.2.6-alpine
-        restart: always
-        ports:
-            - 6379:6379
+  # Redis service
+  redis:
+    image: redis:6.2.6-alpine
+    restart: always
+    ports:
+      - 6379:6379
 
-    # Nginx service
-    nginx:
-        image: nginx:stable-alpine
-        depends_on:
-            - api
-        volumes:
-            - ./server/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-        ports:
-            - 80:80
+  # Nginx service
+  nginx:
+    image: nginx:stable-alpine
+    depends_on:
+      - api
+    volumes:
+      - ./server/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - 80:80
 
-    #API service
-    api:
-        container_name: backend-api
-        scale: 2
-        depends_on:
-            - mongo
-            - redis
-        build: .
-        volumes:
-            - .:/app
-            - /app/node_modules
-        ports:
-            - 5000:5000
-        environment:
-            - DOCKER_RUNNING=true
-            - NODE_ENV=development
-            - MONGO_URI=mongodb://mongo:27017/mern-template
-            - REDIS_HOST=redis
-            - REDIS_PORT=6379
-            - PORT=5000
-        command: yarn start
+  #API service
+  api:
+    container_name: medi-career-backend
+    scale: 2
+    depends_on:
+      - mongo
+      - redis
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 5000:5000
+    environment:
+      - DOCKER_RUNNING=true
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo:27017/medi-career
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PORT=5000
+    command: yarn start
 
 volumes:
-    db:
+  db:

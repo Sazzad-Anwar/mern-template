@@ -34,7 +34,9 @@ router.route("/login").post(loginController);
 * * @Method: GET
 ! * @Access: Admin, SuperAdmin, User
 */
-router.route("/checkSession").get(AccessTokenValidation, checkSessionController);
+router
+  .route("/checkSession")
+  .get(AccessTokenValidation, checkSessionController);
 
 /*
 * * @Description: Send email with reset password link
@@ -42,7 +44,9 @@ router.route("/checkSession").get(AccessTokenValidation, checkSessionController)
 * * @Method: GET
 ! * @Access: Admin, SuperAdmin, User
 */
-router.route("/resetPassword/:email").get(getPasswordResetLink).post(resetPassword);
-
+router
+  .route("/resetPassword/:email")
+  .get(getPasswordResetLink)
+  .post(resetPassword);
 
 module.exports = router;

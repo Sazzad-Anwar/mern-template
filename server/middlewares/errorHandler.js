@@ -6,8 +6,8 @@ async function errorHandler(err, req, res, next) {
   const statusCode = err.isJoi
     ? 422
     : res.statusCode === 200
-      ? 500
-      : res.statusCode;
+    ? 500
+    : res.statusCode;
 
   res.status(statusCode);
 

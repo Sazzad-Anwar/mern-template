@@ -15,7 +15,11 @@ io.on("connection", socketIoInstance);
 
 // Use the below code for not to expose the node application to the outside world
 // server.listen(port, 'localhost', () => console.log(`App is listening on port ${port}!`));
-server.listen(port, () => console.log(`App is listening on port ${port}!`));
+server.listen(port, () =>
+  console.log(
+    `App is listening on http://localhost:${port} in ${process.env.NODE_ENV} mode`
+  )
+);
 
 process.on("SIGTERM", () => {
   debug("SIGTERM signal received: closing HTTP server");

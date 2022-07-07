@@ -44,12 +44,6 @@ export default function Users() {
 
   const tableColumn = [
     {
-      title: "ID",
-      dataIndex: "_id",
-      key: "_id",
-      render: (_id) => <Link to={`/users/${_id}`}>{_id}</Link>,
-    },
-    {
       title: "Image",
       dataIndex: "avatarUrl",
       key: "avatarUrl",
@@ -70,6 +64,12 @@ export default function Users() {
           );
         }
       },
+    },
+    {
+      title: "ID",
+      dataIndex: "_id",
+      key: "_id",
+      render: (_id) => <Link to={`/users/${_id}`}>{_id}</Link>,
     },
     {
       title: "Name",
@@ -93,10 +93,7 @@ export default function Users() {
       render: (role) => {
         return (
           <div>
-            <Tag
-              color={role === "superAdmin" ? "blue" : "green"}
-              key={role}
-            >
+            <Tag color={role === "superAdmin" ? "blue" : "green"} key={role}>
               {role}
             </Tag>
           </div>
@@ -198,7 +195,7 @@ export default function Users() {
 
   return (
     <AdminLayout breadcrumbs={breadcrumbs}>
-      <div className="py-10">
+      <div className="pt-3">
         <div className="flex justify-end">
           <div className="mb-4">
             <Search

@@ -13,7 +13,7 @@ export default function UserDetails() {
   const { id } = useParams();
   const { auth } = useGlobalContext();
   const { data } = useSWR(`/users/${id}`, Fetcher);
-  const { data: roles } = useSWR('/roles', Fetcher);
+  const { data: roles } = useSWR("/roles", Fetcher);
 
   let user = data && data.data;
 
@@ -125,7 +125,6 @@ export default function UserDetails() {
                 </Radio.Group>
               </Form.Item>
 
-
               <Form.Item
                 label={<span className="text-lg dark:text-white">Role</span>}
                 name="role"
@@ -137,14 +136,22 @@ export default function UserDetails() {
                 ]}
               >
                 <Radio.Group>
-                  {roles && roles?.data.map(role => {
-                    // if (role.role === 'superAdmin') {
-                    //   return null;
-                    // }
-                    return (
-                      <Radio key={role._id} className="dark:text-white" disabled={auth && auth.user.role === ('superAdmin')} value={role.role}>{role.role.toUpperCase()}</Radio>
-                    )
-                  })}
+                  {roles &&
+                    roles?.data.map((role) => {
+                      // if (role.role === 'superAdmin') {
+                      //   return null;
+                      // }
+                      return (
+                        <Radio
+                          key={role._id}
+                          className="dark:text-white"
+                          disabled={auth && auth.user.role === "superAdmin"}
+                          value={role.role}
+                        >
+                          {role.role.toUpperCase()}
+                        </Radio>
+                      );
+                    })}
                 </Radio.Group>
               </Form.Item>
 
@@ -154,7 +161,12 @@ export default function UserDetails() {
                   size="large"
                   className="w-full dark:text-white text-blue-600 hover:text-white"
                   type="primary"
-                  disabled={user && user.role === "superAdmin" && auth && auth.user.role !== "superAdmin"}
+                  disabled={
+                    user &&
+                    user.role === "superAdmin" &&
+                    auth &&
+                    auth.user.role !== "superAdmin"
+                  }
                 >
                   Save
                 </Button>

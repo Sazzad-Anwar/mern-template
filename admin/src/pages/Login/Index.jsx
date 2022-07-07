@@ -8,14 +8,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { toast } from "react-toastify";
 import axiosInstance from "../../utils/AxiosInstance";
-import useSWR from 'swr'
+import useSWR from "swr";
 import Fetcher from "../../utils/Fetcher";
 import { APP_MOTTO_1, APP_MOTTO_2, APP_NAME } from "../../app.config";
 
 const Login = () => {
   const navigate = useNavigate();
   const { auth, authDispatch } = useGlobalContext();
-  const { data } = useSWR('/users/hasSuperAdmin', Fetcher)
+  const { data } = useSWR("/users/hasSuperAdmin", Fetcher);
 
   const onFinish = async ({ email, password, remember }) => {
     try {
@@ -49,20 +49,22 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if ((data?.hasSuperAdmin) &&
+    if (
+      data?.hasSuperAdmin &&
       ((auth.user && auth.user.role.includes("admin")) ||
         (auth.user && auth.user.role.includes("superAdmin")))
     ) {
       navigate("/");
     } else if (
-      (auth.user && data?.hasSuperAdmin) &&
+      auth.user &&
+      data?.hasSuperAdmin &&
       (!auth.user.role.includes("admin") ||
         !auth.user.role.includes("superAdmin"))
     ) {
       navigate("/login");
       toast.error("Only admins and super admins can have access!");
     } else if (!data?.hasSuperAdmin) {
-      navigate('/registration')
+      navigate("/registration");
     }
   }, [auth.user, data, navigate]);
 
@@ -79,12 +81,7 @@ const Login = () => {
           <h1 className="text-white xl:text-5xl">{APP_NAME}</h1>
           <div className="text-2xl text-white">
             <Typical
-              steps={[
-                APP_MOTTO_1,
-                2000,
-                APP_MOTTO_2,
-                3000,
-              ]}
+              steps={[APP_MOTTO_1, 2000, APP_MOTTO_2, 3000]}
               loop={Infinity}
               wrapper="p"
             />
@@ -140,7 +137,7 @@ const Login = () => {
                 type="password"
                 size="large"
                 prefix={<FiKey size={25} />}
-                placeholder="Email"
+                placeholder="Password"
               />
             </Form.Item>
 

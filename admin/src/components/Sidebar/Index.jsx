@@ -2,7 +2,7 @@ import { Menu } from "antd";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { LOGOUT } from "../../context/constants/AuthConstants";
-import { AiOutlineUser } from 'react-icons/ai'
+import { AiOutlineUser } from "react-icons/ai";
 
 const { SubMenu } = Menu;
 
@@ -11,11 +11,9 @@ const SideBar = ({ collapsed, menulist, admin }) => {
   const navigate = useNavigate("/");
   const location = useLocation();
 
-  console.log(collapsed)
-
   return (
     <div
-      className={`${collapsed ? "w-auto" : "w-72"
+      className={`${collapsed ? "w-14" : "w-60"
         } normal-transition h-screen border-r dark:border-gray-700`}
     >
       <Menu
@@ -23,7 +21,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
         defaultOpenKeys={[location.pathname.split("/")[1]]}
         mode="inline"
         inlineCollapsed={collapsed}
-        className="h-full relative"
+        className="h-full w-auto relative"
       >
         {menulist.map((menu) => {
           if (menu.hasSubMenu) {
@@ -105,16 +103,16 @@ const SideBar = ({ collapsed, menulist, admin }) => {
           }
         })}
         <SubMenu
-          className={`absolute bottom-[65px] w-full ${collapsed ? "py-0" : "pt-2 pb-4"
+          className={`absolute bottom-[55px] w-full ${collapsed ? "py-0" : "pt-2 pb-4"
             }`}
-          icon={
-            <AiOutlineUser size={25} />
-          }
+          icon={<AiOutlineUser size={20} />}
           key={admin.id}
           title={
             <div className="flex flex-col dark:text-white">
               <span className="text-sm truncate">{admin.name}</span>
-              <span className="text-xs text-purple-500 font-bold">{auth.user.role.toUpperCase()}</span>
+              <span className="text-xs text-purple-500 font-bold">
+                {auth.user.role.toUpperCase()}
+              </span>
             </div>
           }
         >
@@ -133,11 +131,12 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                     <span className="dark:text-white">{subMenu.name}</span>
                   </Menu.Item>
                 );
-              }
-              else if (subMenu.superAdmin && !auth.user.role === ("superAdmin")) {
+              } else if (
+                subMenu.superAdmin &&
+                !auth.user.role === "superAdmin"
+              ) {
                 return null;
-              }
-              else {
+              } else {
                 return (
                   <Menu.Item
                     key={subMenu.id}

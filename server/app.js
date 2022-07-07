@@ -15,17 +15,18 @@ const connectMongoDB = require("./config/db/MongoDB.js");
 const { errorHandler, notFound } = require("./middlewares/errorHandler.js");
 const authRoute = require("./routes/authRoute");
 const usersRoute = require("./routes/usersRoute");
-const roleRoute = require('./routes/roleRoute');
-const api = require('./routes/apiRoutes');
+const roleRoute = require("./routes/roleRoute");
+const categoryRoute = require("./routes/category");
+const api = require("./routes/apiRoutes");
 const saveApiRoute = require("./middlewares/saveApiRoute");
 dotenv.config();
 
 //This will show the request path for every request only for development mode
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "development") {
   const morgan = require("morgan");
   app.use(morgan("tiny"));
 }
-app.enable('trust proxy');
+app.enable("trust proxy");
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(compression());
 app.use(helmet());
@@ -45,8 +46,9 @@ connectMongoDB();
 
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", saveApiRoute, usersRoute);
-app.use('/api/v1/roles', roleRoute);
-app.use('/api/v1/getAPI', api)
+app.use("/api/v1/roles", roleRoute);
+app.use("/api/v1/getAPI", api);
+app.use("/api/v1/categories", saveApiRoute, categoryRoute);
 app.get("/api/v1/checkStatus", (req, res) =>
   res.json({ status: "Ok", host: req.hostname })
 );
@@ -58,6 +60,5 @@ app.get("*", (req, res) => {
   res.sendFile(join(__dirname, "build", "index.html"));
   console.log("Build file connected");
 });
-
 
 module.exports = app;

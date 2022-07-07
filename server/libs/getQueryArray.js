@@ -1,4 +1,4 @@
-module.export = (reqQuery) => {
+const queryArray = (reqQuery) => {
   let query = [];
   for (const [key, value] of Object.entries(reqQuery)) {
     query.push({ [key]: value });
@@ -6,3 +6,5 @@ module.export = (reqQuery) => {
 
   return query;
 };
+
+module.exports = queryArray;

@@ -6,7 +6,7 @@ import { nanoid } from "nanoid";
 
 const Header = ({ setShowSidebar, showSidebar, breadcrumbs }) => {
   return (
-    <header className="normal-transition sticky top-0 z-20 h-16 min-w-full border-b border-b-gray-300 bg-gray-100 py-2.5 dark:border-b-gray-900 dark:bg-gray-900">
+    <header className="normal-transition sticky top-0 z-20 h-16 min-w-full border-b border-b-gray-300 bg-white py-2.5 dark:border-b-gray-900 dark:bg-gray-900">
       <div className="mx-5 flex h-full items-center justify-between">
         <div className="normal-transition font-nunito purple-text flex w-auto items-center py-0 text-2xl font-extrabold">
           <button
