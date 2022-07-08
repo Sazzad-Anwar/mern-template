@@ -50,15 +50,13 @@ REDIS_PORT=6379
 EMAIL_SERVICE=gmail # use "custom" for custom email service
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
-EMAIL_USER=sazzadzihan@gmail.com
-EMAIL_PASS=skftsjxmjouewsjr
-EMAIL_FROM=Medi Career<medicareer@gmail.com>
+EMAIL_USER=
+EMAIL_PASS=
+EMAIL_FROM=
 
 # Company details
-COMPANY_NAME=Medi Career
+COMPANY_NAME=
 
-# App password
-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
 ```
 
 To start the server as development use the following command.

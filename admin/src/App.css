@@ -1,102 +1,120 @@
 /* sidebar style of ant design for dark mode and light mode  */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
-  font-family: "Poppins", sans-serif !important;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 html {
-  scroll-behavior: smooth !important;
+    scroll-behavior: smooth !important;
 }
 
 ::-webkit-scrollbar {
-  width: 0.5rem;
-  height: 0rem;
+    width: 0.5rem;
+    height: 0rem;
 }
 
 html:not(.dark) ::-webkit-scrollbar-track {
-  background-color: #e5e7eb;
-  transition: all 0.4s ease-in-out;
+    background-color: #e5e7eb;
+    transition: all 0.4s ease-in-out;
 }
 
 html:not(.dark) ::-webkit-scrollbar-thumb {
-  background-color: #4b5563;
+    background-color: #4b5563;
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background-color: #0f172a;
+    background-color: #0f172a;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background-color: #243763;
-  border-radius: 4px;
+    background-color: #243763;
+    border-radius: 4px;
 }
 
 html:not(.dark) ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light,
 html:not(.dark) .ant-menu-item,
 .ant-menu-root.ant-menu-vertical {
-  background-color: #fff !important;
+    background-color: #fff !important;
 }
 
 html.dark ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light,
 html.dark .ant-menu-item,
 html.dark .ant-menu-root.ant-menu-vertical {
-  background-color: #1f2937 !important;
-  color: #fff !important;
+    background-color: #1f2937 !important;
+    color: #fff !important;
 }
 
 html.dark .ant-menu-submenu-expand-icon,
 html.dark .ant-menu-submenu-arrow {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 html.dark .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
 html.dark .ant-menu-light .ant-menu-item:hover,
 html.dark .ant-menu-submenu.ant-menu-submenu-inline:hover {
-  background-color: #00000054 !important;
+    background-color: #00000054 !important;
+}
+
+.ant-menu-vertical .ant-menu-item,
+.ant-menu-vertical-left .ant-menu-item,
+.ant-menu-vertical-right .ant-menu-item,
+.ant-menu-inline .ant-menu-item,
+.ant-menu-vertical .ant-menu-submenu-title,
+.ant-menu-vertical-left .ant-menu-submenu-title,
+.ant-menu-vertical-right .ant-menu-submenu-title,
+.ant-menu-inline .ant-menu-submenu-title {
+    margin-top: 0px !important;
+}
+
+.ant-menu-vertical .ant-menu-item:not(:last-child),
+.ant-menu-vertical-left .ant-menu-item:not(:last-child),
+.ant-menu-vertical-right .ant-menu-item:not(:last-child),
+.ant-menu-inline .ant-menu-item:not(:last-child) {
+    margin-bottom: 0px !important;
 }
 
 html:not(.dark) .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color: #e6f7ff !important;
+    background-color: #e6f7ff !important;
 }
 
 html:not(.dark) .ant-menu-item:hover {
-  background-color: #e6f7ff !important;
+    background-color: #e6f7ff !important;
 }
 
 html.dark .ant-menu-inline,
 html.dark .ant-menu-vertical,
 html.dark .ant-menu-vertical-left {
-  border-right: 1px solid transparent !important;
+    border-right: 1px solid transparent !important;
 }
 
 .ant-menu-item,
 .ant-menu-submenu-title {
-  height: 45px !important;
+    height: 45px !important;
 }
 
 html.dark .ant-menu-inline,
 html.dark .ant-menu-vertical,
 html.dark .ant-menu-vertical-left {
-  background: #1f2937 !important;
+    background: #1f2937 !important;
 }
 
 .ant-menu-inline .ant-menu-item:not(:last-child) {
-  margin-bottom: 4px !important;
+    margin-bottom: 0px !important;
 }
 
 .ant-menu-submenu .ant-menu-submenu .ant-menu-submenu-title {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .ant-menu-item-only-child {
-  display: flex !important;
-  align-items: center !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 .ant-menu-item-icon {
-  height: 100% !important;
+    height: 100% !important;
 }
 
 h1,
@@ -107,12 +125,12 @@ h5,
 h6,
 p,
 a {
-  margin-bottom: 0em !important;
+    margin-bottom: 0em !important;
 }
 
 /* ant Design setup with tailwindcss */
 svg {
-  vertical-align: initial;
+    vertical-align: initial;
 }
 
 img,
@@ -123,100 +141,98 @@ audio,
 iframe,
 embed,
 object {
-  display: initial;
+    display: initial;
 }
 
 html.dark .ant-table-thead > tr > th,
 html.dark .ant-table-tbody > tr > td {
-  border-bottom: 1px solid #243763 !important;
+    border-bottom: 1px solid #243763 !important;
 }
 
 html.dark .ant-table-cell,
 html.dark .ant-pagination-item-active {
-  background-color: #0f172a;
-  color: #fff;
+    background-color: #0f172a;
+    color: #fff;
 }
 
 html.dark .ant-pagination-prev .ant-pagination-item-link,
 html.dark .ant-pagination-next .ant-pagination-item-link {
-  background-color: #0f172a;
-  color: #fff;
+    background-color: #0f172a;
+    color: #fff;
 }
 
 html.dark .ant-table-cell.ant-table-cell-row-hover {
-  background-color: #1f2937 !important;
+    background-color: #1f2937 !important;
 }
 
 html.dark .ant-checkbox-disabled + span {
-  color: #838383;
+    color: #838383;
 }
 
 html.dark .search-input .ant-input-wrapper.ant-input-group,
 html.dark .search-input .ant-input-affix-wrapper.ant-input-affix-wrapper-lg,
 html.dark .search-input .ant-input.ant-input-lg,
 html.dark .search-input .ant-input-group-addon {
-  background-color: #0f172a !important;
+    background-color: #0f172a !important;
 }
 
 html.dark .ant-btn-primary {
-  color: #40a9ff;
+    color: #40a9ff;
 }
 
 html.dark .ant-btn-primary:hover {
-  color: #fff;
+    color: #fff;
 }
 
 html.dark
-  .search-input
-  .ant-input-group-addon
-  .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button:hover,
+    .search-input
+    .ant-input-group-addon
+    .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button:hover,
 html.dark
-  .search-input
-  .ant-input-group-addon
-  .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button:active {
-  background-color: #1f2937 !important;
+    .search-input
+    .ant-input-group-addon
+    .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button:active {
+    background-color: #1f2937 !important;
 }
 
 html.dark .search-input .anticon.anticon-search {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 html.dark .search-input .ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-  border-color: #0f172a !important;
+    border-color: #0f172a !important;
 }
 
 html.dark
-  .search-input
-  .ant-input-group-addon
-  .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button {
-  border: none !important;
-  background-color: #0f172a !important;
+    .search-input
+    .ant-input-group-addon
+    .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button {
+    border: none !important;
+    background-color: #0f172a !important;
 }
 
 html.dark .search-input .ant-input.ant-input-lg {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 html.dark .search-input .anticon.anticon-close-circle {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 html.dark .ant-radio-wrapper-disabled .ant-radio.ant-radio-disabled + span {
-  color: #9c9c9c !important;
+    color: #9c9c9c !important;
 }
 
 .ant-menu.ant-menu-inline-collapsed > .ant-menu-item,
 .ant-menu.ant-menu-inline-collapsed
-  > .ant-menu-item-group
-  > .ant-menu-item-group-list
-  > .ant-menu-item,
+    > .ant-menu-item-group
+    > .ant-menu-item-group-list
+    > .ant-menu-item,
 .ant-menu.ant-menu-inline-collapsed
-  > .ant-menu-item-group
-  > .ant-menu-item-group-list
-  > .ant-menu-submenu
-  > .ant-menu-submenu-title,
-.ant-menu.ant-menu-inline-collapsed
-  > .ant-menu-submenu
-  > .ant-menu-submenu-title {
-  padding: 0 calc(50% - 25px / 2) !important;
+    > .ant-menu-item-group
+    > .ant-menu-item-group-list
+    > .ant-menu-submenu
+    > .ant-menu-submenu-title,
+.ant-menu.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
+    padding: 0 calc(50% - 25px / 2) !important;
 }

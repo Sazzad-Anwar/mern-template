@@ -6,21 +6,21 @@ import { AiOutlineUser } from "react-icons/ai";
 
 const { SubMenu } = Menu;
 
-const SideBar = ({ collapsed, menulist, admin }) => {
-  const { authDispatch, auth } = useGlobalContext();
+const SideBar = ({ menulist, admin }) => {
+  const { authDispatch, auth, sideBar } = useGlobalContext();
   const navigate = useNavigate("/");
   const location = useLocation();
 
   return (
     <div
-      className={`${collapsed ? "w-14" : "w-60"
+      className={`${!sideBar.isOpen ? "w-14" : "w-60"
         } normal-transition h-screen border-r dark:border-gray-700`}
     >
       <Menu
         defaultSelectedKeys={["/" + location.pathname.split("/")[1]]}
         defaultOpenKeys={[location.pathname.split("/")[1]]}
         mode="inline"
-        inlineCollapsed={collapsed}
+        inlineCollapsed={!sideBar.isOpen}
         className="h-full w-auto relative"
       >
         {menulist.map((menu) => {
@@ -29,7 +29,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
               <SubMenu
                 key={menu.id}
                 icon={menu.icon}
-                title={<p className="text-base">{menu.name}</p>}
+                title={<p className="text-sm">{menu.name}</p>}
               >
                 {menu.subMenu.map((subMenu) => {
                   if (subMenu.hasSubMenu) {
@@ -37,7 +37,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                       <SubMenu
                         className="dark:text-white"
                         key={subMenu.id}
-                        title={<p className="text-base">{subMenu.name}</p>}
+                        title={<p className="text-sm">{subMenu.name}</p>}
                       >
                         {subMenu.subMenu.map((subSubMenu) => {
                           if (subSubMenu.hasSubMenu) {
@@ -46,13 +46,13 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                                 className="dark:text-white"
                                 key={subSubMenu.id}
                                 title={
-                                  <p className="text-base">{subSubMenu.name}</p>
+                                  <p className="text-sm">{subSubMenu.name}</p>
                                 }
                               >
                                 {subSubMenu.subMenu.map((subSubSubMenu) => (
                                   <Menu.Item
                                     key={subSubSubMenu.id}
-                                    className="text-base"
+                                    className="text-sm"
                                     onClick={() => navigate(subSubSubMenu.link)}
                                   >
                                     {subSubSubMenu.name}
@@ -64,7 +64,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                             return (
                               <Menu.Item
                                 key={subSubMenu.id}
-                                className="text-base"
+                                className="text-sm"
                                 onClick={() => navigate(subSubMenu.link)}
                               >
                                 {subSubMenu.name}
@@ -79,7 +79,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                       <Menu.Item
                         key={subMenu.id}
                         onClick={() => navigate(subMenu.link)}
-                        className="text-base"
+                        className="text-sm"
                       >
                         {subMenu.name}
                       </Menu.Item>
@@ -96,14 +96,14 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                 className="border-r border-transparent"
               >
                 <Link to={menu.link}>
-                  <span className="text-lg dark:text-white">{menu.name}</span>
+                  <span className="text-sm dark:text-white">{menu.name}</span>
                 </Link>
               </Menu.Item>
             );
           }
         })}
         <SubMenu
-          className={`absolute bottom-[55px] w-full ${collapsed ? "py-0" : "pt-2 pb-4"
+          className={`absolute bottom-[55px] w-full ${!sideBar.isOpen ? "py-0" : "pt-2 pb-4"
             }`}
           icon={<AiOutlineUser size={20} />}
           key={admin.id}
@@ -125,7 +125,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                     onClick={() =>
                       authDispatch({ type: LOGOUT }, navigate("/login"))
                     }
-                    className={`text-base ${collapsed ? "pl-auto" : "pl-16"
+                    className={`text-sm ${!sideBar.isOpen ? "pl-auto" : "pl-14"
                       } dark:text-white`}
                   >
                     <span className="dark:text-white">{subMenu.name}</span>
@@ -140,7 +140,7 @@ const SideBar = ({ collapsed, menulist, admin }) => {
                 return (
                   <Menu.Item
                     key={subMenu.id}
-                    className={`text-base ${collapsed ? "pl-auto" : "pl-16"
+                    className={`text-sm ${!sideBar.isOpen ? "pl-auto" : "pl-14"
                       } dark:text-white`}
                   >
                     <Link to={subMenu.link} className="dark:text-white">

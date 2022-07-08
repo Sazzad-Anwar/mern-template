@@ -17,7 +17,7 @@ function RoleManagement() {
   const { data: apis } = useSWR("/getAPI", Fetcher);
   const [showModal, setShowModal] = useState(false);
   const [selectedRole, setSelectedRole] = useState(
-    roleArray && roleArray.data[0]
+    (roleArray && roleArray.data.filter(role => role.role !== 'superAdmin')[0]) ?? null
   );
   const [selectedRoleAccessRoutes, setSelectedRoleAccessRoutes] = useState([]);
 
@@ -146,11 +146,11 @@ function RoleManagement() {
               Add new
             </Button>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2 mt-4 lg:ml-5">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-3 2xl:gap-6 mt-4 lg:ml-5">
             {apis?.data.map(({ api, _id }) => (
               <Checkbox
                 key={_id}
-                disabled={!selectedRole?._id}
+                disabled={selectedRole === null}
                 className="dark:text-white mx-0"
                 checked={selectedRoleAccessRoutes.includes(api)}
                 onChange={(e) => addRoute(api, e)}

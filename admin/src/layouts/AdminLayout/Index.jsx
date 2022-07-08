@@ -9,35 +9,32 @@ import { useGlobalContext } from "../../context/GlobalContextProvider";
 import Loader from "../../components/Loader/Index";
 import { APP_NAME } from "../../app.config";
 import CheckTokenValidation from "../../utils/CheckTokenValidation";
+import { CLOSE_SIDE_BAR, OPEN_SIDE_BAR } from "../../context/constants/SideBar";
 const SideBar = lazy(() => import("../../components/Sidebar/Index"));
 const Header = lazy(() => import("../../components/Header/Index"));
 
 export default function AdminLayout({ children, breadcrumbs }) {
-  const [collapsed, setCollapsed] = useState(false);
-  const { auth } = useGlobalContext();
+  const { auth, sideBar, sideBarToggleDispatch } = useGlobalContext();
   const location = useLocation();
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
     function handleResize() {
-      if (window.innerWidth < 1024) {
-        setCollapsed(true);
-      } else {
-        setCollapsed(false);
+      if (window.innerWidth <= 1024 && sideBar.isOpen) {
+        sideBarToggleDispatch({ type: CLOSE_SIDE_BAR, payload: false });
       }
     }
 
-    if (window.innerWidth < 1024) {
-      setCollapsed(true);
-    } else {
-      setCollapsed(false);
+    if (window.innerWidth <= 1024 && sideBar.isOpen) {
+      sideBarToggleDispatch({ type: CLOSE_SIDE_BAR, payload: false });
     }
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sideBarToggleDispatch]);
 
   const menuList = [
     {
@@ -104,6 +101,14 @@ export default function AdminLayout({ children, breadcrumbs }) {
     ],
   };
 
+  const toggleSideBar = () => {
+    if (sideBar.isOpen) {
+      sideBarToggleDispatch({ type: CLOSE_SIDE_BAR });
+    } else {
+      sideBarToggleDispatch({ type: OPEN_SIDE_BAR });
+    }
+  }
+
   if (!auth.user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
@@ -116,19 +121,19 @@ export default function AdminLayout({ children, breadcrumbs }) {
             <img
               src="/logo192.png"
               className={
-                collapsed
+                sideBar.isOpen
                   ? "normal-transition rounded-full h-8 w-8"
                   : "normal-transition h-auto w-8"
               }
               alt="logo"
             />
-            {!collapsed && (
+            {sideBar.isOpen && (
               <p className="dark:text-white text-xl ml-3">{APP_NAME}</p>
             )}
           </div>
           <Suspense fallback={<Loader />}>
             <SideBar
-              collapsed={collapsed}
+              collapsed={sideBar.isOpen}
               menulist={menuList}
               admin={adminRoute}
             />
@@ -137,8 +142,8 @@ export default function AdminLayout({ children, breadcrumbs }) {
       </Affix>
       <div className="normal-transition h-screen w-full">
         <Header
-          setShowSidebar={setCollapsed}
-          showSidebar={collapsed}
+          setShowSidebar={toggleSideBar}
+          showSidebar={sideBar.isOpen}
           breadcrumbs={breadcrumbs}
         />
         <main className="normal-transition ml-auto overflow-auto px-5">
