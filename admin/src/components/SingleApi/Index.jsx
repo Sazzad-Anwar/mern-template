@@ -185,16 +185,14 @@ const SingleApi = ({ api, index }) => {
             setAPIresponse({});
           }
         }}
-        className={`w-full cursor-pointer ${
-          open ? "rounded-b-none rounded-tl-2xl rounded-tr-2xl" : "rounded-full"
-        } flex items-center border-transparent bg-white px-1 py-1 dark:border dark:border-gray-600 dark:bg-gray-800 `}
+        className={`w-full cursor-pointer ${open ? "rounded-b-none rounded-tl-2xl rounded-tr-2xl" : "rounded-full"
+          } flex items-center border-transparent bg-white px-1 py-1 dark:border dark:border-gray-600 dark:bg-gray-800 `}
       >
         <span
-          className={`flex items-center justify-center px-2.5 py-1 ${
-            open
-              ? "bg-green-700 text-white dark:bg-green-600"
-              : "bg-gray-300 dark:bg-gray-600"
-          } mr-1 rounded-full font-medium  dark:text-white`}
+          className={`flex items-center justify-center px-2.5 py-1 ${open
+            ? "bg-green-700 text-white dark:bg-green-600"
+            : "bg-gray-300 dark:bg-gray-600"
+            } mr-1 rounded-full font-medium  dark:text-white`}
         >
           {index + 1}
         </span>
@@ -210,10 +208,10 @@ const SingleApi = ({ api, index }) => {
               api.method === "GET"
                 ? "green"
                 : api.method === "POST"
-                ? "geekblue"
-                : api.method === "PUT"
-                ? "purple"
-                : "red"
+                  ? "geekblue"
+                  : api.method === "PUT"
+                    ? "purple"
+                    : "red"
             }
           >
             {api.method}
@@ -247,11 +245,10 @@ const SingleApi = ({ api, index }) => {
               <div
                 onClick={() => setCurrentOption(option.name)}
                 key={option.name}
-                className={`${
-                  currentOption === option.name
-                    ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
-                    : "border-b-2 border-transparent"
-                } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
+                className={`${currentOption === option.name
+                  ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
+                  : "border-b-2 border-transparent"
+                  } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
               >
                 {option.label}
               </div>
@@ -317,7 +314,7 @@ const SingleApi = ({ api, index }) => {
 
           <div className="my-4">
             {Object.keys(api.url.variables).length !== 0 &&
-            currentOption === "pathVariables" ? (
+              currentOption === "pathVariables" ? (
               <Suspense fallback={<Loader />}>
                 <ReactJson
                   src={pathVariablesObject}
@@ -354,7 +351,7 @@ const SingleApi = ({ api, index }) => {
                         fontSize > 14 && setFontSize((prev) => prev - 1)
                       }
                       className={
-                        "font-base font-ubuntu items-end justify-self-end border-gray-600 px-1 py-px font-medium text-gray-600 hover:shadow-lg active:scale-95 dark:border-gray-600 dark:text-white lg:text-lg" +
+                        "font-base flex font-ubuntu items-end justify-self-end border-gray-600 px-1 py-px font-medium text-gray-600 hover:shadow-lg active:scale-95 dark:border-gray-600 dark:text-white lg:text-lg" +
                         (fontSize <= 14 ? " cursor-not-allowed" : "")
                       }
                     >
@@ -368,7 +365,7 @@ const SingleApi = ({ api, index }) => {
                         fontSize < 36 && setFontSize((prev) => prev + 1)
                       }
                       className={
-                        "font-base font-ubuntu items-end justify-self-end border-gray-600 px-1 py-px font-medium text-gray-600 hover:shadow-lg active:scale-95 dark:border-gray-600 dark:text-white lg:text-lg" +
+                        "font-base flex font-ubuntu items-end justify-self-end border-gray-600 px-1 py-px font-medium text-gray-600 hover:shadow-lg active:scale-95 dark:border-gray-600 dark:text-white lg:text-lg" +
                         (fontSize >= 36 ? " cursor-not-allowed" : "")
                       }
                     >

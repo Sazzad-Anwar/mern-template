@@ -11,6 +11,8 @@ import Home from "./pages/Home/Index";
 import NotFound from "./pages/NotFound/Index";
 import ResetPassword from "./pages/ResetPassword/Index";
 import Category from "./pages/Category/Index";
+import ErrorLogs from "./pages/ErrorLogs/Index";
+import ErrorLogsDetails from "./pages/ErrorLogsDetails/Index";
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
       <Route path="forgot-Password" element={<ForgotPassword />} />
       <Route path="api" element={<Api />} />
       <Route path="category" element={<Category />} />
+      <Route path="error-logs" element={<ErrorLogs />} />
+      <Route path="error-logs/:id" element={<ErrorLogsDetails />} />
       <Route path="role-management" element={<RoleManagement />} />
       <Route path="passwordReset/:token" element={<ResetPassword />} />
       <Route path="/users" element={<Users />} />

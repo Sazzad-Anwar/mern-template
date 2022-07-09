@@ -1,3 +1,4 @@
+import { Tooltip } from "antd";
 import { useEffect, useState } from "react";
 import { BsFillBrightnessHighFill, BsFillMoonStarsFill } from "react-icons/bs";
 
@@ -36,9 +37,13 @@ const DarkModeToggler = () => {
       className="cursor-pointer text-gray-600 transition-all ease-in-out hover:text-black dark:text-gray-500 dark:hover:text-white"
     >
       {theme === "dark" ? (
-        <BsFillBrightnessHighFill className="bi bi-brightness-high-fill normal-transition text-xl text-gray-600 hover:text-black active:animate-ping dark:text-gray-500 dark:hover:text-white" />
+        <Tooltip placement="bottomRight" title={<span>Toggle to light mode</span>}>
+          <BsFillBrightnessHighFill className="bi bi-brightness-high-fill normal-transition text-xl text-gray-600 hover:text-black active:animate-ping dark:text-gray-500 dark:hover:text-white" />
+        </Tooltip>
       ) : (
-        <BsFillMoonStarsFill className="bi bi-moon-stars-fill normal-transition text-xl text-gray-600 hover:text-black active:animate-ping dark:text-gray-500 dark:hover:text-white" />
+        <Tooltip placement="bottomRight" title={<span>Toggle to dark mode</span>}>
+          <BsFillMoonStarsFill className="bi bi-moon-stars-fill normal-transition text-xl text-gray-600 hover:text-black active:animate-ping dark:text-gray-500 dark:hover:text-white" />
+        </Tooltip>
       )}
     </button>
   );

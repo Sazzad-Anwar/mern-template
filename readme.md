@@ -62,13 +62,13 @@ COMPANY_NAME=
 To start the server as development use the following command.
 
 ```bash
-yarn dev-server
+yarn dev:server
 ```
 
 with npm
 
 ```bash
-npm run dev-server
+npm run dev:server
 ```
 
 Navigate to admin folder and run the following command to install the dependencies.
@@ -98,7 +98,7 @@ npm run dev
 Or you can run the admin frontend server from the root of the project by running the following command.
 
 ```bash
-yarn admin-server
+yarn dev:admin
 ```
 
 Or your can run the frontend and backend server together by running the following command.
@@ -116,13 +116,13 @@ npm run dev
 Before shipping the project to the production mode run the following command to build the frontend from the root folder.
 
 ```bash
-yarn build-admin
+yarn build:admin
 ```
 
 with npm
 
 ```bash
-npm run build-admin
+npm run build:admin
 ```
 
 To run the whole project on production use the following command using docker.

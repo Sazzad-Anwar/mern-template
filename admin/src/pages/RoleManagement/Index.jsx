@@ -9,7 +9,7 @@ import Modal from "../../components/Modal/Index";
 import { ImBin } from "react-icons/im";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { Navigate } from "react-router-dom";
-const AdminLayout = lazy(() => import("../../layouts/AdminLayout/Index"));
+const Layout = lazy(() => import("../../layouts/AdminLayout/Index"));
 
 function RoleManagement() {
   const { auth } = useGlobalContext();
@@ -92,7 +92,7 @@ function RoleManagement() {
       await axiosInstance.delete(`/roles/${role._id}`);
       toast.success("Role deleted successfully!");
       mutate("/roles");
-      setSelectedRole({});
+      setSelectedRole(null);
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -104,9 +104,9 @@ function RoleManagement() {
 
   return (
     <Suspense fallback={<Loader />}>
-      <AdminLayout breadcrumbs={breadcrumbs}>
+      <Layout breadcrumbs={breadcrumbs}>
         <div className="mt-5 flex flex-col lg:flex-row items-start">
-          <div className="w-full h-full lg:w-64 pr-5 border-b lg:border-b-0 lg:border-r dark:border-gray-600 pb-5">
+          <div className="w-full h-full lg:w-52">
             {roleArray &&
               roleArray?.data.map((role) => {
                 if (role.role === "superAdmin") {
@@ -140,13 +140,13 @@ function RoleManagement() {
 
             <Button
               type="primary"
-              className="mt-5 dark:text-white text-blue-600 hover:text-white"
+              className="mt-5 dark:text-white lg:w-full text-blue-600 hover:text-white"
               onClick={() => setShowModal(true)}
             >
-              Add new
+              Add new role
             </Button>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-3 2xl:gap-6 mt-4 lg:ml-5">
+          <div className="border-0 lg:border-t-0 lg:border-l pt-5 lg:pt-0 lg:pl-5 dark:border-gray-600 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3 2xl:gap-6 mt-4 lg:ml-5">
             {apis?.data.map(({ api, _id }) => (
               <Checkbox
                 key={_id}
@@ -208,30 +208,7 @@ function RoleManagement() {
             </Form>
           </div>
         </Modal>
-
-        {/* Add route modal */}
-        {/* <Modal showModal={showAddRouteModal} toggleModal={() => setShowAddRouteModal(!showAddRouteModal)}>
-                    <div className="px-5 py-5">
-                        <h1 className="dark:text-white text-xl font-semibold">Add new route access</h1>
-                        <Form
-                            name="Add new accessRoute"
-                            onFinish={addRoutes}
-                            layout="vertical"
-                            className="mt-5"
-                            initialValues={{
-                                accessRoutes: selectedRoleAccessRoutes && selectedRoleAccessRoutes,
-                            }}
-                        >
-                            <Form.Item>
-                                {apis?.data.map(({ api, _id }) => (
-                                    <Checkbox key={_id} className="dark:text-white" checked={selectedRoleAccessRoutes.includes(api)} onChange={(e) => addRoute(api, e)}>{api}</Checkbox>
-                                ))}
-                            </Form.Item>
-                            <Button htmlType="submit" type="primary" className="dark:text-white text-blue-600 hover:text-white">Save</Button>
-                        </Form>
-                    </div>
-                </Modal> */}
-      </AdminLayout>
+      </Layout>
     </Suspense>
   );
 }

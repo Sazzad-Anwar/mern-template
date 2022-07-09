@@ -3,11 +3,11 @@
  */
 const { AccessTokenValidation } = require("auth-middleware-jwt");
 const { Router } = require("express");
-const deleteUser = require("../controllers/users/deleteUser");
-const getUserDetails = require("../controllers/users/getUserDetails");
-const getAllUsersController = require("../controllers/users/getUsers");
+const deleteUser = require("../controllers/users/deleteOne");
+const getUserDetails = require("../controllers/users/getOneById");
+const getAllUsersController = require("../controllers/users/getAll");
 const hasSuperAdmin = require("../controllers/users/hasSuperAdmin");
-const getUserDetailsUpdate = require("../controllers/users/updateUserDetails");
+const getUserDetailsUpdate = require("../controllers/users/updateOne");
 const checkUser = require("../middlewares/checkUser");
 const router = Router();
 const axios = require("axios");

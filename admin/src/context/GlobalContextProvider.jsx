@@ -11,15 +11,22 @@ const GlobalContextProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("user"))
       : null,
     sideBar: {
-      isOpen: localStorage.getItem('sideBarIsOpen') ? Boolean(JSON.parse(localStorage.getItem('sideBarIsOpen'))) : true,
+      isOpen: localStorage.getItem("sideBarIsOpen")
+        ? Boolean(JSON.parse(localStorage.getItem("sideBarIsOpen")))
+        : true,
     },
   };
 
   const [auth, authDispatch] = useReducer(AuthReducer, initialState);
-  const [sideBar, sideBarToggleDispatch] = useReducer(SideBarReducer, initialState.sideBar);
+  const [sideBar, sideBarToggleDispatch] = useReducer(
+    SideBarReducer,
+    initialState.sideBar
+  );
 
   return (
-    <GlobalContext.Provider value={{ auth, authDispatch, sideBar, sideBarToggleDispatch }}>
+    <GlobalContext.Provider
+      value={{ auth, authDispatch, sideBar, sideBarToggleDispatch }}
+    >
       {children}
     </GlobalContext.Provider>
   );

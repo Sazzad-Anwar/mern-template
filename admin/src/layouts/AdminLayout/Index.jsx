@@ -1,15 +1,16 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Affix } from "antd";
 import { RiDashboardLine } from "react-icons/ri";
 import { ImUsers } from "react-icons/im";
 import { AiFillCode } from "react-icons/ai";
-import { MdCategory } from 'react-icons/md';
+import { MdCategory } from "react-icons/md";
+import { MdOutlineError } from 'react-icons/md';
 import { Navigate, useLocation } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import Loader from "../../components/Loader/Index";
 import { APP_NAME } from "../../app.config";
 import CheckTokenValidation from "../../utils/CheckTokenValidation";
-import { CLOSE_SIDE_BAR, OPEN_SIDE_BAR } from "../../context/constants/SideBar";
+import { CLOSE_SIDE_BAR } from "../../context/constants/SideBar";
 const SideBar = lazy(() => import("../../components/Sidebar/Index"));
 const Header = lazy(() => import("../../components/Header/Index"));
 
@@ -59,6 +60,13 @@ export default function AdminLayout({ children, breadcrumbs }) {
       ],
     },
     {
+      name: "Category",
+      link: "/category",
+      id: "/category",
+      icon: <MdCategory size={20} />,
+      hasSubMenu: false,
+    },
+    {
       name: "API Docs",
       link: "/api",
       hasSubMenu: false,
@@ -66,11 +74,11 @@ export default function AdminLayout({ children, breadcrumbs }) {
       icon: <AiFillCode size={20} />,
     },
     {
-      name: "Category",
-      link: "/category",
-      id: "/category",
-      icon: <MdCategory size={20} />,
+      name: "Error Logs",
+      link: "/error-logs",
       hasSubMenu: false,
+      id: "/error-logs",
+      icon: <MdOutlineError size={20} />,
     },
   ];
 
@@ -101,13 +109,6 @@ export default function AdminLayout({ children, breadcrumbs }) {
     ],
   };
 
-  const toggleSideBar = () => {
-    if (sideBar.isOpen) {
-      sideBarToggleDispatch({ type: CLOSE_SIDE_BAR });
-    } else {
-      sideBarToggleDispatch({ type: OPEN_SIDE_BAR });
-    }
-  }
 
   if (!auth.user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
@@ -128,7 +129,7 @@ export default function AdminLayout({ children, breadcrumbs }) {
               alt="logo"
             />
             {sideBar.isOpen && (
-              <p className="dark:text-white text-xl ml-3">{APP_NAME}</p>
+              <p className="dark:text-white text-lg ml-3 truncate">{APP_NAME}</p>
             )}
           </div>
           <Suspense fallback={<Loader />}>
@@ -140,10 +141,8 @@ export default function AdminLayout({ children, breadcrumbs }) {
           </Suspense>
         </div>
       </Affix>
-      <div className="normal-transition h-screen w-full">
+      <div className="normal-transition min-h-screen w-full">
         <Header
-          setShowSidebar={toggleSideBar}
-          showSidebar={sideBar.isOpen}
           breadcrumbs={breadcrumbs}
         />
         <main className="normal-transition ml-auto overflow-auto px-5">

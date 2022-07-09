@@ -1,36 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import AdminLayout from "../../layouts/AdminLayout/Index";
 import { FiEdit3 } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import { Avatar, Button, Table, Tag, Input } from "antd";
 import Fetcher from "../../utils/Fetcher";
 import useSWR, { mutate } from "swr";
-import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { toast } from "react-toastify";
 import axiosInstance from "../../utils/AxiosInstance";
+import { Popconfirm } from "antd";
+import Loader from "../../components/Loader/Index";
+const Layout = lazy(() => import("../../layouts/AdminLayout/Index"));
 
 const { Search } = Input;
 
 export default function Users() {
-  const { data, error } = useSWR(`/users`, Fetcher);
-  const { authDispatch } = useGlobalContext();
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const { data } = useSWR(`/users?page=${page}&pageSize=${pageSize}`, Fetcher);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    if (
-      (error && error?.message.split(" ").includes("401")) ||
-      (error && error?.message.split(" ").includes("403"))
-    ) {
-      authDispatch({
-        type: "LOGOUT",
-      });
-      toast.error("Your session is expired! please login again!");
-    }
-  }, [error, authDispatch]);
-
-  useEffect(() => {
-    setUsers(data && data?.data?.map((user) => ({ ...user, key: user._id })));
+    setUsers(data?.data?.map((user) => ({ ...user, key: user._id })) ?? []);
   }, [data]);
 
   const deleteUser = async (id) => {
@@ -40,6 +30,10 @@ export default function Users() {
       "/users",
       users.filter((user) => user._id !== id)
     );
+  };
+
+  const cancel = (e) => {
+    console.log(e);
   };
 
   const tableColumn = [
@@ -142,9 +136,10 @@ export default function Users() {
       render: (text, record) => (
         <div className="flex items-center">
           <Link to={`/users/${record._id}`}>
+
             <Button
               type="primary"
-              shape="circle"
+              shape="default"
               className="mr-4 text-blue-600 hover:text-white"
               icon={
                 <div className="flex justify-center items-center">
@@ -153,19 +148,27 @@ export default function Users() {
               }
             />
           </Link>
-          <Button
-            type="default"
-            shape="circle"
-            className="mr-4"
-            icon={
-              <div className="flex justify-center items-center">
-                <AiFillDelete />
-              </div>
-            }
+          <Popconfirm
+            title="Are you sure to delete this user?"
+            onConfirm={() => deleteUser(record._id)}
+            onCancel={cancel}
             disabled={record.role === "superAdmin"}
-            danger
-            onClick={() => deleteUser(record._id)}
-          />
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button
+              type="default"
+              shape="default"
+              className="mr-4"
+              icon={
+                <div className="flex justify-center items-center">
+                  <AiFillDelete />
+                </div>
+              }
+              disabled={record.role === "superAdmin"}
+              danger
+            />
+          </Popconfirm>
         </div>
       ),
     },
@@ -194,21 +197,41 @@ export default function Users() {
   };
 
   return (
-    <AdminLayout breadcrumbs={breadcrumbs}>
-      <div className="pt-3">
-        <div className="flex justify-end">
-          <div className="mb-4">
-            <Search
-              allowClear
-              size="large"
-              className="w-full lg:w-96 lg:ml-auto search-input"
-              placeholder="Search..."
-              onSearch={onSearch}
-            />
+    <Suspense fallback={<Loader />}>
+      <Layout breadcrumbs={breadcrumbs}>
+        <div className="pt-3">
+          <div className="flex justify-end">
+            <div className="mb-4">
+              <Search
+                allowClear
+                size="large"
+                className="w-full lg:w-96 lg:ml-auto search-input"
+                placeholder="Search..."
+                onSearch={onSearch}
+              />
+            </div>
           </div>
+          <Table
+            loading={!users.length}
+            columns={tableColumn}
+            dataSource={users}
+            pagination={{
+              showSizeChanger: true,
+              total: data && data.totalSize,
+              showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+              current: page,
+              pageSize,
+              className: 'dark:text-white',
+              hideOnSinglePage: true,
+              responsive: true,
+              onChange: async (page, pageSize) => {
+                setPage(page);
+                setPageSize(pageSize);
+              }
+            }}
+          />
         </div>
-        <Table columns={tableColumn} dataSource={users} />
-      </div>
-    </AdminLayout>
+      </Layout>
+    </Suspense>
   );
 }

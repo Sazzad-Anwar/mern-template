@@ -6,8 +6,8 @@ const { Router } = require("express");
 const checkUser = require("../middlewares/checkUser");
 const router = Router();
 const axios = require("axios");
-const createCategory = require("../controllers/categories/createCategory");
-const getAllCategories = require("../controllers/categories/getAllCategories");
+const createCategory = require("../controllers/categories/createOne");
+const getAllCategories = require("../controllers/categories/getAll");
 require("dotenv").config();
 
 /*
@@ -40,10 +40,10 @@ axios
   .post(`${process.env.API_URL}/api/v1/categories`)
   .catch((error) => console.log(error.message));
 axios
-  .put(`${process.env.API_URL}/api/v1/categories/randomId`)
+  .put(`${process.env.API_URL}/api/v1/categories/someUser`)
   .catch((error) => console.log(error.message));
 axios
-  .delete(`${process.env.API_URL}/api/v1/categories/randomId`)
+  .delete(`${process.env.API_URL}/api/v1/categories/someUser`)
   .catch((error) => console.log(error.message));
 
 module.exports = router;

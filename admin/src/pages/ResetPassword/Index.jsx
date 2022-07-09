@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Form, Input, Button } from "antd";
 import { FiKey } from "react-icons/fi";
@@ -14,9 +14,21 @@ import axiosInstance from "../../utils/AxiosInstance";
 export default function Index() {
   const { token } = useParams();
   const decoded = jwtDecode(token);
-  console.log(decoded);
+  const [isTokenInvalid, setIsTokenInvalid] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let interval = setInterval(() => {
+      if (decoded.exp < Date.now() / 1000) {
+        toast.error("Token expired");
+        setIsTokenInvalid(true);
+        console.log('hello')
+        clearInterval(interval);
+      }
+    }, 1000 * 60);
+    return () => clearInterval(interval);
+  }, [decoded.exp, navigate])
 
   const onFinish = async ({ password, confirmPassword }) => {
     try {
@@ -63,7 +75,7 @@ export default function Index() {
               <AiFillLock size={30} />
             </div>
           </h1>
-          {decoded.exp * 1000 < Date.now() ? (
+          {isTokenInvalid ? (
             <div className="text-center">
               <h1 className="text-white mt-5 text-xl md:text-3xl">
                 This link has expired

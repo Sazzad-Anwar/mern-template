@@ -18,6 +18,7 @@ const usersRoute = require("./routes/usersRoute");
 const roleRoute = require("./routes/roleRoute");
 const categoryRoute = require("./routes/category");
 const api = require("./routes/apiRoutes");
+const errorLogRoute = require("./routes/errorLogRoute");
 const saveApiRoute = require("./middlewares/saveApiRoute");
 dotenv.config();
 
@@ -49,6 +50,7 @@ app.use("/api/v1/users", saveApiRoute, usersRoute);
 app.use("/api/v1/roles", roleRoute);
 app.use("/api/v1/getAPI", api);
 app.use("/api/v1/categories", saveApiRoute, categoryRoute);
+app.use("/api/v1/error-logs", saveApiRoute, errorLogRoute);
 app.get("/api/v1/checkStatus", (req, res) =>
   res.json({ status: "Ok", host: req.hostname })
 );

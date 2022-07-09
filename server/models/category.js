@@ -3,9 +3,8 @@ const Schema = mongoose.Schema;
 
 const apiSchema = new Schema(
   {
-    name: { type: String, required: true },
-    ancestors: [{ type: String, default: [] }],
-    parent: { type: String, default: null },
+    name: { type: String, required: true, index: true },
+    children: [{ type: String, default: null, index: true }],
     image: { type: String, default: null },
     isActive: { type: Boolean, default: true },
   },

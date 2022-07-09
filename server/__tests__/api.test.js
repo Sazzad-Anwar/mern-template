@@ -296,65 +296,77 @@ describe("Get all api routes:/api/v1/", () => {
 /*
  * ************************* @Description: Test the category routes ****************************
  */
-describe("Category Routes", () => {
-  describe("Create category:/api/v1/categories", () => {
+// describe("Category Routes", () => {
+//   describe("Create category:/api/v1/categories", () => {
+//     describe("If the user is admin", () => {
+//       it("Should return 201", async () => {
+//         const res = await testApp
+//           .post("/api/v1/categories")
+//           .set("Authorization", `Bearer ${accessToken}`)
+//           .send({
+//             name: "test-category",
+//             ancestors: ["ancestor1", "ancestor2"],
+//             parent: "ancestor2",
+//             image: "https://via.placeholder.com/150",
+//           });
+//         expect(res.status).toBe(201);
+//         expect(res.body.status).toBe("success");
+//       });
+//     });
 
-    describe("If the user is admin", () => {
-      it("Should return 201", async () => {
-        const res = await testApp
-          .post("/api/v1/categories")
-          .set("Authorization", `Bearer ${accessToken}`)
-          .send({
-            name: "test-category",
-            ancestors: ["ancestor1", "ancestor2"],
-            parent: "ancestor2",
-            image: "https://via.placeholder.com/150",
-          });
-        expect(res.status).toBe(201);
-        expect(res.body.status).toBe("success");
-      });
-    });
+//     describe("If the user is not admin", () => {
+//       it("Should return 403", async () => {
+//         const res = await testApp
+//           .post("/api/v1/categories")
+//           .set("Authorization", `Bearer ${userAccessToken}`)
+//           .send({
+//             name: "test-category",
+//             ancestors: ["ancestor1", "ancestor2"],
+//             parent: "ancestor2",
+//             image: "https://via.placeholder.com/150",
+//           });
+//         expect(res.status).toBe(403);
+//       });
+//     });
+//   });
 
-    describe("If the user is not admin", () => {
-      it("Should return 403", async () => {
-        const res = await testApp
-          .post("/api/v1/categories")
-          .set("Authorization", `Bearer ${userAccessToken}`)
-          .send({
-            name: "test-category",
-            ancestors: ["ancestor1", "ancestor2"],
-            parent: "ancestor2",
-            image: "https://via.placeholder.com/150",
-          });
-        expect(res.status).toBe(403);
-      });
-    });
-  });
+//   describe("Get all top parent categories:/api/v1/categories", () => {
+//     it("Should return 200", async () => {
+//       const res = await testApp.get("/api/v1/categories");
+//       expect(res.status).toBe(200);
+//       expect(res.body.status).toBe("success");
+//     });
+//   });
 
-  describe("Get all top parent categories:/api/v1/categories", () => {
-    it("Should return 200", async () => {
-      const res = await testApp
-        .get("/api/v1/categories")
+//   describe("Get a specific category:/api/v1/categories?parent=parent_name&ancestors=ancestors_name", () => {
+//     it("Should return 200", async () => {
+//       const res = await testApp.get(
+//         `/api/v1/categories?parent=ancestor2&ancestors=ancestor1`
+//       );
+//       expect(res.status).toBe(200);
+//       expect(res.body.status).toBe("success");
+//     });
+//   });
+// });
+
+
+/*
+ * ************************* @Description: Test the error-logs routes ****************************
+ */
+describe('Error log routes', () => {
+  describe('Get all error logs', () => {
+    it("Should return 200 if the user is super admin", async () => {
+      const res = await testApp.get('/api/v1/error-logs').set("Authorization", `Bearer ${accessToken}`);
       expect(res.status).toBe(200);
       expect(res.body.status).toBe("success");
     })
   })
-
-  describe("Get a specific category:/api/v1/categories?parent=parent_name&ancestors=ancestors_name", () => {
-    it("Should return 200", async () => {
-      const res = await testApp
-        .get(`/api/v1/categories?parent=ancestor2&ancestors=ancestor1`);
-      expect(res.status).toBe(200);
-      expect(res.body.status).toBe("success");
-    })
-  })
-
-});
+})
 
 /*
  * @Description: Delete a user
  */
-describe(`Delete a user:/api/v1/users/${user._id}`, () => {
+describe(`Delete a user:/api/v1/users/:id`, () => {
   describe("If the login user is 'Super Admin'", () => {
     it("Should return 200", async () => {
       const res = await testApp

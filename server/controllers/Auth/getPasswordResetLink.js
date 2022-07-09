@@ -20,9 +20,8 @@ const getPasswordResetLink = expressAsyncHandler(async (req, res) => {
     let activationToken = await jwt.sign(
       { id: user._id, email },
       process.env.ACCESS_TOKEN_SECRET_KEY,
-      { expiresIn: process.env.RESET_PASSWORD_EXPIRES_IN }
+      { expiresIn: process.env.RESET_PASSWORD_LINK_EXPIRES_IN }
     );
-    console.log(activationToken);
 
     let emailData = {
       name: user.name,

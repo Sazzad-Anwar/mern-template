@@ -1,13 +1,13 @@
 const Errors = require("../models/errorLogs.js");
-const { logger } = require("./loggerMiddleware.js");
+const logger = require("./loggerMiddleware.js");
 
 //Description: Handle the error and throw the error in API response instead crashing the applicaiton
 async function errorHandler(err, req, res, next) {
   const statusCode = err.isJoi
     ? 422
     : res.statusCode === 200
-    ? 500
-    : res.statusCode;
+      ? 500
+      : res.statusCode;
 
   res.status(statusCode);
 
@@ -22,7 +22,7 @@ async function errorHandler(err, req, res, next) {
       stack: err.stack,
     });
 
-    if (process.env.NODE_ENV === "production" && statusCode === 500) {
+    if (process.env.NODE_ENV !== "development" && statusCode === 500) {
       await newError.save();
       logger(
         err.message,

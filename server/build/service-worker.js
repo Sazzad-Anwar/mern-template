@@ -3636,14 +3636,14 @@
               (self.addEventListener("install", ve),
               self.addEventListener("activate", de));
         })([
-          { revision: "fa9ae796a6f21fa9123d880a8a4c320c", url: "/index.html" },
-          { revision: null, url: "/static/css/main.765cf5b4.css" },
+          { revision: "3aaf221ce5d97c44834644ba629178d1", url: "/index.html" },
+          { revision: null, url: "/static/css/main.1ae228e3.css" },
           { revision: null, url: "/static/js/377.95d1eb10.chunk.js" },
-          { revision: null, url: "/static/js/642.5d37bcb5.chunk.js" },
-          { revision: null, url: "/static/js/909.48ae2633.chunk.js" },
+          { revision: null, url: "/static/js/642.851d79b9.chunk.js" },
+          { revision: null, url: "/static/js/909.646fbaaf.chunk.js" },
           { revision: null, url: "/static/js/939.16d2303d.chunk.js" },
-          { revision: null, url: "/static/js/964.99239e42.chunk.js" },
-          { revision: null, url: "/static/js/main.908fca6a.js" },
+          { revision: null, url: "/static/js/964.78532054.chunk.js" },
+          { revision: null, url: "/static/js/main.3e7421eb.js" },
         ]),
         pe(_e);
       var Le,
@@ -3657,18 +3657,15 @@
           !r.pathname.match(qe)
         );
       }, ((Le = "/index.html"), oe().createHandlerBoundToURL(Le))),
-        ke(
-          function (e) {
-            var t = e.url;
-            return (
-              t.origin === self.location.origin && t.pathname.endsWith(".png")
-            );
-          },
-          new Ee({
-            cacheName: "images",
-            plugins: [new ee({ maxEntries: 50 })],
-          })
-        ),
+        ke(function (e) {
+          var t = e.url;
+          return (
+            t.origin === self.location.origin && t.pathname.endsWith(".png")
+          );
+        }, new Ee({
+          cacheName: "images",
+          plugins: [new ee({ maxEntries: 50 })],
+        })),
         self.addEventListener("message", function (e) {
           e.data && "SKIP_WAITING" === e.data.type && self.skipWaiting();
         });

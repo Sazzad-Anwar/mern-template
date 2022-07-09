@@ -236,3 +236,37 @@ html.dark .ant-radio-wrapper-disabled .ant-radio.ant-radio-disabled + span {
 .ant-menu.ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title {
     padding: 0 calc(50% - 25px / 2) !important;
 }
+
+.ant-menu-vertical .ant-menu-item,
+.ant-menu-vertical-left .ant-menu-item,
+.ant-menu-vertical-right .ant-menu-item,
+.ant-menu-inline .ant-menu-item,
+.ant-menu-vertical .ant-menu-submenu-title,
+.ant-menu-vertical-left .ant-menu-submenu-title,
+.ant-menu-vertical-right .ant-menu-submenu-title,
+.ant-menu-inline .ant-menu-submenu-title {
+    margin-bottom: 0px !important;
+}
+
+html.dark .ant-picker-suffix .anticon.anticon-calendar,
+html.dark .ant-picker-range-separator .anticon.anticon-swap-right {
+    color: #fff !important;
+}
+
+html.dark .ant-picker-input input {
+    color: #fff !important;
+}
+
+html.dark
+    .ant-select.ant-pagination-options-size-changer.ant-select-single.ant-select-show-arrow.ant-select-open
+    .ant-select-selector,
+html.dark
+    .ant-select.ant-pagination-options-size-changer.ant-select-single.ant-select-show-arrow
+    .ant-select-selector {
+    background-color: #0f172a !important;
+    color: #fff !important;
+}
+
+html.dark .ant-empty-description {
+    color: #fff !important;
+}

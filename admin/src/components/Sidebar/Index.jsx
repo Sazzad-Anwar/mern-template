@@ -103,7 +103,7 @@ const SideBar = ({ menulist, admin }) => {
           }
         })}
         <SubMenu
-          className={`absolute bottom-[55px] w-full ${!sideBar.isOpen ? "py-0" : "pt-2 pb-4"
+          className={`absolute ${!sideBar.isOpen ? 'bottom-[70px]' : 'bottom-[55px]'} w-full ${!sideBar.isOpen ? "py-0" : "pt-2 pb-4"
             }`}
           icon={<AiOutlineUser size={20} />}
           key={admin.id}

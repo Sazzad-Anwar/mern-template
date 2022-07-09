@@ -5,10 +5,10 @@
 const { AccessTokenValidation } = require("auth-middleware-jwt");
 const { Router } = require("express");
 const router = Router();
-const getRoles = require("../controllers/roles/getRolesController");
-const createRoles = require("../controllers/roles/createRoleController");
-const updateRoles = require("../controllers/roles/updateRoleController");
-const deleteRoles = require("../controllers/roles/deleteRoleController");
+const getRoles = require("../controllers/roles/getAll");
+const createRoles = require("../controllers/roles/createOne");
+const updateRoles = require("../controllers/roles/updateOne");
+const deleteRoles = require("../controllers/roles/deleteOne");
 const checkUser = require("../middlewares/checkUser");
 
 /*
