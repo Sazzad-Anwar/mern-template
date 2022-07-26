@@ -24,11 +24,11 @@ npm run install-packages
 
 Initialize the `.env` file for the development and production mode.
 
-```bash
-MONGO_URI=mongodb://0.0.0.0:27017/medi-career
+````bash
+MONGO_URI=mongodb://0.0.0.0:27017/mern-template
 PORT=8080
-ACCESS_TOKEN_SECRET_KEY=CA88A1AF435799524BFB237931C54
-REFRESH_TOKEN_SECRET_KEY=D76C9614E3A69338F5FF3168E71C3
+ACCESS_TOKEN_SECRET_KEY=
+REFRESH_TOKEN_SECRET_KEY=
 REFRESH_TOKEN_EXPIRES_IN=1y
 ACCESS_TOKEN_EXPIRES_IN=1d
 ACCESS_COOKIE_EXPIRES_IN=31536000000
@@ -50,22 +50,19 @@ REDIS_PORT=6379
 EMAIL_SERVICE=gmail # use "custom" for custom email service
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
-EMAIL_USER=sazzadzihan@gmail.com
-EMAIL_PASS=bjhvrhlxnnphqrnw
-EMAIL_FROM=Medi Career<medicareer@gmail.com>
+EMAIL_USER=
+EMAIL_PASS=
+EMAIL_FROM=Mern Template<merntemplate@yopmail.com>
 
 # Company details
-COMPANY_NAME=Medi Career
+COMPANY_NAME=Mern Template
 
-# App password
-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
-```
 
 To start the server as development use the following command.
 
 ```bash
 yarn dev-server
-```
+````
 
 with npm
 
