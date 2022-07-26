@@ -33,7 +33,7 @@ html.dark ::-webkit-scrollbar-track {
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background-color: var(--darkDark-color);
+  background-color: var(--deepDark-color);
   border-radius: 4px;
 }
 
@@ -152,22 +152,22 @@ object {
 html.dark .ant-table-thead > tr > th,
 html.dark .ant-table-tbody > tr > td {
   border-bottom: 1px solid #c4c4c41c !important;
-  background: var(--darkDark-color) !important;
+  background: var(--deepDark-color) !important;
 }
 
 html.dark .ant-pagination-item-active {
-  background-color: var(--darkDark-color);
+  background-color: var(--deepDark-color);
   color: #fff;
 }
 
 html.dark .ant-table-cell {
-  background-color: var(--darkDark-color);
+  background-color: var(--deepDark-color);
   color: #fff;
 }
 
 html.dark .ant-pagination-prev .ant-pagination-item-link,
 html.dark .ant-pagination-next .ant-pagination-item-link {
-  background-color: var(--darkDark-color);
+  background-color: var(--deepDark-color);
   color: #fff;
 }
 
@@ -184,7 +184,7 @@ html.dark .search-input .ant-input-wrapper.ant-input-group,
 html.dark .search-input .ant-input-affix-wrapper.ant-input-affix-wrapper-lg,
 html.dark .search-input .ant-input.ant-input-lg,
 html.dark .search-input .ant-input-group-addon {
-  background-color: var(--darkDark-color) !important;
+  background-color: var(--deepDark-color) !important;
 }
 
 html.dark .ant-btn-primary:hover {
@@ -207,7 +207,7 @@ html.dark .search-input .anticon.anticon-search {
 }
 
 html.dark .search-input .ant-input-affix-wrapper.ant-input-affix-wrapper-lg {
-  border-color: var(--darkDark-color) !important;
+  border-color: var(--deepDark-color) !important;
 }
 
 html.dark
@@ -215,7 +215,7 @@ html.dark
   .ant-input-group-addon
   .ant-btn.ant-btn-default.ant-btn-lg.ant-btn-icon-only.ant-input-search-button {
   border: none !important;
-  background-color: var(--darkDark-color) !important;
+  background-color: var(--deepDark-color) !important;
 }
 
 html.dark .search-input .ant-input.ant-input-lg {
@@ -272,7 +272,7 @@ html.dark
 html.dark
   .ant-select.ant-pagination-options-size-changer.ant-select-single.ant-select-show-arrow
   .ant-select-selector {
-  background-color: var(--darkDark-color) !important;
+  background-color: var(--deepDark-color) !important;
   color: #fff !important;
 }
 
@@ -294,11 +294,11 @@ html.dark .ant-modal-header {
 }
 
 html.dark .ant-modal-footer {
-  border-top: 1px solid var(--darkDark-color) !important;
+  border-top: 1px solid var(--deepDark-color) !important;
 }
 
 html.dark .ant-modal-header {
-  border-bottom: 1px solid var(--darkDark-color) !important;
+  border-bottom: 1px solid var(--deepDark-color) !important;
 }
 
 html.dark .ant-modal-title {

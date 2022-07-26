@@ -5,7 +5,7 @@ import PontDetailsCard from "../../components/PointDetailsCard/Index";
 import { RiUserSearchLine } from "react-icons/ri";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { MdCategory } from "react-icons/md";
-import { TbCurrencyTaka } from 'react-icons/tb';
+import { TbCurrencyTaka } from "react-icons/tb";
 import BreadCrumbs from "../../components/BreadCrumbs/Index";
 
 export default function Home() {
