@@ -1,11 +1,11 @@
 import React from "react";
 import { BsPeopleFill } from "react-icons/bs";
 import { GoPackage } from "react-icons/go";
+import { FaBook } from "react-icons/fa";
 import PontDetailsCard from "../../components/PointDetailsCard/Index";
 import { RiUserSearchLine } from "react-icons/ri";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { MdCategory } from "react-icons/md";
-import { TbCurrencyTaka } from "react-icons/tb";
 import BreadCrumbs from "../../components/BreadCrumbs/Index";
 
 export default function Home() {
@@ -39,13 +39,13 @@ export default function Home() {
           <PontDetailsCard
             icon={<GoPackage className="dark:text-white" size={20} />}
             title="10"
-            subTitle="Total Items"
+            subTitle="Course enrolled"
           />
 
           <PontDetailsCard
-            icon={<TbCurrencyTaka className="dark:text-white" size={20} />}
-            title="150000"
-            subTitle="Total Sales"
+            icon={<FaBook className="dark:text-white" size={20} />}
+            title="15"
+            subTitle="Total courses"
           />
 
           <PontDetailsCard

@@ -5,6 +5,7 @@ import CreateRole from "./pages/RoleManagement/CreateRole";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Fetcher from "./utils/Fetcher";
 import useSWR from "swr";
+import { APP_NAME } from "./assets/app.config";
 const RoleDetails = lazy(() => import("./pages/RoleManagement/RoleDetails"));
 const Login = lazy(() => import("./pages/Auth/Login"));
 const Registration = lazy(() => import("./pages/Auth/Registration"));
@@ -46,7 +47,8 @@ export default function Index() {
         <link rel="icon" href={app?.logo} />
         <meta name="description" content={app?.description} />
         <title>
-          Medi Career {pathname === "/" ? "" : "| " + pathname.split("/")[1]}
+          {app?.name ?? APP_NAME}{" "}
+          {pathname === "/" ? "" : "| " + pathname.split("/")[1]}
         </title>
       </Helmet>
       <Suspense fallback={<Loader />}>
