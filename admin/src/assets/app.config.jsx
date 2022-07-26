@@ -8,7 +8,7 @@ import { MdOutlineError } from "react-icons/md";
 export const API_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8080/api/v1"
-    : "https://mern-stack-template.herokuapp.com/api/v1";
+    : "https://mern01-template.herokuapp.com/api/v1";
 export const APP_NAME = "Admin Panel";
 export const APP_MOTTO_1 = "Take your app access without any hassle";
 export const APP_MOTTO_2 = "Get a fast & smooth user experience.";
