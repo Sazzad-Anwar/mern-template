@@ -17,6 +17,7 @@ const CheckTokenValidation = () => {
         type: "LOGOUT",
       });
       toast.error("Your session is expired! please login again!");
+      window.location.reload();
     }
   }, [error, authDispatch]);
 

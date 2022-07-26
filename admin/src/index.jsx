@@ -1,6 +1,7 @@
 import React from "react";
-import "./index.css";
-import App from "./App";
+import "./assets/index.css";
+import "./assets/App.css";
+import Routes from "./Routes";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
@@ -8,17 +9,14 @@ import "animate.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GlobalContextProvider from "./context/GlobalContextProvider";
-import axios from "axios";
 import { createRoot } from "react-dom/client";
 const container = document.getElementById("app");
 const root = createRoot(container);
 
-axios.defaults.baseURL = process.env.REACT_APP_URL;
-
 root.render(
   <GlobalContextProvider>
     <BrowserRouter>
-      <App />
+      <Routes />
       <ToastContainer
         position="top-right"
         autoClose={5000}

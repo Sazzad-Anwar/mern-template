@@ -7,14 +7,14 @@ const AuthReducer = (state = {}, action) => {
     case LOGIN:
       user = jwt_decode(action.payload);
       localStorage.setItem("user", JSON.stringify(user));
-      return { user };
+      return { ...state, user };
     case REGISTRATION:
       user = jwt_decode(action.payload);
       localStorage.setItem("user", JSON.stringify(user));
-      return { user };
+      return { ...state, user };
     case LOGOUT:
       localStorage.removeItem("user");
-      return { user: null };
+      return { ...state, user: null };
     default:
       return state;
   }

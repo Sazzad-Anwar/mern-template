@@ -1,39 +1,47 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FiEdit3 } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
-import { Avatar, Button, Table, Tag, Input } from "antd";
+import { Avatar, Button, Table, Tag, Input, Tooltip } from "antd";
 import Fetcher from "../../utils/Fetcher";
 import useSWR, { mutate } from "swr";
 import { toast } from "react-toastify";
 import axiosInstance from "../../utils/AxiosInstance";
 import { Popconfirm } from "antd";
-import Loader from "../../components/Loader/Index";
-const Layout = lazy(() => import("../../layouts/AdminLayout/Index"));
+import BreadCrumbs from "../../components/BreadCrumbs/Index";
+import { useGlobalContext } from "../../context/GlobalContextProvider";
+import Error from "../../components/Error/Index";
 
 const { Search } = Input;
 
 export default function Users() {
+  const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const { data } = useSWR(`/users?page=${page}&pageSize=${pageSize}`, Fetcher);
+  const { data, error } = useSWR(
+    `/users?page=${page}&pageSize=${pageSize}`,
+    Fetcher
+  );
   const [users, setUsers] = useState([]);
+  const { auth } = useGlobalContext();
 
   useEffect(() => {
     setUsers(data?.data?.map((user) => ({ ...user, key: user._id })) ?? []);
   }, [data]);
 
   const deleteUser = async (id) => {
-    await axiosInstance.delete(`/users/${id}`);
-    toast.success("User deleted successfully!");
-    mutate(
-      "/users",
-      users.filter((user) => user._id !== id)
-    );
-  };
-
-  const cancel = (e) => {
-    console.log(e);
+    try {
+      await axiosInstance.delete(`/users/${id}`);
+      toast.success("User deleted successfully!");
+      setUsers(users.filter((user) => user._id !== id));
+      mutate(`/users?page=${page}&pageSize=${pageSize}`);
+    } catch (error) {
+      toast.error(
+        error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
   };
 
   const tableColumn = [
@@ -42,21 +50,16 @@ export default function Users() {
       dataIndex: "avatarUrl",
       key: "avatarUrl",
       render: (avatarUrl, record) => {
-        if (avatarUrl !== "") {
-          return (
-            <img
-              src={avatarUrl}
-              alt="user"
-              className="w-10 h-10 rounded-full"
-            />
-          );
-        } else {
-          return (
-            <Avatar className="dark:text-gray-900">
-              {record.name.split("")[0].toUpperCase()}
-            </Avatar>
-          );
-        }
+        return (
+          <Avatar
+            src={avatarUrl}
+            alt={record.name}
+            className="dark:text-gray-900"
+            size={30}
+          >
+            {record.name.split("")[0].toUpperCase()}
+          </Avatar>
+        );
       },
     },
     {
@@ -79,6 +82,11 @@ export default function Users() {
       title: "Phone",
       dataIndex: "phoneNumber",
       key: "phoneNumber",
+    },
+    {
+      title: "Location",
+      dataIndex: "location",
+      key: "location",
     },
     {
       title: "Role",
@@ -136,11 +144,10 @@ export default function Users() {
       render: (text, record) => (
         <div className="flex items-center">
           <Link to={`/users/${record._id}`}>
-
             <Button
-              type="primary"
+              type="ghost"
               shape="default"
-              className="mr-4 text-blue-600 hover:text-white"
+              className="mr-4 dark:text-white dark:hover:text-blue-400"
               icon={
                 <div className="flex justify-center items-center">
                   <FiEdit3 />
@@ -151,15 +158,16 @@ export default function Users() {
           <Popconfirm
             title="Are you sure to delete this user?"
             onConfirm={() => deleteUser(record._id)}
-            onCancel={cancel}
-            disabled={record.role === "superAdmin"}
+            disabled={
+              record.role === "superAdmin" || record._id === auth?.user._id
+            }
             okText="Yes"
             cancelText="No"
           >
             <Button
-              type="default"
+              type="ghost"
               shape="default"
-              className="mr-4"
+              className="mr-4 dark:text-white dark:hover:text-blue-400"
               icon={
                 <div className="flex justify-center items-center">
                   <AiFillDelete />
@@ -197,20 +205,39 @@ export default function Users() {
   };
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Layout breadcrumbs={breadcrumbs}>
-        <div className="pt-3">
-          <div className="flex justify-end">
-            <div className="mb-4">
-              <Search
-                allowClear
-                size="large"
-                className="w-full lg:w-96 lg:ml-auto search-input"
-                placeholder="Search..."
-                onSearch={onSearch}
-              />
-            </div>
+    <>
+      <BreadCrumbs details={breadcrumbs} />
+      <div className="pt-3">
+        <div className="flex justify-end">
+          <Tooltip title="Add User">
+            <Button
+              onClick={() => navigate("/create-user")}
+              type="ghost"
+              shape="default"
+              className="mr-3 flex py-5 items-center shadow-md dark:bg-deepDark dark:text-white dark:hover:text-blue-400 dark:border-gray-600 dark:hover:border-blue-400"
+            >
+              <span className="">Create User</span>
+            </Button>
+          </Tooltip>
+          <div className="mb-4">
+            <Search
+              allowClear
+              size="large"
+              className="w-full lg:w-96 lg:ml-auto search-input"
+              placeholder="Search..."
+              onSearch={onSearch}
+            />
           </div>
+        </div>
+        {error ? (
+          <Error
+            error={
+              error.response?.data.message
+                ? error.response.data.message
+                : error.message
+            }
+          />
+        ) : (
           <Table
             loading={!users.length}
             columns={tableColumn}
@@ -218,20 +245,21 @@ export default function Users() {
             pagination={{
               showSizeChanger: true,
               total: data && data.totalSize,
-              showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+              showTotal: (total, range) =>
+                `${range[0]}-${range[1]} of ${total} items`,
               current: page,
               pageSize,
-              className: 'dark:text-white',
+              className: "dark:text-white",
               hideOnSinglePage: true,
               responsive: true,
               onChange: async (page, pageSize) => {
                 setPage(page);
                 setPageSize(pageSize);
-              }
+              },
             }}
           />
-        </div>
-      </Layout>
-    </Suspense>
+        )}
+      </div>
+    </>
   );
 }

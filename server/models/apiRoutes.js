@@ -3,7 +3,12 @@ const Schema = mongoose.Schema;
 
 const apiSchema = new Schema(
   {
-    api: { type: String, required: true, index: true },
+    slug: {
+      type: String,
+      unique: true,
+      required: [true, "Api slug is required"],
+    },
+    name: [{ type: String, required: [true, "Api name is required"] }],
   },
   { timestamps: true }
 );

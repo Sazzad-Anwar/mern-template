@@ -1,4 +1,4 @@
-import { Menu } from "antd";
+import { Menu, Tag } from "antd";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { LOGOUT } from "../../context/constants/AuthConstants";
@@ -8,16 +8,17 @@ const { SubMenu } = Menu;
 
 const SideBar = ({ menulist, admin }) => {
   const { authDispatch, auth, sideBar } = useGlobalContext();
-  const navigate = useNavigate("/");
+  const navigate = useNavigate();
   const location = useLocation();
 
   return (
     <div
-      className={`${!sideBar.isOpen ? "w-14" : "w-60"
-        } normal-transition h-screen border-r dark:border-gray-700`}
+      className={`${
+        !sideBar.isOpen ? "w-0 md:w-14" : "w-60"
+      } normal-transition h-screen border-r dark:border-gray-700`}
     >
       <Menu
-        defaultSelectedKeys={["/" + location.pathname.split("/")[1]]}
+        defaultSelectedKeys={["/"]}
         defaultOpenKeys={[location.pathname.split("/")[1]]}
         mode="inline"
         inlineCollapsed={!sideBar.isOpen}
@@ -103,16 +104,17 @@ const SideBar = ({ menulist, admin }) => {
           }
         })}
         <SubMenu
-          className={`absolute ${!sideBar.isOpen ? 'bottom-[70px]' : 'bottom-[55px]'} w-full ${!sideBar.isOpen ? "py-0" : "pt-2 pb-4"
-            }`}
+          className={`absolute ${
+            !sideBar.isOpen ? "bottom-[70px]" : "bottom-[55px]"
+          } w-full ${!sideBar.isOpen ? "py-0" : "pt-2 pb-4"}`}
           icon={<AiOutlineUser size={20} />}
           key={admin.id}
           title={
-            <div className="flex flex-col dark:text-white">
-              <span className="text-sm truncate">{admin.name}</span>
-              <span className="text-xs text-purple-500 font-bold">
-                {auth.user.role.toUpperCase()}
-              </span>
+            <div className="dark:text-white">
+              <div className="text-sm truncate leading-3 mt-2 font-semibold">
+                {admin.name}
+              </div>
+              <Tag color="purple">{auth && auth?.user?.role}</Tag>
             </div>
           }
         >
@@ -125,23 +127,26 @@ const SideBar = ({ menulist, admin }) => {
                     onClick={() =>
                       authDispatch({ type: LOGOUT }, navigate("/login"))
                     }
-                    className={`text-sm ${!sideBar.isOpen ? "pl-auto" : "pl-14"
-                      } dark:text-white`}
+                    className={`text-sm ${
+                      !sideBar.isOpen ? "pl-auto" : "pl-14"
+                    } dark:text-white`}
                   >
                     <span className="dark:text-white">{subMenu.name}</span>
                   </Menu.Item>
                 );
               } else if (
                 subMenu.superAdmin &&
-                !auth.user.role === "superAdmin"
+                auth &&
+                auth?.user?.role !== "superAdmin"
               ) {
                 return null;
               } else {
                 return (
                   <Menu.Item
                     key={subMenu.id}
-                    className={`text-sm ${!sideBar.isOpen ? "pl-auto" : "pl-14"
-                      } dark:text-white`}
+                    className={`text-sm ${
+                      !sideBar.isOpen ? "pl-auto" : "pl-14"
+                    } dark:text-white`}
                   >
                     <Link to={subMenu.link} className="dark:text-white">
                       {subMenu.name}

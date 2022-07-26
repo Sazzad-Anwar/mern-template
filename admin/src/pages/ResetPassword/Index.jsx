@@ -23,12 +23,12 @@ export default function Index() {
       if (decoded.exp < Date.now() / 1000) {
         toast.error("Token expired");
         setIsTokenInvalid(true);
-        console.log('hello')
+        console.log("hello");
         clearInterval(interval);
       }
     }, 1000 * 60);
     return () => clearInterval(interval);
-  }, [decoded.exp, navigate])
+  }, [decoded.exp, navigate]);
 
   const onFinish = async ({ password, confirmPassword }) => {
     try {

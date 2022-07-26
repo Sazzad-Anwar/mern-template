@@ -6,21 +6,22 @@ const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);
 
 const GlobalContextProvider = ({ children }) => {
-  let initialState = {
+  let authState = {
     user: localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user"))
       : null,
-    sideBar: {
-      isOpen: localStorage.getItem("sideBarIsOpen")
-        ? Boolean(JSON.parse(localStorage.getItem("sideBarIsOpen")))
-        : true,
-    },
   };
 
-  const [auth, authDispatch] = useReducer(AuthReducer, initialState);
+  let sideBarState = {
+    isOpen: localStorage.getItem("sideBarIsOpen")
+      ? Boolean(JSON.parse(localStorage.getItem("sideBarIsOpen")))
+      : true,
+  };
+
+  const [auth, authDispatch] = useReducer(AuthReducer, authState);
   const [sideBar, sideBarToggleDispatch] = useReducer(
     SideBarReducer,
-    initialState.sideBar
+    sideBarState
   );
 
   return (

@@ -13,7 +13,7 @@ import {
   BsCaretDownFill,
 } from "react-icons/bs";
 import Loader from "../Loader/Index";
-import { API_URL } from "../../app.config";
+import { API_URL } from "../../assets/app.config";
 import axiosInstance from "../../utils/AxiosInstance";
 import { Tag } from "antd";
 const ReactJson = lazy(() => import("react-json-view"));
@@ -185,14 +185,18 @@ const SingleApi = ({ api, index }) => {
             setAPIresponse({});
           }
         }}
-        className={`w-full cursor-pointer ${open ? "rounded-b-none rounded-tl-2xl rounded-tr-2xl" : "rounded-full"
-          } flex items-center border-transparent bg-white px-1 py-1 dark:border dark:border-gray-600 dark:bg-gray-800 `}
+        className={`w-full cursor-pointer ${
+          open ? "rounded-tl-2xl rounded-tr-2xl" : "rounded-full"
+        } flex items-center border-transparent bg-white px-1 py-1 dark:bg-deepDark `}
       >
         <span
-          className={`flex items-center justify-center px-2.5 py-1 ${open
-            ? "bg-green-700 text-white dark:bg-green-600"
-            : "bg-gray-300 dark:bg-gray-600"
-            } mr-1 rounded-full font-medium  dark:text-white`}
+          className={`flex items-center justify-center ${
+            index + 1 > 9 ? "py-1.5" : "py-1"
+          } px-2.5 ${
+            open
+              ? "bg-green-700 text-white dark:bg-green-600"
+              : "bg-gray-300 dark:bg-gray-600"
+          } mr-1 rounded-full font-medium  dark:text-white`}
         >
           {index + 1}
         </span>
@@ -208,10 +212,10 @@ const SingleApi = ({ api, index }) => {
               api.method === "GET"
                 ? "green"
                 : api.method === "POST"
-                  ? "geekblue"
-                  : api.method === "PUT"
-                    ? "purple"
-                    : "red"
+                ? "geekblue"
+                : api.method === "PUT"
+                ? "purple"
+                : "red"
             }
           >
             {api.method}
@@ -219,7 +223,7 @@ const SingleApi = ({ api, index }) => {
         </h1>
       </button>
       {open && (
-        <div className="border-t-none animate__animated animate__fadeIn rounded-t-none rounded-bl-2xl rounded-br-2xl border-0 border-gray-400 bg-white py-3 px-5 dark:border dark:border-gray-600 dark:bg-gray-900">
+        <div className="border-t-none animate__animated animate__fadeIn rounded-t-none rounded-bl-2xl rounded-br-2xl border-0 border-gray-400 bg-white py-3 px-5 dark:border-0 dark:bg-deepDark">
           <Suspense fallback={<Loader />}>
             <ReactJson
               src={URL}
@@ -236,7 +240,7 @@ const SingleApi = ({ api, index }) => {
             Description:
           </h1>
           <div
-            className="font-ubuntu mb-5 rounded-md bg-gray-100 p-5 text-sm font-normal dark:bg-gray-800 dark:text-white"
+            className="font-ubuntu mb-5 rounded-md bg-gray-100 p-5 text-sm font-normal dark:bg-dark dark:text-white"
             dangerouslySetInnerHTML={description()}
           ></div>
 
@@ -245,10 +249,11 @@ const SingleApi = ({ api, index }) => {
               <div
                 onClick={() => setCurrentOption(option.name)}
                 key={option.name}
-                className={`${currentOption === option.name
-                  ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
-                  : "border-b-2 border-transparent"
-                  } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
+                className={`${
+                  currentOption === option.name
+                    ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
+                    : "border-b-2 border-transparent"
+                } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
               >
                 {option.label}
               </div>
@@ -314,7 +319,7 @@ const SingleApi = ({ api, index }) => {
 
           <div className="my-4">
             {Object.keys(api.url.variables).length !== 0 &&
-              currentOption === "pathVariables" ? (
+            currentOption === "pathVariables" ? (
               <Suspense fallback={<Loader />}>
                 <ReactJson
                   src={pathVariablesObject}

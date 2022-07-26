@@ -14,8 +14,7 @@ const Documentation = ({ src, title, className }) => {
     >
       <div className="flex items-center justify-between py-3">
         <h1 className="font-ubuntu text-3xl font-medium dark:text-white">
-          {title}{" "}
-          <span className="font-ubuntu text-base">({src.length})</span>
+          {title} <span className="font-ubuntu text-base">({src.length})</span>
         </h1>
       </div>
 

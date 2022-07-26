@@ -6,8 +6,9 @@ const joi = require("joi");
 
 const categoryRequestVariables = joi.object({
   name: joi.string().required(),
-  children: joi.array().items(joi.string()).default(null),
+  parent: joi.string(),
   image: joi.string(),
+  isActive: joi.boolean(),
 });
 
 module.exports = categoryRequestVariables;

@@ -12,10 +12,18 @@ const userSchema = new Schema(
       unique: [true, "Email already exits"],
       index: true,
     },
+    dateOfBirth: {
+      type: String,
+      default: "",
+    },
+    location: {
+      type: String,
+      default: "",
+    },
     phoneNumber: {
       type: String,
       required: [true, "Phone number is required"],
-      unique: [true, "Email already exits"],
+      unique: [true, "Phone number already exits"],
       index: true,
     },
     password: { type: String, required: [true, "Password is required"] },

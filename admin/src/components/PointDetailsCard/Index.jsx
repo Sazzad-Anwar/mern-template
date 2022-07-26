@@ -8,7 +8,9 @@ export default function PontDetailsCard({ icon, title, subTitle }) {
       </div>
       <div className="overflow-hidden">
         <h1 className="font-semibold dark:text-white text-xl">{title}</h1>
-        <p className="font-medium dark:text-white text-base truncate">{subTitle}</p>
+        <p className="font-medium dark:text-white text-base truncate">
+          {subTitle}
+        </p>
       </div>
     </div>
   );

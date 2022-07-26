@@ -6,8 +6,8 @@ export default function Error({ error }) {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-96 flex-col items-center justify-center bg-dark">
-      <h1 className="text-2xl font-light text-white">{error}</h1>
+    <div className="flex h-96 flex-col items-center justify-center dark:bg-dark">
+      <h1 className="text-2xl font-light dark:text-white">{error}</h1>
       <Button
         type="primary"
         size="small"

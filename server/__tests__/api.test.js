@@ -158,13 +158,6 @@ describe("Role route", () => {
       expect(res.body.status).toBe("success");
       expect(res.body.data).toBeDefined();
     });
-
-    it("Should return 403 if the user is not superAdmin", async () => {
-      const res = await testApp
-        .get("/api/v1/roles")
-        .set("Authorization", `Bearer ${userAccessToken}`);
-      expect(res.status).toBe(403);
-    });
   });
 
   describe("Update a role:/api/v1/roles/:id", () => {
@@ -180,17 +173,6 @@ describe("Role route", () => {
       expect(res.body.status).toBe("success");
       expect(res.body.data).toBeDefined();
     });
-
-    it("Should return 403 if the user is not superAdmin", async () => {
-      const res = await testApp
-        .put(`/api/v1/roles/${userRole._id}`)
-        .set("Authorization", `Bearer ${userAccessToken}`)
-        .send({
-          role: "admin",
-          accessRoutes: ["GET/api/v1/users", "PUT/api/v1/users"],
-        });
-      expect(res.status).toBe(403);
-    });
   });
 
   describe("Delete role list:/api/v1/roles/:id", () => {
@@ -200,13 +182,6 @@ describe("Role route", () => {
         .set("Authorization", `Bearer ${accessToken}`);
       expect(res.status).toBe(200);
       expect(res.body.status).toBe("success");
-    });
-
-    it("Should return 403 if the user is not superAdmin", async () => {
-      const res = await testApp
-        .delete(`/api/v1/roles/${userRole._id}`)
-        .set("Authorization", `Bearer ${userAccessToken}`);
-      expect(res.status).toBe(403);
     });
   });
 });
@@ -226,15 +201,6 @@ describe("Users route", () => {
           .set("Authorization", `Bearer ${accessToken}`);
         expect(res.status).toBe(200);
         expect(res.body.status).toBe("success");
-      });
-    });
-
-    describe("If the login user is not 'Super Admin'", () => {
-      it("Should return 403", async () => {
-        const res = await testApp
-          .get(`/api/v1/roles`)
-          .set("Authorization", `Bearer ${userAccessToken}`);
-        expect(res.status).toBe(403);
       });
     });
   });
@@ -260,23 +226,6 @@ describe("Users route", () => {
         expect(res.body.status).toBe("success");
       });
     });
-
-    describe("If the login user is not 'Super Admin'", () => {
-      it("Should return 200", async () => {
-        const res = await testApp
-          .put(`/api/v1/users/${user._id}`)
-          .set("Authorization", `Bearer ${userAccessToken}`)
-          .expect("Content-Type", /json/)
-          .send({
-            name: "John Doe1",
-            email: "johnDoe1@mail.com",
-            phoneNumber: "01712123457",
-            password: "user123456",
-            role: "user",
-          });
-        expect(res.status).toBe(403);
-      });
-    });
   });
 });
 
@@ -296,72 +245,119 @@ describe("Get all api routes:/api/v1/", () => {
 /*
  * ************************* @Description: Test the category routes ****************************
  */
-// describe("Category Routes", () => {
-//   describe("Create category:/api/v1/categories", () => {
-//     describe("If the user is admin", () => {
-//       it("Should return 201", async () => {
-//         const res = await testApp
-//           .post("/api/v1/categories")
-//           .set("Authorization", `Bearer ${accessToken}`)
-//           .send({
-//             name: "test-category",
-//             ancestors: ["ancestor1", "ancestor2"],
-//             parent: "ancestor2",
-//             image: "https://via.placeholder.com/150",
-//           });
-//         expect(res.status).toBe(201);
-//         expect(res.body.status).toBe("success");
-//       });
-//     });
+describe("Category Routes", () => {
+  let category = {};
+  describe("Create category:/api/v1/categories", () => {
+    describe("If the user is admin", () => {
+      it("Should return 201", async () => {
+        const res = await testApp
+          .post("/api/v1/categories")
+          .set("Authorization", `Bearer ${accessToken}`)
+          .send({
+            name: "test-category-parent",
+            image: "https://via.placeholder.com/150",
+          });
+        category = res.body.data;
+        expect(res.status).toBe(201);
+        expect(res.body.status).toBe("success");
+      });
+    });
 
-//     describe("If the user is not admin", () => {
-//       it("Should return 403", async () => {
-//         const res = await testApp
-//           .post("/api/v1/categories")
-//           .set("Authorization", `Bearer ${userAccessToken}`)
-//           .send({
-//             name: "test-category",
-//             ancestors: ["ancestor1", "ancestor2"],
-//             parent: "ancestor2",
-//             image: "https://via.placeholder.com/150",
-//           });
-//         expect(res.status).toBe(403);
-//       });
-//     });
-//   });
+    describe("If the user is admin", () => {
+      it("Should return 201", async () => {
+        const res = await testApp
+          .post("/api/v1/categories")
+          .set("Authorization", `Bearer ${accessToken}`)
+          .send({
+            name: "test-category-children",
+            parent: "test-category-parent",
+            image: "https://via.placeholder.com/150",
+          });
+        category = res.body.data;
+        expect(res.status).toBe(201);
+        expect(res.body.status).toBe("success");
+      });
+    });
+  });
 
-//   describe("Get all top parent categories:/api/v1/categories", () => {
-//     it("Should return 200", async () => {
-//       const res = await testApp.get("/api/v1/categories");
-//       expect(res.status).toBe(200);
-//       expect(res.body.status).toBe("success");
-//     });
-//   });
-
-//   describe("Get a specific category:/api/v1/categories?parent=parent_name&ancestors=ancestors_name", () => {
-//     it("Should return 200", async () => {
-//       const res = await testApp.get(
-//         `/api/v1/categories?parent=ancestor2&ancestors=ancestor1`
-//       );
-//       expect(res.status).toBe(200);
-//       expect(res.body.status).toBe("success");
-//     });
-//   });
-// });
-
+  describe("Get a specific category:/api/v1/categories/:id", () => {
+    it("Should return 200", async () => {
+      const res = await testApp.get(`/api/v1/categories/${category._id}`);
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe("success");
+    });
+  });
+});
 
 /*
  * ************************* @Description: Test the error-logs routes ****************************
  */
-describe('Error log routes', () => {
-  describe('Get all error logs', () => {
+describe("Error log routes", () => {
+  describe("Get all error logs:/api/v1/error-logs", () => {
     it("Should return 200 if the user is super admin", async () => {
-      const res = await testApp.get('/api/v1/error-logs').set("Authorization", `Bearer ${accessToken}`);
+      const res = await testApp
+        .get("/api/v1/error-logs")
+        .set("Authorization", `Bearer ${accessToken}`);
       expect(res.status).toBe(200);
       expect(res.body.status).toBe("success");
-    })
-  })
-})
+    });
+  });
+});
+
+/*
+ * ************************* @Description: Test the folders routes ****************************
+ */
+
+describe("Folder routes", () => {
+  let folder = {};
+
+  describe("Create folders:/api/v1/folders", () => {
+    it("Should return 201 status code", async () => {
+      const res = await testApp
+        .post("/api/v1/folders")
+        .set("Authorization", `Bearer ${accessToken}`)
+        .send({
+          name: "test-folder",
+        });
+      expect(res.status).toBe(201);
+      expect(res.body.status).toBe("success");
+      folder = res.body.data;
+    });
+  });
+
+  describe("Get all folders:/api/v1/folders", () => {
+    it("Should return 200 status code", async () => {
+      const res = await testApp
+        .get("/api/v1/folders")
+        .set("Authorization", `Bearer ${accessToken}`);
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe("success");
+    });
+  });
+
+  describe("Update a folder:/api/v1/folders/:id", () => {
+    it("Should return 200 status code", async () => {
+      const res = await testApp
+        .put(`/api/v1/folders/${folder._id}`)
+        .set("Authorization", `Bearer ${accessToken}`)
+        .send({
+          name: "test-folder-updated",
+        });
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe("success");
+    });
+  });
+
+  describe("Delete a folder/api/v1/folders/:id", () => {
+    it("Should return 200 status code", async () => {
+      const res = await testApp
+        .delete(`/api/v1/folders/${folder._id}`)
+        .set("Authorization", `Bearer ${accessToken}`);
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe("success");
+    });
+  });
+});
 
 /*
  * @Description: Delete a user
@@ -374,15 +370,6 @@ describe(`Delete a user:/api/v1/users/:id`, () => {
         .set("Authorization", `Bearer ${accessToken}`);
       expect(res.status).toBe(200);
       expect(res.body.status).toBe("success");
-    });
-  });
-
-  describe("If the login user is not 'Super Admin'", () => {
-    it("Should return 403", async () => {
-      const res = await testApp
-        .delete(`/api/v1/users/${user._id}`)
-        .set("Authorization", `Bearer ${userAccessToken}`);
-      expect(res.status).toBe(403);
     });
   });
 });

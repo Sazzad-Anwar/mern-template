@@ -23,14 +23,16 @@ const getAllUsersController = expressAsyncHandler(async (req, res) => {
     .sort({ createdAt: -1 })
     .limit(pageSize ? parseInt(pageSize) : 20)
     .skip(
-      page ? (parseInt(page) < 0 ? 1 : parseInt(page) - 1) * parseInt(pageSize) : 0
+      page
+        ? (parseInt(page) < 0 ? 1 : parseInt(page) - 1) * parseInt(pageSize)
+        : 0
     )
     .lean();
 
   res.status(200).json({
     status: "success",
     data: users,
-    totalSize: await User.countDocuments()
+    totalSize: await User.countDocuments(),
   });
 });
 

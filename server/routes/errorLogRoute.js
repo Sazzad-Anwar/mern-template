@@ -6,7 +6,7 @@ const { AccessTokenValidation } = require("auth-middleware-jwt");
 const { Router } = require("express");
 const getAllErrorLogs = require("../controllers/errorLogs/getAll");
 const checkUser = require("../middlewares/checkUser");
-const axios = require('axios');
+const axios = require("axios");
 const getOneById = require("../controllers/errorLogs/getOneById");
 const router = Router();
 
@@ -17,7 +17,7 @@ const router = Router();
 ! * @Access: Super Admin
 */
 
-router.route('/').get(AccessTokenValidation, checkUser(), getAllErrorLogs);
+router.route("/").get(AccessTokenValidation, checkUser(), getAllErrorLogs);
 
 /*
 * * @Description: Get error log by ID
@@ -26,11 +26,13 @@ router.route('/').get(AccessTokenValidation, checkUser(), getAllErrorLogs);
 ! * @Access: Super Admin
 */
 
-router.route('/:id').get(AccessTokenValidation, checkUser(), getOneById);
+router.route("/:id").get(AccessTokenValidation, checkUser(), getOneById);
 
 /*
  * * @Description: Call the routes to save the api end point in db;
  */
-axios.get(`${process.env.API_URL}/api/v1/error-logs`).catch((error) => console.log(error.message));
+axios
+  .get(`${process.env.API_URL}/api/v1/error-logs`)
+  .catch((error) => console.log(error.message));
 
 module.exports = router;

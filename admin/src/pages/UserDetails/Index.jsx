@@ -80,9 +80,14 @@ export default function UserDetails() {
                 <Form.Item
                   label={<span className="text-lg dark:text-white">Name</span>}
                   name="name"
-                  rules={[{ required: true, message: "Please input your name!" }]}
+                  rules={[
+                    { required: true, message: "Please input your name!" },
+                  ]}
                 >
-                  <Input size="large" className="dark:bg-deepDark dark:text-white border-transparent" />
+                  <Input
+                    size="large"
+                    className="dark:bg-deepDark dark:text-white border-transparent"
+                  />
                 </Form.Item>
 
                 <Form.Item
@@ -92,19 +97,29 @@ export default function UserDetails() {
                     { required: true, message: "Please input your email!" },
                   ]}
                 >
-                  <Input type={"email"} size="large" className="dark:bg-deepDark dark:text-white border-transparent" />
+                  <Input
+                    type={"email"}
+                    size="large"
+                    className="dark:bg-deepDark dark:text-white border-transparent"
+                  />
                 </Form.Item>
 
                 <Form.Item
                   label={
-                    <span className="text-lg dark:text-white">Phone Number</span>
+                    <span className="text-lg dark:text-white">
+                      Phone Number
+                    </span>
                   }
                   name="phoneNumber"
                   rules={[
                     { required: true, message: "Please input phone number!" },
                   ]}
                 >
-                  <Input type={"tel"} size="large" className="dark:bg-deepDark dark:text-white border-transparent" />
+                  <Input
+                    type={"tel"}
+                    size="large"
+                    className="dark:bg-deepDark dark:text-white border-transparent"
+                  />
                 </Form.Item>
 
                 <Form.Item

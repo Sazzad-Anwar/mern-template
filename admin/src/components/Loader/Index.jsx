@@ -2,7 +2,7 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center lg:mx-auto lg:h-96 lg:w-96">
+    <div className="flex flex-col w-full h-96 items-center justify-center lg:mx-auto lg:h-96 lg:w-96">
       <svg
         role="status"
         className="mr-2 h-8 w-8 animate-spin fill-[#4b5563] text-gray-200 dark:fill-gray-200 dark:text-gray-600"

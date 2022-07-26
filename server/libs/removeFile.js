@@ -2,7 +2,7 @@ const { readFileSync, unlinkSync } = require("fs");
 const { join } = require("path");
 
 const removeFile = (fileLink) => {
-  let dir = join(__dirname, `./public/${fileLink}`);
+  let dir = join(__dirname, `../public/${fileLink}`);
 
   try {
     let files = readFileSync(dir);

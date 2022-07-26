@@ -6,16 +6,16 @@
 */
 
 const expressAsyncHandler = require("express-async-handler");
-const Errors = require('../../models/errorLogs');
+const Errors = require("../../models/errorLogs");
 
 const getOneById = expressAsyncHandler(async (req, res) => {
-    let { id } = req.params;
-    let error = await Errors.findById(id).lean();
+  let { id } = req.params;
+  let error = await Errors.findById(id).lean();
 
-    res.status(200).json({
-        status: 'success',
-        data: error,
-    });
+  res.status(200).json({
+    status: "success",
+    data: error,
+  });
 });
 
 module.exports = getOneById;

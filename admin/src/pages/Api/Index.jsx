@@ -1,11 +1,10 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import Documentation from "../../components/Documentation/Index";
-import apiJSON from "../../APi.json";
+import apiJSON from "../../assets/APi.json";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import { Navigate, useLocation } from "react-router-dom";
-import { APP_NAME } from "../../app.config";
-import Loader from "../../components/Loader/Index";
-const Layout = lazy(() => import("../../layouts/AdminLayout/Index"));
+import { APP_NAME } from "../../assets/app.config";
+import BreadCrumbs from "../../components/BreadCrumbs/Index";
 
 export default function Api() {
   const { auth } = useGlobalContext();
@@ -29,13 +28,12 @@ export default function Api() {
   ];
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Layout breadcrumbs={breadcrumbs}>
-        <Documentation
-          src={apiJSON}
-          title={`REST API documentation for ${APP_NAME}`}
-        />
-      </Layout>
-    </Suspense>
+    <>
+      <BreadCrumbs details={breadcrumbs} />
+      <Documentation
+        src={apiJSON}
+        title={`REST API documentation for ${APP_NAME}`}
+      />
+    </>
   );
 }

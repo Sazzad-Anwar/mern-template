@@ -15,11 +15,13 @@ module.exports = {
     },
     textColor: (theme) => ({
       ...theme("colors"),
+      dark: "#282C34",
+      deepDark: "#20232A",
     }),
     backgroundColor: (theme) => ({
       ...theme("colors"),
-      dark: "#1F2937",
-      deepDark: "#0F172A",
+      dark: "#282C34",
+      deepDark: "#20232A",
     }),
   },
   plugins: [],
