@@ -33,10 +33,10 @@ export default function Registration() {
           phoneNumber,
           email,
           password,
-          role: "superAdmin",
+          role: "superadmin",
         });
         await axiosInstance.post("/roles", {
-          role: "superAdmin",
+          role: "superadmin",
           accessRoutes: ["*"],
         });
         authDispatch({
@@ -55,10 +55,7 @@ export default function Registration() {
     toast.error(errorInfo);
   };
 
-  if (
-    auth &&
-    (auth.user?.role === "admin" || auth.user?.role === "superAdmin")
-  ) {
+  if (auth && auth.user?.role && auth.user.role === "user") {
     return <Navigate to="/" />;
   }
 

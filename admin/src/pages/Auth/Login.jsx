@@ -61,16 +61,18 @@ const Login = () => {
     toast.error(errorInfo);
   };
 
-  if (!auth.user && !data?.hasSuperAdmin) {
+  if (!data?.hasSuperAdmin || (!auth.user && !data?.hasSuperAdmin)) {
     return <Navigate to="/registration" />;
   }
 
   if (
-    auth.user &&
+    auth.user?.role &&
     roles &&
-    !roles.data.find((role) => role.role === auth.user.role)
+    !roles.data.find(
+      (role) => role.role === auth.user.role || auth.user.role === "user"
+    )
   ) {
-    toast.error("Only admins and super admins can have access!");
+    toast.error("Only authorized users can have access!");
     return <Navigate to="/login" />;
   }
 

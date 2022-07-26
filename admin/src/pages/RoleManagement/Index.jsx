@@ -56,7 +56,7 @@ function RoleManagement() {
           >
             {roles &&
               roles
-                .filter((role) => role.role !== "superAdmin")
+                .filter((role) => role.role !== "superadmin")
                 .map((role) => <RoleCart key={role._id} role={role} />)}
           </div>
         </div>

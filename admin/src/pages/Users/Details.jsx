@@ -179,7 +179,7 @@ export default function Details() {
                 <Input size="large" allowClear placeholder="Enter image url" />
               </Form.Item>
 
-              {auth?.user.role === "superAdmin" && (
+              {auth?.user.role === "superadmin" && (
                 <>
                   <Form.Item
                     label={
@@ -226,7 +226,7 @@ export default function Details() {
                                 className="dark:text-white"
                                 disabled={
                                   userDetails &&
-                                  userDetails.role === "superAdmin"
+                                  userDetails.role === "superadmin"
                                 }
                                 value={role.role}
                               >
@@ -246,8 +246,8 @@ export default function Details() {
                   className="w-full"
                   type="primary"
                   disabled={
-                    userDetails?.role === "superAdmin" &&
-                    auth?.user.role !== "superAdmin"
+                    userDetails?.role === "superadmin" &&
+                    auth?.user.role !== "superadmin"
                   }
                 >
                   Save

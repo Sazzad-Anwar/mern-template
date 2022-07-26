@@ -5,7 +5,7 @@ module.exports = function hasPermission() {
     let role = req.user.role;
     let api = req.method + req.baseUrl;
 
-    if (role === "superAdmin") {
+    if (role === "superadmin") {
       next();
     } else {
       Role.findOne({ role })

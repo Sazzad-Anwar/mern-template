@@ -79,7 +79,7 @@ export default function Index() {
         <div className="my-5">
           <div className="w-96 mx-auto">
             <div className="text-center mb-5">
-              {Object.keys(app).length > 0 ? (
+              {app && Object.keys(app)?.length > 0 ? (
                 <div>
                   <Avatar
                     alt={app?.name}

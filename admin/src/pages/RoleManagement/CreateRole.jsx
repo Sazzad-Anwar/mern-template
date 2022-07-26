@@ -41,7 +41,7 @@ export default function CreateRole() {
     },
   ];
 
-  if (auth && !auth.user.role === "superAdmin") {
+  if (auth && !auth.user.role === "superadmin") {
     <Error error="Your are not allowed to access this page" />;
   } else {
     return (

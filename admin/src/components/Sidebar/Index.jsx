@@ -137,7 +137,7 @@ const SideBar = ({ menulist, admin }) => {
               } else if (
                 subMenu.superAdmin &&
                 auth &&
-                auth?.user?.role !== "superAdmin"
+                auth?.user?.role !== "superadmin"
               ) {
                 return null;
               } else {

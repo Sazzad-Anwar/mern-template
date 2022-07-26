@@ -236,7 +236,7 @@ export default function Create() {
               <Radio.Group>
                 {roles &&
                   roles?.map((role) => {
-                    if (role.role === "superAdmin") {
+                    if (role.role === "superadmin") {
                       return null;
                     } else {
                       return (
