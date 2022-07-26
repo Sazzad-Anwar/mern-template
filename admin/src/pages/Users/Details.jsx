@@ -80,7 +80,10 @@ export default function Details() {
                 email: userDetails.email,
                 phoneNumber: userDetails.phoneNumber,
                 role: userDetails.role,
-                dateOfBirth: moment(userDetails.dateOfBirth),
+                dateOfBirth:
+                  userDetails.dateOfBirth !== ""
+                    ? moment(userDetails.dateOfBirth)
+                    : "",
                 location: userDetails.location,
                 isActive: userDetails.isActive,
                 avatarUrl: userDetails.avatarUrl,

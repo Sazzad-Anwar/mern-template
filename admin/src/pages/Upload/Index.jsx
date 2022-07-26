@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import BreadCrumbs from "../../components/BreadCrumbs/Index";
 import Fetcher from "../../utils/Fetcher";
-import { Button, Form, Image, Input, Tooltip } from "antd";
+import { Button, Form, Image, Input, Progress, Tooltip } from "antd";
 import axiosInstance from "../../utils/AxiosInstance";
 import { API_URL } from "../../assets/app.config";
 import { toast } from "react-toastify";
@@ -13,6 +13,8 @@ export default function Index() {
   const { id } = useParams();
   const { data } = useSWR(`/folders/${id}`, Fetcher);
   const [editMode, setEditMode] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [fileIsPicked, setFileIsPicked] = useState(false);
   const submitBtnRef = useRef();
 
   const folder = data && data.data;
@@ -45,23 +47,32 @@ export default function Index() {
   const upload_pic = async (e) => {
     let file = new FormData();
     file.append("files", e.target.files[0]);
-    const { data } = await axiosInstance.post(
-      `/files/upload?folderId=${id}`,
-      file,
-      {
-        onUploadProgress: (progressEvent) => {
-          let percentComplete = progressEvent.loaded / progressEvent.total;
-          percentComplete = parseInt(percentComplete * 100);
-          console.log(percentComplete);
-        },
-      }
-    );
-    setFileList((preImage) => [...preImage, data.data[0]]);
+    setFileIsPicked(true);
+    try {
+      const { data } = await axiosInstance.post(
+        `/files/upload?folderId=${id}`,
+        file,
+        {
+          onUploadProgress: (progressEvent) => {
+            let percentComplete = progressEvent.loaded / progressEvent.total;
+            percentComplete = parseInt(percentComplete * 100);
+            setProgress(percentComplete);
+          },
+        }
+      );
+      setFileList((preImage) => [...preImage, data.data[0]]);
+    } catch (error) {
+      toast.error(
+        error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
   };
 
   const saveFile = async (values) => {
     setEditMode(false);
-    if (values.name !== fileList[0].name) {
+    if (values.name !== fileList[0].name || values.name !== "") {
       try {
         let { data } = await axiosInstance.put(
           `/files/${fileList[0]._id}`,
@@ -87,11 +98,16 @@ export default function Index() {
       <div className="my-5 flex justify-center items-center">
         <div className="text-white flex flex-col">
           {!fileList.length ? (
-            <input
-              className="block w-full ring-2 rounded-full ring-violet-700 text-sm dark:text-white text-dark font-mono file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold dark:file:bg-violet-50 file:text-violet-700  hover:file:bg-violet-100"
-              type="file"
-              onChange={upload_pic}
-            />
+            <div>
+              <input
+                className="block w-full ring-2 rounded-full ring-violet-700 text-sm dark:text-white text-dark font-mono file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold dark:file:bg-violet-50 file:text-violet-700  hover:file:bg-violet-100"
+                type="file"
+                onChange={upload_pic}
+              />
+              {fileIsPicked && (
+                <Progress percent={progress} className="dark:text-white" />
+              )}
+            </div>
           ) : (
             <>
               {fileList.map((file) => (
@@ -116,12 +132,12 @@ export default function Index() {
                         rules={[
                           {
                             required: true,
-                            message: "Please input the folder name",
+                            message: "Please input the file name",
                           },
                         ]}
                       >
                         <Input
-                          placeholder="Folder name"
+                          placeholder="File name"
                           className="w-full text-center"
                           size="large"
                           autoFocus

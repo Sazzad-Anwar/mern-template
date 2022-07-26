@@ -9,6 +9,7 @@ const loginController = require("../../controllers/v1/Auth/login");
 const registrationController = require("../../controllers/v1/Auth/register");
 const resetPassword = require("../../controllers/v1/Auth/resetPassword");
 const checkSessionController = require("../../controllers/v1/Auth/sessionCheck");
+const axios = require("axios");
 const router = Router();
 
 /*
@@ -47,5 +48,12 @@ router
   .route("/resetPassword/:email")
   .get(getPasswordResetLink)
   .post(resetPassword);
+
+/*
+ * * @Description: Call the routes to save the api end point in db;
+ */
+axios
+  .post(`${process.env.API_URL}/api/v1/auth/registration`)
+  .catch((error) => console.log(error.message));
 
 module.exports = router;
