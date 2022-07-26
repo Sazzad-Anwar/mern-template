@@ -38,7 +38,7 @@ describe("Auth Route", () => {
         email: "admin@mail.com",
         phoneNumber: "01834123456",
         password: "admin123456",
-        role: "superAdmin",
+        role: "superadmin",
       });
 
       expect(res.status).toBe(201);
@@ -61,7 +61,7 @@ describe("Auth Route", () => {
 
       await testApp
         .post("/roles")
-        .send({ role: "superAdmin", accessRoutes: "*" });
+        .send({ role: "superadmin", accessRoutes: "*" });
 
       expect(res.status).toBe(201);
       expect(res.body.data).toBeDefined();

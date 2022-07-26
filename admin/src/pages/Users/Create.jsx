@@ -37,10 +37,6 @@ export default function Create() {
     },
   ];
 
-  const onChange = (date, dateString) => {
-    console.log(date, dateString);
-  };
-
   const saveUserDetails = async (values) => {
     try {
       await axiosInstance.post("/auth/registration", values);
@@ -102,7 +98,7 @@ export default function Create() {
                 { required: true, message: "Please input date of birth!" },
               ]}
             >
-              <DatePicker onChange={onChange} size="large" className="w-full" />
+              <DatePicker size="large" className="w-full" />
             </Form.Item>
 
             <Form.Item

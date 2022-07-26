@@ -11,6 +11,7 @@ import { Popconfirm } from "antd";
 import BreadCrumbs from "../../components/BreadCrumbs/Index";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import Error from "../../components/Error/Index";
+import CapitalLetterWord from "../../utils/CapitalLetterWord";
 
 const { Search } = Input;
 
@@ -24,6 +25,16 @@ export default function Users() {
   );
   const [users, setUsers] = useState([]);
   const { auth } = useGlobalContext();
+  const { data: rolesArray } = useSWR("/roles", Fetcher);
+
+  let roles =
+    rolesArray &&
+    rolesArray.data.map((role) => {
+      return {
+        text: CapitalLetterWord(role.role),
+        value: role.role,
+      };
+    });
 
   useEffect(() => {
     setUsers(data?.data?.map((user) => ({ ...user, key: user._id })) ?? []);
@@ -95,17 +106,13 @@ export default function Users() {
       render: (role) => {
         return (
           <div>
-            <Tag color={role === "superAdmin" ? "blue" : "green"} key={role}>
+            <Tag color={role === "superadmin" ? "blue" : "green"} key={role}>
               {role}
             </Tag>
           </div>
         );
       },
-      filters: [
-        { text: "Super Admin", value: "superAdmin" },
-        { text: "Admin", value: "admin" },
-        { text: "User", value: "user" },
-      ],
+      filters: roles,
       onFilter: (value, record) => record.role.includes(value),
     },
     {
@@ -159,7 +166,7 @@ export default function Users() {
             title="Are you sure to delete this user?"
             onConfirm={() => deleteUser(record._id)}
             disabled={
-              record.role === "superAdmin" || record._id === auth?.user._id
+              record.role === "superadmin" || record._id === auth?.user._id
             }
             okText="Yes"
             cancelText="No"
@@ -173,7 +180,7 @@ export default function Users() {
                   <AiFillDelete />
                 </div>
               }
-              disabled={record.role === "superAdmin"}
+              disabled={record.role === "superadmin"}
               danger
             />
           </Popconfirm>

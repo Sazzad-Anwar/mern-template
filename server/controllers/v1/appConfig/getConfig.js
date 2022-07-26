@@ -13,8 +13,6 @@ const getAppConfig = expressAsyncHandler(async (req, res) => {
     .select("-createdAt -updatedAt -__v")
     .lean();
 
-  console.log(appConfig);
-
   res.status(200).json({
     status: "success",
     data: appConfig,

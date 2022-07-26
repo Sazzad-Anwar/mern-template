@@ -43,8 +43,6 @@ const Login = () => {
         up: password,
       };
 
-      console.log(userCredentials);
-
       if (remember) {
         localStorage.setItem("__uc", JSON.stringify(userCredentials));
         localStorage.setItem("remember", remember);
