@@ -28,35 +28,31 @@ export default function Index() {
 
   return (
     <>
-      <div className="py-6">
-        <BreadCrumbs details={breadcrumbs} />
-        {error ? (
-          <Error
-            error={
-              error?.response?.data
-                ? error.response.data?.message
-                : error.message
-            }
-          />
-        ) : (
-          <div className="my-5">
-            <Button
-              onClick={() => navigate("/create-folder")}
-              type="ghost"
-              shape="default"
-              className="mr-1 flex py-5 items-center shadow-md dark:text-white dark:hover:text-blue-400 dark:border-gray-600 dark:hover:border-blue-400"
-            >
-              <span>Create Folder</span>
-            </Button>
+      <BreadCrumbs details={breadcrumbs} />
+      {error ? (
+        <Error
+          error={
+            error?.response?.data ? error.response.data?.message : error.message
+          }
+        />
+      ) : (
+        <div className="my-5">
+          <Button
+            onClick={() => navigate("/create-folder")}
+            type="ghost"
+            shape="default"
+            className="mr-1 flex py-5 items-center shadow-md dark:text-white dark:hover:text-blue-400 dark:border-gray-600 dark:hover:border-blue-400"
+          >
+            <span>Create Folder</span>
+          </Button>
 
-            <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-11 my-5">
-              {folders?.map((folder) => (
-                <FolderCard key={folder._id} folder={folder} />
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-11 my-5">
+            {folders?.map((folder) => (
+              <FolderCard key={folder._id} folder={folder} />
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 }

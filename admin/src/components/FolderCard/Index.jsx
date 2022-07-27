@@ -16,7 +16,7 @@ export default function Index({ folder }) {
   const deleteFolder = async (id) => {
     try {
       await axiosInstance.delete(`/folders/${id}`);
-      toast.success("Category deleted successfully");
+      toast.success("Folder is deleted successfully");
       mutate(`/folders`);
     } catch (error) {
       toast.error(error.response.data.message);

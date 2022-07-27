@@ -1,25 +1,25 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import BreadCrumbs from "../../components/BreadCrumbs/Index";
 import Fetcher from "../../utils/Fetcher";
-import { Button, Form, Image, Input, Progress, Tooltip } from "antd";
 import axiosInstance from "../../utils/AxiosInstance";
-import { API_URL } from "../../assets/app.config";
 import { toast } from "react-toastify";
-import CapitalLetterWord from "../../utils/CapitalLetterWord";
+import { useGlobalContext } from "../../context/GlobalContextProvider";
+import ImageCard from "../../components/ImageCard/Index";
+import { Progress } from "antd";
+import ProgressBar from "../../components/ProgressBar/Index";
 
 export default function Index() {
+  const { sideBar } = useGlobalContext();
   const { id } = useParams();
   const { data } = useSWR(`/folders/${id}`, Fetcher);
-  const [editMode, setEditMode] = useState(false);
   const [progress, setProgress] = useState(0);
   const [fileIsPicked, setFileIsPicked] = useState(false);
-  const submitBtnRef = useRef();
 
   const folder = data && data.data;
 
-  const [fileList, setFileList] = useState([]);
+  const [files, setFiles] = useState([]);
 
   let breadcrumbs = [
     {
@@ -45,13 +45,19 @@ export default function Index() {
   ];
 
   const upload_pic = async (e) => {
-    let file = new FormData();
-    file.append("files", e.target.files[0]);
+    let formData = new FormData();
+    let uploadFiles = e.target.files;
+
     setFileIsPicked(true);
+
+    for (let i in uploadFiles) {
+      formData.append("files", uploadFiles[i]);
+    }
+
     try {
       const { data } = await axiosInstance.post(
         `/files/upload?folderId=${id}`,
-        file,
+        formData,
         {
           onUploadProgress: (progressEvent) => {
             let percentComplete = progressEvent.loaded / progressEvent.total;
@@ -60,7 +66,9 @@ export default function Index() {
           },
         }
       );
-      setFileList((preImage) => [...preImage, data.data[0]]);
+      setFiles(data.data);
+      e.target.value = null;
+      setFileIsPicked(false);
     } catch (error) {
       toast.error(
         error.response.data.message
@@ -70,109 +78,40 @@ export default function Index() {
     }
   };
 
-  const saveFile = async (values) => {
-    setEditMode(false);
-    if (values.name !== fileList[0].name || values.name !== "") {
-      try {
-        let { data } = await axiosInstance.put(
-          `/files/${fileList[0]._id}`,
-          values
-        );
-        setFileList((preImage) => [data.data, ...preImage.slice(1)]);
-        toast.success("Image name is saved");
-      } catch (error) {
-        toast.error(error.response.data.message);
-      }
-    }
-  };
-
-  const handleClick = (e) => {
-    if (e.detail === 2) {
-      setEditMode(true);
-    }
-  };
-
   return (
     <>
       <BreadCrumbs details={breadcrumbs} />
-      <div className="my-5 flex justify-center items-center">
+      <div className="my-5">
         <div className="text-white flex flex-col">
-          {!fileList.length ? (
-            <div>
-              <input
-                className="block w-full ring-2 rounded-full ring-violet-700 text-sm dark:text-white text-dark font-mono file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold dark:file:bg-violet-50 file:text-violet-700  hover:file:bg-violet-100"
-                type="file"
-                onChange={upload_pic}
-              />
-              {fileIsPicked && (
-                <Progress percent={progress} className="dark:text-white" />
-              )}
-            </div>
-          ) : (
-            <>
-              {fileList.map((file) => (
-                <div key={file._id} className="flex flex-col justify-center">
-                  <Image
-                    alt={file.name}
-                    key={file._id}
-                    className="w-auto h-auto md:h-96"
-                    src={API_URL + "/static/" + file.url}
-                  />
-                  {editMode ? (
-                    <Form
-                      initialValues={{
-                        name: file.name,
-                      }}
-                      onFinish={saveFile}
-                      className="mt-5"
-                    >
-                      <Form.Item
-                        name="name"
-                        className="mb-0"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input the file name",
-                          },
-                        ]}
-                      >
-                        <Input
-                          placeholder="File name"
-                          className="w-full text-center"
-                          size="large"
-                          autoFocus
-                          onBlur={() => {
-                            setEditMode(false);
-                            submitBtnRef.current.click();
-                          }}
-                        />
-                      </Form.Item>
-
-                      <Button
-                        ref={submitBtnRef}
-                        htmlType="submit"
-                        className="hidden"
-                      />
-                    </Form>
-                  ) : (
-                    <Tooltip
-                      title="Double click to name to edit"
-                      placement="bottom"
-                      className="mt-4"
-                    >
-                      <button onClick={handleClick} className="truncate">
-                        <p className="font-medium dark:text-white text-sm truncate w-full">
-                          {CapitalLetterWord(file.name)}
-                        </p>
-                      </button>
-                    </Tooltip>
-                  )}
-                </div>
+          <div className="w-full md:w-96 mx-auto">
+            <input
+              className="block w-full ring-2 rounded-full ring-violet-700 text-sm dark:text-white text-dark font-mono file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold dark:file:bg-violet-50 file:text-violet-700  hover:file:bg-violet-100"
+              type="file"
+              onChange={upload_pic}
+              multiple
+            />
+          </div>
+          <div
+            className={
+              sideBar.isOpen
+                ? "my-5 normal-transition grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5 gap-4"
+                : "my-5 normal-transition grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4"
+            }
+          >
+            {files &&
+              files.map((file) => (
+                <ImageCard
+                  key={file?._id}
+                  file={file}
+                  files={files}
+                  setFiles={setFiles}
+                  folderId={folder._id}
+                />
               ))}
-            </>
-          )}
+          </div>
         </div>
       </div>
+      {fileIsPicked && <ProgressBar percent={progress} />}
     </>
   );
 }

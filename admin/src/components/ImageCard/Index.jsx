@@ -8,14 +8,7 @@ import axiosInstance from "../../utils/AxiosInstance";
 import copy from "copy-to-clipboard";
 import { Button, Form, Input, Popconfirm, Tooltip, Image } from "antd";
 
-export default function Index({
-  file,
-  page,
-  pageSize,
-  files,
-  setFiles,
-  folder,
-}) {
+export default function Index({ file, files, setFiles, folderId }) {
   const [editMode, setEditMode] = useState(false);
   const submitBtnRef = useRef();
 
@@ -28,11 +21,7 @@ export default function Index({
     try {
       await axiosInstance.delete(`/files/${id}`);
       setFiles(files.filter((file) => file._id !== id));
-      mutate(
-        `/files?folderId=${id}&page=${page}&pageSize=${pageSize}`,
-        { data: files },
-        false
-      );
+      mutate(`/files?folderId=${id}`, { data: files }, false);
       toast.success("File is deleted");
     } catch (error) {
       toast.error(
@@ -49,7 +38,7 @@ export default function Index({
       try {
         await axiosInstance.put(`/files/${file._id}`, values);
         mutate(
-          `/files?folderId=${folder._id}&page=${page}&pageSize=${pageSize}`,
+          `/files?folderId=${folderId}`,
           {
             data: files.map((item) =>
               item._id === file._id ? { ...item, name: values.name } : item

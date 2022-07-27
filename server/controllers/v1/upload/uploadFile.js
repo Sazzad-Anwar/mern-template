@@ -11,57 +11,53 @@ const sizeOf = promisify(require("image-size"));
  *  Description: Upload file controller
  */
 const uploadFile = expressAsyncHandler(async (req, res) => {
-  try {
-    const files = req.files;
-    const { folderId } = await uploadInputValidation.validateAsync(req.query);
+  const files = req.files;
+  const { folderId } = await uploadInputValidation.validateAsync(req.query);
 
-    let folder = await Folder.findById(folderId);
+  let folder = await Folder.findById(folderId);
 
-    let uploads = [];
+  let uploads = [];
 
-    if (folder) {
-      const uploadPromise = new Promise(async (resolve, reject) => {
-        for (let i in files) {
-          if (isImage(files[i])) {
-            const imageDimension = await sizeOf(
-              join(
-                __dirname,
-                `../../../public/uploads/${folder.name}/${files[i].filename}`
-              )
-            );
+  if (folder) {
+    const uploadPromise = new Promise(async (resolve, reject) => {
+      for (let i in files) {
+        if (isImage(files[i])) {
+          const imageDimension = await sizeOf(
+            join(
+              __dirname,
+              `../../../public/uploads/${folder.name}/${files[i].filename}`
+            )
+          );
 
-            let image = await imageCompress(
-              files[i],
-              imageDimension.width,
-              imageDimension.height,
-              folder
-            );
-            uploads.push(image);
-          } else {
-            uploads.push({
-              file: `/uploads/${folder.name}/${files[i].filename}`,
-              size:
-                files[i].size / 1024 > 999
-                  ? (files[i].size / 1024 / 1024).toFixed(2) + " MB"
-                  : (files[i].size / 1024).toFixed(2) + " KB",
-            });
-          }
+          let image = await imageCompress(
+            files[i],
+            imageDimension.width,
+            imageDimension.height,
+            folder
+          );
+          uploads.push(image);
+        } else {
+          uploads.push({
+            file: `/uploads/${folder.name}/${files[i].filename}`,
+            size:
+              files[i].size / 1024 > 999
+                ? (files[i].size / 1024 / 1024).toFixed(2) + " MB"
+                : (files[i].size / 1024).toFixed(2) + " KB",
+          });
         }
+      }
 
-        resolve(uploads);
-      });
+      resolve(uploads);
+    });
 
-      uploadPromise.then((values) => {
-        res.status(201).json({
-          status: "success",
-          data: values,
-        });
+    uploadPromise.then((values) => {
+      res.status(201).json({
+        status: "success",
+        data: values,
       });
-    } else {
-      res.status(404).json({ message: "Folder not found" });
-    }
-  } catch (error) {
-    console.log(error);
+    });
+  } else {
+    res.status(404).json({ message: "Folder not found" });
   }
 });
 

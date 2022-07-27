@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <header className="normal-transition sticky top-0 z-20 h-16 min-w-full border-b border-b-gray-300 bg-white py-2.5 dark:border-b-gray-900 dark:bg-deepDark">
+    <header className="normal-transition sticky top-0 z-20 h-16 min-w-full bg-white py-2.5 dark:bg-deepDark">
       <div className="mx-2 md:mx-5 flex h-full items-center justify-between">
         <div className="normal-transition font-nunito purple-text flex w-auto items-center py-0 text-2xl font-extrabold">
           <button

@@ -49,11 +49,4 @@ router
   .get(getPasswordResetLink)
   .post(resetPassword);
 
-/*
- * * @Description: Call the routes to save the api end point in db;
- */
-axios
-  .post(`${process.env.API_URL}/api/v1/auth/registration`)
-  .catch((error) => console.log(error.message));
-
 module.exports = router;

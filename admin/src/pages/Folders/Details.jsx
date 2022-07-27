@@ -115,9 +115,7 @@ export default function Details() {
                   file={file}
                   files={files}
                   setFiles={setFiles}
-                  folder={folder}
-                  page={page}
-                  pageSize={pageSize}
+                  folderId={folder._id}
                 />
               ))}
           </div>

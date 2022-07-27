@@ -326,3 +326,6 @@ html.dark .ant-collapse-content .ant-collapse-content-box,
 html.dark .ant-collapse-item {
   background-color: var(--dark-color) !important;
 }
+html.dark .ant-progress-text {
+  color: #fff !important;
+}

@@ -6,6 +6,7 @@
 */
 
 const expressAsyncHandler = require("express-async-handler");
+const removeDir = require("../../../libs/removeDir");
 const Folder = require("../../../models/folder");
 const Upload = require("../../../models/uploads");
 
@@ -28,6 +29,8 @@ const deleteFolder = expressAsyncHandler(async (req, res) => {
     });
   } else {
     await Folder.findByIdAndDelete(id);
+
+    removeDir(folderExist.name);
 
     res.status(200).json({
       status: "success",
