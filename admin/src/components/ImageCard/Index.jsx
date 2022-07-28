@@ -97,7 +97,7 @@ export default function Index({ file, files, setFiles, folderId }) {
         ) : (
           <Tooltip title="Double click to name to edit" placement="bottom">
             <button onClick={handleClick} className="truncate">
-              <span className="dark:text-white truncate font-mono">
+              <span className="dark:text-white text-black truncate font-mono">
                 {file.name}
               </span>
             </button>
