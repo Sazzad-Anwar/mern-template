@@ -230,6 +230,213 @@
     }
   },
   {
+    "name": "Get file uploading folder list",
+    "description": "<p>This api will send all the folders of file uploads. This is an authenticated route. To get access this route a <i>JWT Token</i> is needed. </p>",
+    "url": {
+      "path": "/folders",
+      "variables": {
+        "id": ""
+      }
+    },
+    "method": "GET",
+    "body": {
+      "isRequired": false,
+      "params": {}
+    },
+    "headers": {
+      "isRequired": true,
+      "params": {
+        "authorization": "bearer (paste the token here)"
+      }
+    },
+    "query": {
+      "isRequired": false,
+      "params": {}
+    }
+  },
+  {
+    "name": "Create a new folder",
+    "description": "<p>This api will create a folder and send back the folder details in response. This is an authenticated route. To get access this route a <i>JWT Token</i> is needed. </p>",
+    "url": {
+      "path": "/folders",
+      "variables": {}
+    },
+    "method": "POST",
+    "body": {
+      "isRequired": false,
+      "params": {
+        "name": ""
+      }
+    },
+    "headers": {
+      "isRequired": true,
+      "params": {
+        "authorization": "bearer (paste the token here)"
+      }
+    },
+    "query": {
+      "isRequired": false,
+      "params": {}
+    }
+  },
+  {
+    "name": "Update folder name",
+    "description": "<p>This api will update a folder name and send back the updated folder details in response. This is an authenticated route. To get access this route a <i>JWT Token</i> is needed. </p>",
+    "url": {
+      "path": "/folders",
+      "variables": {
+        "id": ""
+      }
+    },
+    "method": "PUT",
+    "body": {
+      "isRequired": true,
+      "params": {
+        "name": ""
+      }
+    },
+    "headers": {
+      "isRequired": true,
+      "params": {
+        "authorization": "bearer (paste the token here)"
+      }
+    },
+    "query": {
+      "isRequired": false,
+      "params": {}
+    }
+  },
+  {
+    "name": "Delete a folder",
+    "description": "<p>This api will delete a folder name. This is an authenticated route. To get access this route a <i>JWT Token</i> is needed. </p>",
+    "url": {
+      "path": "/folders",
+      "variables": {
+        "id": ""
+      }
+    },
+    "method": "DELETE",
+    "body": {
+      "isRequired": false,
+      "params": {
+        "name": ""
+      }
+    },
+    "headers": {
+      "isRequired": true,
+      "params": {
+        "authorization": "bearer (paste the token here)"
+      }
+    },
+    "query": {
+      "isRequired": false,
+      "params": {}
+    }
+  },
+  {
+    "name": "Get files list",
+    "description": "<p>This api will send all the files list. This is an authenticated route. To get access this route a <i>JWT Token</i> is needed. </p>",
+    "url": {
+      "path": "/files",
+      "variables": {}
+    },
+    "method": "GET",
+    "body": {
+      "isRequired": false,
+      "params": {}
+    },
+    "headers": {
+      "isRequired": true,
+      "params": {
+        "authorization": "bearer (paste the token here)"
+      }
+    },
+    "query": {
+      "isRequired": false,
+      "params": {
+        "folderId": ""
+      }
+    }
+  },
+  {
+    "name": "Update file",
+    "description": "<p>This api will update the file name. This is an authenticated route. To get access this route a <i>JWT Token</i> is needed. </p>",
+    "url": {
+      "path": "/files",
+      "variables": {
+        "id": ""
+      }
+    },
+    "method": "PUT",
+    "body": {
+      "isRequired": true,
+      "params": {
+        "name": ""
+      }
+    },
+    "headers": {
+      "isRequired": true,
+      "params": {
+        "authorization": "bearer (paste the token here)"
+      }
+    },
+    "query": {
+      "isRequired": false,
+      "params": {}
+    }
+  },
+  {
+    "name": "Delete file",
+    "description": "<p>This api will delete a file. This is an authenticated route. To get access this route a <i>JWT Token</i> is needed. </p>",
+    "url": {
+      "path": "/files",
+      "variables": {
+        "id": ""
+      }
+    },
+    "method": "DELETE",
+    "body": {
+      "isRequired": false,
+      "params": {}
+    },
+    "headers": {
+      "isRequired": true,
+      "params": {
+        "authorization": "bearer (paste the token here)"
+      }
+    },
+    "query": {
+      "isRequired": false,
+      "params": {}
+    }
+  },
+  {
+    "name": "Upload a file",
+    "description": "<p>This api will upload a file and respond with the file details. This is an authenticated route. To get access this route a <i>JWT Token</i> is needed. </p>",
+    "url": {
+      "path": "/files/upload",
+      "variables": {}
+    },
+    "method": "POST",
+    "body": {
+      "isRequired": true,
+      "params": {}
+    },
+    "headers": {
+      "isRequired": true,
+      "params": {
+        "authorization": "bearer (paste the token here)",
+        "content-type": "multipart/form-data"
+      }
+    },
+    "query": {
+      "isRequired": true,
+      "params": {
+        "folderId": ""
+      }
+    }
+  },
+  {
     "name": "Get all error logs",
     "description": "<p>This api will send all the error logs. This api needs <i>JWT token</i> in header </p",
     "url": {

@@ -5,17 +5,12 @@ import { API_URL } from "../../assets/app.config";
 import { FiCopy } from "react-icons/fi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import axiosInstance from "../../utils/AxiosInstance";
-import copy from "copy-to-clipboard";
+import CopyToClipboard from "../../utils/CopyToClipboard";
 import { Button, Form, Input, Popconfirm, Tooltip, Image } from "antd";
 
 export default function Index({ file, files, setFiles, folderId }) {
   const [editMode, setEditMode] = useState(false);
   const submitBtnRef = useRef();
-
-  const copyToClipboard = (url) => {
-    copy(url);
-    toast.success("Copied to clipboard");
-  };
 
   const deleteFile = async (id) => {
     try {
@@ -106,9 +101,9 @@ export default function Index({ file, files, setFiles, folderId }) {
         <div className="flex items-center">
           <Tooltip title="Copy url to clipboard">
             <button
-              onClick={() => copyToClipboard(API_URL + "/static/" + file.url)}
+              onClick={() => CopyToClipboard(API_URL + "/static/" + file.url)}
             >
-              <FiCopy className="dark:text-white" />
+              <FiCopy className="dark:text-white text-black" />
             </button>
           </Tooltip>
           <Tooltip title="Delete file">
@@ -120,7 +115,7 @@ export default function Index({ file, files, setFiles, folderId }) {
               className="ml-2"
             >
               <button>
-                <AiFillCloseCircle className="dark:text-white" />
+                <AiFillCloseCircle className="dark:text-white text-black" />
               </button>
             </Popconfirm>
           </Tooltip>

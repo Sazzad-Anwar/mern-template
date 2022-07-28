@@ -5,7 +5,10 @@ import CreateRole from "./pages/RoleManagement/CreateRole";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Fetcher from "./utils/Fetcher";
 import useSWR from "swr";
+import ApiDetails from "./pages/Api/Details";
 import { APP_NAME } from "./assets/app.config";
+import { Button, notification } from "antd";
+import useServiceWorker from "./hooks/ServiceWorker";
 const RoleDetails = lazy(() => import("./pages/RoleManagement/RoleDetails"));
 const Login = lazy(() => import("./pages/Auth/Login"));
 const Registration = lazy(() => import("./pages/Auth/Registration"));
@@ -34,6 +37,7 @@ export default function Index() {
   const { data } = useSWR("/app-config", Fetcher);
   const { pathname } = useLocation();
   const [app, setApp] = useState({});
+  const { reloadPage, waitingWorker, showReload } = useServiceWorker();
 
   useEffect(() => {
     if (data && data.data) {
@@ -41,13 +45,33 @@ export default function Index() {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (showReload && waitingWorker) {
+      const key = `open${Date.now()}`;
+      const btn = (
+        <Button type="primary" size="small" onClick={() => reloadPage()}>
+          Update
+        </Button>
+      );
+
+      notification.open({
+        message: "Update available !",
+        description:
+          "A new version of the app is available. Please reload the page to update the app.",
+        duration: 0,
+        btn,
+        key,
+      });
+    }
+  }, [reloadPage, showReload, waitingWorker]);
+
   return (
     <HelmetProvider>
       <Helmet>
         <link rel="icon" href={app?.logo} />
         <meta name="description" content={app?.description} />
         <title>
-          {app?.name ?? APP_NAME}{" "}
+          {app?.name ? app.name : APP_NAME}{" "}
           {pathname === "/" ? "" : "| " + pathname.split("/")[1]}
         </title>
       </Helmet>
@@ -123,6 +147,14 @@ export default function Index() {
               element={
                 <Suspense fallback={<Loader />}>
                   <Api />
+                </Suspense>
+              }
+            />
+            <Route
+              path="api/:name/details"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <ApiDetails />
                 </Suspense>
               }
             />

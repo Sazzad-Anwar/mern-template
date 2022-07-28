@@ -34,7 +34,7 @@ router
 
 /*
 * * @Description: File uploading route for access users
-* * @Route: /api/v1/files/upload
+* * @Route: /api/v1/files/upload?folderId=[folderId]
 * * @Method: POST
 ! * @Access: SuperAdmin, Admin, User
 */

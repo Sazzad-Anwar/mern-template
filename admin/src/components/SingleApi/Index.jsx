@@ -34,6 +34,8 @@ const SingleApi = ({ api, index }) => {
     time: "0 ms",
   });
 
+  const formData = new FormData();
+
   let apiOptions = [
     {
       name: "headers",
@@ -91,6 +93,13 @@ const SingleApi = ({ api, index }) => {
     }
   }, [api.body.isRequired, api.headers.isRequired, api.query.isRequired]);
 
+  const handleChange = (e) => {
+    let uploadFiles = e.target.files;
+    for (let i in uploadFiles) {
+      formData.append("files", uploadFiles[i]);
+    }
+  };
+
   const makeAPIRequest = async () => {
     setIsLoading(true);
 
@@ -136,6 +145,9 @@ const SingleApi = ({ api, index }) => {
         data:
           api.body.isRequired && Object.keys(inputData).length > 0
             ? inputData
+            : api.headers.isRequired &&
+              api.headers.params["content-type"] === "multipart/form-data"
+            ? formData
             : api.body.params,
         timeout: 4000,
       });
@@ -251,9 +263,15 @@ const SingleApi = ({ api, index }) => {
                 key={option.name}
                 className={`${
                   currentOption === option.name
-                    ? " border-b-2 border-gray-700 dark:border-[#FF6C37]"
-                    : "border-b-2 border-transparent"
-                } font-ubuntu mr-5 cursor-pointer text-lg font-medium dark:text-white`}
+                    ? " border-b-2 border-[#FF6C37]"
+                    : `border-b-2 border-transparent`
+                } font-ubuntu mr-5 cursor-pointer text-lg font-medium ${
+                  api[option?.name]?.isRequired ||
+                  (Object.keys(pathVariablesObject).length &&
+                    option.name === "pathVariables")
+                    ? "text-[#FF6C37]"
+                    : "dark:text-white"
+                }`}
               >
                 {option.label}
               </div>
@@ -267,7 +285,19 @@ const SingleApi = ({ api, index }) => {
           </div>
 
           <div className="my-4">
-            {api.body.isRequired && currentOption === "body" ? (
+            {api.body.isRequired &&
+            api.headers.isRequired &&
+            api.headers.params["content-type"] === "multipart/form-data" &&
+            currentOption === "body" ? (
+              <div className="w-full md:w-96 mx-auto">
+                <input
+                  className="block w-full ring-2 rounded-full ring-violet-700 text-sm dark:text-white text-dark font-mono file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold dark:file:bg-violet-50 file:text-violet-700  hover:file:bg-violet-100"
+                  type="file"
+                  onChange={handleChange}
+                  multiple
+                />
+              </div>
+            ) : api.body.isRequired && currentOption === "body" ? (
               <Suspense fallback={<Loader />}>
                 <ReactJson
                   src={inputData}

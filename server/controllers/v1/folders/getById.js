@@ -10,12 +10,19 @@ const Folder = require("../../../models/folder");
 
 const getAllFolders = expressAsyncHandler(async (req, res) => {
   const { id } = req.params;
-  const folders = await Folder.findById(id).lean();
+  const folder = await Folder.findById(id).lean();
 
-  res.status(200).json({
-    status: "success",
-    data: folders,
-  });
+  if (folder) {
+    res.status(200).json({
+      status: "success",
+      data: folder,
+    });
+  } else {
+    res.status(404).json({
+      status: "failed",
+      message: "Folder not found",
+    });
+  }
 });
 
 module.exports = getAllFolders;
