@@ -70,7 +70,7 @@ export default function Index() {
       {error ? (
         <Error
           error={
-            error.response.data.message
+            error.response?.data.message
               ? error.response.data.message
               : error.message
           }

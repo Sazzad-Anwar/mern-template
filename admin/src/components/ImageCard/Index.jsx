@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { mutate } from "swr";
 import { API_URL } from "../../assets/app.config";
 import { FiCopy } from "react-icons/fi";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -8,7 +7,7 @@ import axiosInstance from "../../utils/AxiosInstance";
 import CopyToClipboard from "../../utils/CopyToClipboard";
 import { Button, Form, Input, Popconfirm, Tooltip, Image } from "antd";
 
-export default function Index({ file, files, setFiles, folderId }) {
+export default function Index({ file, files, setFiles, folderId, mutate }) {
   const [editMode, setEditMode] = useState(false);
   const submitBtnRef = useRef();
 
@@ -57,7 +56,7 @@ export default function Index({ file, files, setFiles, folderId }) {
   return (
     <div>
       <div className="flex justify-between items-center">
-        {editMode ? (
+        {mutate && editMode ? (
           <Form
             initialValues={{
               name: file.name,
@@ -90,7 +89,10 @@ export default function Index({ file, files, setFiles, folderId }) {
             <Button ref={submitBtnRef} htmlType="submit" className="hidden" />
           </Form>
         ) : (
-          <Tooltip title="Double click to name to edit" placement="bottom">
+          <Tooltip
+            title={mutate && "Double click to name to edit"}
+            placement="bottom"
+          >
             <button onClick={handleClick} className="truncate">
               <span className="dark:text-white text-black truncate font-mono">
                 {file.name}

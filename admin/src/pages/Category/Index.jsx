@@ -38,7 +38,7 @@ export default function Index() {
       {categoryError ? (
         <Error
           error={
-            categoryError.response.data.message
+            categoryError.response?.data.message
               ? categoryError.response.data.message
               : categoryError.message
           }

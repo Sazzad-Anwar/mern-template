@@ -58,6 +58,10 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
+      setInterval(() => {
+        registration.update();
+      }, 1000 * 60 * 1);
+
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         if (installingWorker == null) {
@@ -73,6 +77,8 @@ function registerValidSW(swUrl, config) {
                 "New content is available and will be used when all " +
                   "tabs for this page are closed. See https://cra.link/PWA."
               );
+
+              registration.waiting.postMessage({ type: "SKIP_WAITING" });
 
               // Execute callback
               if (config && config.onUpdate) {

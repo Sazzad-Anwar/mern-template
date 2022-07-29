@@ -19,13 +19,13 @@ export default function Users() {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const { data: rolesArray } = useSWR("/roles", Fetcher);
   const { data, error } = useSWR(
     `/users?page=${page}&pageSize=${pageSize}`,
     Fetcher
   );
   const [users, setUsers] = useState([]);
   const { auth } = useGlobalContext();
-  const { data: rolesArray } = useSWR("/roles", Fetcher);
 
   let roles =
     rolesArray &&

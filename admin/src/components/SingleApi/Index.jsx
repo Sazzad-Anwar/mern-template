@@ -289,9 +289,10 @@ const SingleApi = ({ api, index }) => {
             api.headers.isRequired &&
             api.headers.params["content-type"] === "multipart/form-data" &&
             currentOption === "body" ? (
-              <div className="w-full md:w-96 mx-auto">
+              <div className="w-full flex items-center">
+                <h1 className="dark:text-white text-lg mr-5">files :</h1>
                 <input
-                  className="block w-full ring-2 rounded-full ring-violet-700 text-sm dark:text-white text-dark font-mono file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold dark:file:bg-violet-50 file:text-violet-700  hover:file:bg-violet-100"
+                  className="block w-96 ring-2 rounded-full ring-violet-700 text-sm dark:text-white text-dark font-mono file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold dark:file:bg-violet-50 file:text-violet-700  hover:file:bg-violet-100"
                   type="file"
                   onChange={handleChange}
                   multiple

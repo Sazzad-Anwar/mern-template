@@ -21,7 +21,11 @@ export default function Details() {
 
   const [files, setFiles] = useState([]);
   const { data } = useSWR(`/folders/${id}`, Fetcher);
-  const { data: fileArray, error } = useSWR(
+  const {
+    data: fileArray,
+    error,
+    mutate,
+  } = useSWR(
     `/files?folderId=${id}&page=${page}&pageSize=${pageSize}`,
     Fetcher
   );
@@ -116,6 +120,7 @@ export default function Details() {
                   files={files}
                   setFiles={setFiles}
                   folderId={folder._id}
+                  mutate={mutate}
                 />
               ))}
           </div>

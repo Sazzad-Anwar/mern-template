@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import BreadCrumbs from "../../components/BreadCrumbs/Index";
 import Fetcher from "../../utils/Fetcher";
 import axiosInstance from "../../utils/AxiosInstance";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "../../context/GlobalContextProvider";
 import ImageCard from "../../components/ImageCard/Index";
-import { Progress } from "antd";
 import ProgressBar from "../../components/ProgressBar/Index";
 
 export default function Index() {
@@ -105,7 +104,8 @@ export default function Index() {
                   file={file}
                   files={files}
                   setFiles={setFiles}
-                  folderId={folder._id}
+                  folderId={id}
+                  // mutate={mutate}
                 />
               ))}
           </div>

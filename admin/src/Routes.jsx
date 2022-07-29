@@ -7,8 +7,6 @@ import Fetcher from "./utils/Fetcher";
 import useSWR from "swr";
 import ApiDetails from "./pages/Api/Details";
 import { APP_NAME } from "./assets/app.config";
-import { Button, notification } from "antd";
-import useServiceWorker from "./hooks/ServiceWorker";
 const RoleDetails = lazy(() => import("./pages/RoleManagement/RoleDetails"));
 const Login = lazy(() => import("./pages/Auth/Login"));
 const Registration = lazy(() => import("./pages/Auth/Registration"));
@@ -37,33 +35,12 @@ export default function Index() {
   const { data } = useSWR("/app-config", Fetcher);
   const { pathname } = useLocation();
   const [app, setApp] = useState({});
-  const { reloadPage, waitingWorker, showReload } = useServiceWorker();
 
   useEffect(() => {
     if (data && data.data) {
       setApp(data.data[0]);
     }
   }, [data]);
-
-  useEffect(() => {
-    if (showReload && waitingWorker) {
-      const key = `open${Date.now()}`;
-      const btn = (
-        <Button type="primary" size="small" onClick={() => reloadPage()}>
-          Update
-        </Button>
-      );
-
-      notification.open({
-        message: "Update available !",
-        description:
-          "A new version of the app is available. Please reload the page to update the app.",
-        duration: 0,
-        btn,
-        key,
-      });
-    }
-  }, [reloadPage, showReload, waitingWorker]);
 
   return (
     <HelmetProvider>
