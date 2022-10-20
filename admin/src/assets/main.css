@@ -1,0 +1,15 @@
+.ant-pagination-jump-next .ant-pagination-item-container,
+.ant-pagination-jump-prev .ant-pagination-item-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100% !important;
+}
+.ant-btn-dangerous.ant-btn-primary {
+    color: #fff !important;
+    border-color: #ff4d4f !important;
+    background: #ff4d4f !important;
+}
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    align-items: center !;
+}
