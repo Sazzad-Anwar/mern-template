@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import { FC, lazy, Suspense } from 'react';
 import PointDetailsCard, { PointDetailsCardProps } from '../../components/PointDetailsCard/Index';
 import { BiNews } from 'react-icons/bi';
 import { HiUsers } from 'react-icons/hi';
 import { FaUserCircle } from 'react-icons/fa';
-import AreaChart from '../../components/Charts/AreaChart/Index';
-import GroupColumnChart from '../../components/Charts/GroupColumnChart/Index';
+import Loader from '../../components/Loader/Index';
+const AreaChart = lazy(() => import('../../components/Charts/AreaChart/Index'));
+const GroupColumnChart = lazy(() => import('../../components/Charts/GroupColumnChart/Index'));
 
 const Dashboard: FC = () => {
     let PointDetailsCardList: PointDetailsCardProps[] = [
@@ -51,16 +52,20 @@ const Dashboard: FC = () => {
             </section>
 
             {/* chart section */}
-            {/* <section className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+            <section className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="p-5 bg-white shadow-lg rounded-md">
                     <p className="text-xl font-medium mb-5">News Post Statistics</p>
-                    <AreaChart />
+                    <Suspense fallback={<Loader />}>
+                        <AreaChart />
+                    </Suspense>
                 </div>
                 <div className="p-5 bg-white shadow-lg rounded-md">
                     <p className="text-xl font-medium mb-5">News Post Statistics</p>
-                    <GroupColumnChart />
+                    <Suspense fallback={<Loader />}>
+                        <GroupColumnChart />
+                    </Suspense>
                 </div>
-            </section> */}
+            </section>
         </main>
     );
 };
