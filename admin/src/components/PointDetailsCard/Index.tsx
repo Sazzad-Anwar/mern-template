@@ -1,5 +1,3 @@
-import { Button } from 'antd';
-import React from 'react';
 export type PointDetailsCardProps = {
     icon: React.ReactNode;
     title: string;

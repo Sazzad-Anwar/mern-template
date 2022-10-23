@@ -1,22 +1,12 @@
-import { Breadcrumb, Button, Form, Input } from 'antd';
+import { Breadcrumb } from 'antd';
 import { FC, lazy, Suspense } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import { FormBuilderType, InputTypes } from '../../../components/FormBuilder/formBuilder.type';
-const FormBuilder = lazy(() => import('../../../components/FormBuilder/Index'));
-import { RouteEnums } from '../../../routes/routes.types';
 import { Config } from '../../../shared/Config';
-import { FiKey } from 'react-icons/fi';
 import Loader from '../../../components/Loader/Index';
+const FormBuilder = lazy(() => import('../../../components/FormBuilder/Index'));
 
 const CreatePost: FC = () => {
-    const navigate = useNavigate();
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
-        toast.success('Item is added');
-        navigate(RouteEnums.GetAllPosts);
-    };
-
     let formBuilderData: FormBuilderType = {
         name: 'Create Post',
         submitApi: Config.BaseUrl + '/posts',

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button, Form, Input, Radio, Select, Checkbox, InputNumber, DatePicker } from 'antd';
-import { FormBuilderPropsType, FormBuilderType, InputTypes } from './formBuilder.type';
+import { FormBuilderPropsType, InputTypes } from './formBuilder.type';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
 import { LOGIN } from '../../context/constants/Auth.constants';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ const FormBuilder = ({ formDetails, className }: FormBuilderPropsType) => {
         setIsLoading(true);
 
         try {
-            let resData;
+            // let resData;
             if (formDetails.method === 'POST') {
                 // Post all the data to the route
                 // resData = await axiosInstance.post(formDetails.submitApi, values);
@@ -43,18 +43,24 @@ const FormBuilder = ({ formDetails, className }: FormBuilderPropsType) => {
                         localStorage.removeItem('remember');
                     }
                 }
-                formDetails.type === 'regular' ? toast.success('Item has been created') : null;
+                if (formDetails.type === 'regular') {
+                    toast.success('Item has been created');
+                }
             } else {
                 // Put all the data to the route
                 await axiosInstance.put(formDetails.submitApi, values);
 
                 // If the data need to be mutated then pass the mutate function of useSWR from component and call the mutate function here
-                formDetails.mutateFn ? formDetails?.mutateFn() : null;
+                if (formDetails.mutateFn) {
+                    formDetails?.mutateFn();
+                }
             }
             setIsLoading(false);
 
             // If the form details has navigate route
-            formDetails.navigateRoute ? navigate(formDetails.navigateRoute) : null;
+            if (formDetails.navigateRoute) {
+                navigate(formDetails.navigateRoute);
+            }
         } catch (error: any) {
             toast.error(
                 error?.response?.data
@@ -69,9 +75,7 @@ const FormBuilder = ({ formDetails, className }: FormBuilderPropsType) => {
 
     let initialValues: any = {};
 
-    formDetails.fields.map((input) => {
-        initialValues[input.name] = input.defaultValue;
-    });
+    formDetails.fields.map((input) => (initialValues[input.name] = input.defaultValue));
 
     return (
         <>
@@ -82,6 +86,7 @@ const FormBuilder = ({ formDetails, className }: FormBuilderPropsType) => {
                 onFinish={onFinish}
                 className={className}
             >
+                {/* eslint-disable-next-line array-callback-return */}
                 {formDetails.fields.map((input) => {
                     switch (input.type) {
                         case InputTypes.Text:

@@ -9,7 +9,7 @@ export default function capitalLetterWord(word: string): string {
             word?.split('')[0].toUpperCase() +
             word
                 ?.split('')
-                .filter((letter) => letter !== word.split('')[0])
+                .filter((letter, i) => i !== 0)
                 .join('')
         );
     }

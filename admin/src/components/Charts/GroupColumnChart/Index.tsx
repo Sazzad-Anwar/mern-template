@@ -1,4 +1,4 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { memo } from 'react';
 import { Column } from '@ant-design/plots';
 import { ColorTheme } from '../../../shared/ColorTheme';
 

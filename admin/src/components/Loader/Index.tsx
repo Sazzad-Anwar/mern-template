@@ -1,5 +1,4 @@
 import React from 'react';
-import { ColorTheme } from '../../shared/ColorTheme';
 import { Spin } from 'antd';
 
 const Loader = () => {

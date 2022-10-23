@@ -1,21 +1,28 @@
 import { lazy, ReactNode, Suspense, useEffect } from 'react';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
-const TopBar = lazy(() => import('../../components/TopBar/Index'));
-const SideBar = lazy(() => import('../../components/SideBar/Index'));
 import { SideBarEnum } from '../../components/SideBar/type.sidebar';
 import useDeviceWidth from '../../hooks/useDeviseWidth';
 import { HeaderEnum } from '../../components/TopBar/header.type';
 import Loader from '../../components/Loader/Index';
+import { UnAuthRoutes } from '../../shared/Config';
+import { useLocation } from 'react-router-dom';
+const TopBar = lazy(() => import('../../components/TopBar/Index'));
+const SideBar = lazy(() => import('../../components/SideBar/Index'));
 
 type ChildrenPropType = {
     children: ReactNode;
 };
 
 const AdminLayout = ({ children }: ChildrenPropType) => {
-    const { sideBar, auth } = useGlobalContext();
+    const { sideBar } = useGlobalContext();
     const { isMobileWidth } = useDeviceWidth();
-
+    let routeLocation = useLocation();
     useEffect(() => {}, []);
+
+    if (UnAuthRoutes.includes(routeLocation.pathname)) {
+        return <>{children}</>;
+    }
+
     return (
         <Suspense fallback={<Loader />}>
             <div className="flex w-full bg-gray-100">

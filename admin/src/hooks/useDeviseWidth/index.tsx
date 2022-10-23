@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useDeviceWidth = () => {
     const [isMobileWidth, setIsMobileWidth] = useState<boolean>(false);

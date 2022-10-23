@@ -1,4 +1,4 @@
-import { Breadcrumb, Button, Image } from 'antd';
+import { Breadcrumb, Button } from 'antd';
 import React, { useState } from 'react';
 import { IoCloseOutline } from 'react-icons/io5';
 import { MdSupervisedUserCircle } from 'react-icons/md';
@@ -52,7 +52,7 @@ const Roles = () => {
                 </Link>
                 {!roles.length && <Error error="No data found !" />}
 
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-5 ">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-1 mt-3">
                     {roles.map((role) => (
                         <div className="pt-3 pr-3 relative">
                             <Link to={RouteEnums.Roles + `/${role.id}/access-routes`}>

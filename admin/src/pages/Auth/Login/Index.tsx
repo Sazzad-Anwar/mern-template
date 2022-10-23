@@ -1,16 +1,12 @@
-import { Button, Checkbox, Form, Input, Select } from 'antd';
-import { FC, lazy, Suspense, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { LOGIN } from '../../../context/constants/Auth.constants';
+import { FC, lazy, Suspense } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import { useGlobalContext } from '../../../context/GlobalContextProvider';
-import { AiFillLock } from 'react-icons/ai';
 import { FiKey } from 'react-icons/fi';
 import { MdEmail } from 'react-icons/md';
-import { LoginDto } from './login.type';
 import { Config } from '../../../shared/Config';
 import { FormBuilderType, InputTypes } from '../../../components/FormBuilder/formBuilder.type';
-const FormBuilder = lazy(() => import('../../../components/FormBuilder/Index'));
 import Loader from '../../../components/Loader/Index';
+const FormBuilder = lazy(() => import('../../../components/FormBuilder/Index'));
 
 const Login: FC = () => {
     const { auth } = useGlobalContext();

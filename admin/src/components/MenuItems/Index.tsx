@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { Button, MenuProps, Tag } from 'antd';
+import { MenuProps, Tag } from 'antd';
 import { Menu } from 'antd';
-import { AiOutlineDashboard, AiOutlineAppstoreAdd, AiOutlineSetting } from 'react-icons/ai';
+import { AiOutlineDashboard, AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { FaUserCircle } from 'react-icons/fa';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
 import useDeviceWidth from '../../hooks/useDeviseWidth';
@@ -114,6 +114,8 @@ const MenuItems: FC = () => {
         ),
     ];
 
+    console.log(location.pathname.split('/')[1]);
+
     return (
         <div
             className={`${
@@ -122,10 +124,10 @@ const MenuItems: FC = () => {
         >
             <Menu
                 defaultSelectedKeys={['/']}
-                defaultOpenKeys={[location.pathname]}
+                defaultOpenKeys={['/' + location.pathname.split('/')[1]]}
                 mode="inline"
                 theme="light"
-                selectedKeys={[location.pathname]}
+                selectedKeys={['/' + location.pathname.split('/')[1]]}
                 className="w-full h-screen"
                 inlineCollapsed={!sideBar.isOpen}
                 items={items}

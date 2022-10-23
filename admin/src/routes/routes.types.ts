@@ -1,6 +1,7 @@
 export enum RouteEnums {
     Dashboard = '/',
     Login = '/login',
+    NotFound = '/404',
     CreatePost = '/posts/create',
     GetAllPosts = '/posts',
     AdminUtilities = '/utilities',

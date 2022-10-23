@@ -1,11 +1,13 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Loader from '../components/Loader/Index';
-const AdminLayout = lazy(() => import('../layouts/Admin/Index'));
 import { RouteEnums } from './routes.types';
 import capitalLetterWord from '../utils/capitalLetterWord';
 import { Config } from '../shared/Config';
+import { useServiceWorker } from '../hooks/useServiceWorker';
+import { toast } from 'react-toastify';
+const AdminLayout = lazy(() => import('../layouts/Admin/Index'));
 const RoleDetails = lazy(() => import('../pages/Roles/Details/Index'));
 const CreateRole = lazy(() => import('../pages/Roles/Create/Index'));
 const Utilities = lazy(() => import('../pages/Utilities/Index'));
@@ -19,6 +21,24 @@ const Dashboard = lazy(() => import('../pages/Dashboard/Index'));
 
 function App() {
     const { pathname } = useLocation();
+    const { reloadPage, showReload, waitingWorker } = useServiceWorker();
+
+    useEffect(() => {
+        if (showReload && waitingWorker) {
+            toast.info('Update available! Click here to update', {
+                onClick: () => reloadPage(),
+                autoClose: false,
+            });
+        }
+    }, [waitingWorker, showReload, reloadPage]);
+
+    console.log(
+        pathname
+            .split('/')
+            .filter((title: string) => title !== '')
+            .map((title: string) => capitalLetterWord(title))
+            .join(' | '),
+    );
 
     return (
         <HelmetProvider>
@@ -35,99 +55,89 @@ function App() {
                               .join(' | ')}
                 </title>
             </Helmet>
-            <Routes>
-                <Route
-                    path={RouteEnums.Login}
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <Login />
-                        </Suspense>
-                    }
-                />
-                <Route
-                    path={RouteEnums.GetAllPosts}
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <AdminLayout>
+            <AdminLayout>
+                <Routes>
+                    <Route
+                        path={RouteEnums.Login}
+                        element={
+                            <Suspense fallback={<Loader />}>
+                                <Login />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path={RouteEnums.GetAllPosts}
+                        element={
+                            <Suspense fallback={<Loader />}>
                                 <ProtectedRoute component={Posts} />
-                            </AdminLayout>
-                        </Suspense>
-                    }
-                />
-                <Route
-                    path={RouteEnums.CreatePost}
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <AdminLayout>
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path={RouteEnums.CreatePost}
+                        element={
+                            <Suspense fallback={<Loader />}>
                                 <ProtectedRoute component={CreatePost} />
-                            </AdminLayout>
-                        </Suspense>
-                    }
-                />
-                <Route
-                    index
-                    path={RouteEnums.Dashboard}
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <AdminLayout>
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        index
+                        path={RouteEnums.Dashboard}
+                        element={
+                            <Suspense fallback={<Loader />}>
                                 <ProtectedRoute component={Dashboard} />
-                            </AdminLayout>
-                        </Suspense>
-                    }
-                />
-                <Route
-                    index
-                    path={RouteEnums.AdminUtilities}
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <AdminLayout>
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        index
+                        path={RouteEnums.AdminUtilities}
+                        element={
+                            <Suspense fallback={<Loader />}>
                                 <ProtectedRoute component={Utilities} />
-                            </AdminLayout>
-                        </Suspense>
-                    }
-                />
-                <Route
-                    index
-                    path={RouteEnums.Roles}
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <AdminLayout>
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        index
+                        path={RouteEnums.Roles}
+                        element={
+                            <Suspense fallback={<Loader />}>
                                 <ProtectedRoute component={Roles} />
-                            </AdminLayout>
-                        </Suspense>
-                    }
-                />
-                <Route
-                    index
-                    path={RouteEnums.CreateRoles}
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <AdminLayout>
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        index
+                        path={RouteEnums.CreateRoles}
+                        element={
+                            <Suspense fallback={<Loader />}>
                                 <ProtectedRoute component={CreateRole} />
-                            </AdminLayout>
-                        </Suspense>
-                    }
-                />
-                <Route
-                    index
-                    path={RouteEnums.AccessRoutesOfRole}
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <AdminLayout>
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        index
+                        path={RouteEnums.AccessRoutesOfRole}
+                        element={
+                            <Suspense fallback={<Loader />}>
                                 <ProtectedRoute component={RoleDetails} />
-                            </AdminLayout>
-                        </Suspense>
-                    }
-                />
-                <Route
-                    path="*"
-                    element={
-                        <Suspense fallback={<Loader />}>
-                            <NotFound />
-                        </Suspense>
-                    }
-                />
-            </Routes>
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        index
+                        path={RouteEnums.NotFound}
+                        element={
+                            <Suspense fallback={<Loader />}>
+                                <NotFound />
+                            </Suspense>
+                        }
+                    />
+                    <Route path="*" element={<Navigate to={RouteEnums.NotFound} />} />
+                </Routes>
+            </AdminLayout>
         </HelmetProvider>
     );
 }

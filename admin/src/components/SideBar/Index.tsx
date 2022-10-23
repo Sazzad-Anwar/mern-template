@@ -1,13 +1,9 @@
 import { Affix, Avatar } from 'antd';
-import { ReactNode, useState, useEffect, FC } from 'react';
+import { FC } from 'react';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
-import { RiMenuUnfoldLine, RiDashboardLine, RiMenuFoldLine } from 'react-icons/ri';
-import { ImUsers } from 'react-icons/im';
+import { RiMenuUnfoldLine, RiMenuFoldLine } from 'react-icons/ri';
 import { SIDE_BAR_TOGGLE } from '../../context/constants/SideBar.contatns';
-import TopBar from '../../components/TopBar/Index';
-import { SideBarEnum } from '../../components/SideBar/type.sidebar';
 import useDeviceWidth from '../../hooks/useDeviseWidth';
-import { HeaderEnum } from '../../components/TopBar/header.type';
 import MenuItems from '../../components/MenuItems/Index';
 import { Config } from '../../shared/Config';
 
