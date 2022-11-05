@@ -1,5 +1,0 @@
-{
-  "errorEmail": false,
-  "mongodbURI": "mongodb://localhost:27017",
-  "nodeEnv": "development"
-}

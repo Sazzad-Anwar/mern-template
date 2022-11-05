@@ -1,8 +1,0 @@
-# Replace example.com with your application's domain
-localhost:3000 {
-  # node-app:8080 is the docker container running the Node.js application
-  # in our case it's exposed on port 8080
-  reverse_proxy api:8080  {
-    header_down Strict-Transport-Security max-age=31536000;
-   }
-}
